@@ -49,7 +49,7 @@
 </style>
 
 <!-- navigationBar 시작 -->
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top navbar-fixed-width">
 	<div class="container-fluid">
 		<!-- 화면 작을때 -->
 		<div class="navbar-header">
