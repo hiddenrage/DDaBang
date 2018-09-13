@@ -68,6 +68,7 @@
 		<!-- 화면 클때 -->
 		<div class="collapse navbar-collapse" id="collapseMenu">
 			<ul class="nav navbar-nav navbar-right">
+<<<<<<< HEAD
 				<li><a href="<c:url value='/'/>">메인</a></li>
        			<li><a class="dropdown-toggle" data-toggle="dropdown" 
 							id="dropdownButton"> 
@@ -121,6 +122,20 @@
 						<li><a href="<c:url value='/WEB-INF/views/common/support'/>">FAQ</a></li>
 					</ul>
 				</li>
+=======
+				<li><a href="<c:url value='/'/>">HOME</a></li>
+       			<li>
+       				<c:if test="${empty sessionScope.id}" var="isNotLogin">
+       					<a href="<c:url value='/Member/Login.bbs'/>">로그인</a>
+       				</c:if>
+       				<c:if test="${not isNotLogin}">
+       					<a href="<c:url value='/Member/Logout.bbs'/>">로그아웃</a>
+       				</c:if>
+       			</li>
+       			<li>
+       				<a href="<c:url value='/BBS/List.bbs'/>">한줄 댓글 게시판</a>
+       			</li>
+>>>>>>> branch 'guozhe' of https://github.com/hiddenrage/DDaBang.git
 			</ul>
 		</div>
 	</div> <!-- container -->
