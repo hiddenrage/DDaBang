@@ -62,7 +62,7 @@
 			<a class="navbar-brand" href="#">
 				<%--<img alt="회사 로고 이미지" src="<c:url value='/images/logo.gif'/>" 
 						class="img-rounded"> --%>
-				한줄 댓글 프로젝트
+				따방 프로젝트
 			</a>
 		</div> <!-- navbar-header -->
 		<!-- 화면 클때 -->
@@ -79,6 +79,9 @@
        			</li>
        			<li>
        				<a href="<c:url value='/BBS/List.bbs'/>">한줄 댓글 게시판</a>
+       			</li>
+       			<li>
+       				<a href="<c:url value='/Market/Main.bbs'/>">경매장</a>
        			</li>
 			</ul>
 		</div>
