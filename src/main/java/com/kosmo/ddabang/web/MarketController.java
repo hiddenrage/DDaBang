@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MarketController {
 
-	@RequestMapping()
+	@RequestMapping("/Market/Main.ddb")
 	public String marketMain() throws Exception {
 		
 		return "common/item/market/Main.tiles";
