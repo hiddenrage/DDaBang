@@ -6,14 +6,41 @@
 <!-- script는 이쪽 아래에 -->
 <script>
 	$(function(){
-		$('button').click(function(){
-			location.href='View.bbs';
+		$(':input[type=button]').click(function(){
+			location.href='Write.bbs';
 		});
 	});
 </script>
 <!-- body는 아래에 -->
-<div>
-	<h2>경매 메인</h2>
-<%-- 	<a href="<c:url value='/Market/Write.bbs'/>">경매 신청</a> --%>
-	<button class="btn btn-success">경매 신청</button>
+<div class="row">
+	<div style="float:left">
+		<h2>경매 메인</h2>
+	</div>
+	<div style="float:right;">
+		<input type="button" class="btn btn-success" value="경매 신청">
+	</div>
+	<div>
+		<table class="table table-bordered">
+			<tr>
+				<td>에헤헤
+				
+				</td>
+			</tr>
+			<tr>
+				<td>에헤헤
+				
+				</td>
+			</tr>
+			<tr>
+				<td>에헤헤
+				
+				</td>
+			</tr>
+			<tr>
+				<td>에헤헤
+				
+				</td>
+			</tr>
+		</table>
+	</div>
 </div>
