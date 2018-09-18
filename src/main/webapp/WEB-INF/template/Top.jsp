@@ -81,6 +81,9 @@
        				<a href="<c:url value='/BBS/List.bbs'/>">한줄 댓글 게시판</a>
        			</li>
        			<li>
+       				<a href="<c:url value='/Market/Research.bbs'/>">통계</a>
+       			</li>
+       			<li>
        				<a href="<c:url value='/Market/Main.bbs'/>">경매장</a>
        			</li>
 			</ul>

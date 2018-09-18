@@ -7,7 +7,7 @@
 <script>
 	$(function(){
 		$(':input[type=button]').click(function(){
-			location.href='Write.bbs';
+			location.href='<c:url value="/Market/Write.bbs"/>';
 		});
 	});
 </script>
@@ -16,13 +16,16 @@
 	<div style="float:left">
 		<h2>경매 메인</h2>
 	</div>
-	<div style="float:right;">
+	<div style="float:right;margin-top: 15px;margin-right: 10px">
 		<input type="button" class="btn btn-success" value="경매 신청">
 	</div>
 	<div>
 		<table class="table table-bordered">
 			<tr>
-				<td>에헤헤
+				<td>
+					<div>
+						아 하기싷ㅎ다
+					</div>
 				
 				</td>
 			</tr>

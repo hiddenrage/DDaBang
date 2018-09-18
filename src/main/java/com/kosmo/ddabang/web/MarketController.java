@@ -18,6 +18,11 @@ public class MarketController {
 		
 		return "common/item/market/MarketView.tiles";
 	}/// marketMain
+	
+	@RequestMapping("/Market/Research.bbs")
+	public String research() throws Exception {
+		return "common/item/research/Research.tiles";
+	}/// research
 
 	@RequestMapping(value="/Market/Write.bbs",method=RequestMethod.GET)
 	public String marketWrite() throws Exception {
