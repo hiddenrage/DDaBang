@@ -7,7 +7,7 @@
 	    $(".navbar-right li a").click(function(){
 	    	$('.navbar-right li').each(function(){
 	   			$(this).removeClass("active");
-	    	});       
+	    	});
 	    	$(this).parent().addClass("active");
 	   	});
    	});
