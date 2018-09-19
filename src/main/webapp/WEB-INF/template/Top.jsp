@@ -77,6 +77,9 @@
 				<li>
        				<a href="<c:url value='/Market/Research.bbs'/>">통계</a>
        			</li>
+       			<li>
+       				<a href="<c:url value='#'/>">고객지원</a>
+       			</li>
        			<%-- <li>
        				<a href="<c:url value='/Market/Main.bbs'/>">경매장</a>
        			</li> --%>
@@ -95,9 +98,6 @@
        				<c:if test="${not isNotLogin}">
        					<a href="<c:url value='/Member/Logout.bbs'/>">로그아웃</a>
        				</c:if>
-       			</li>
-       			<li>
-       				<a href="<c:url value='#'/>">고객지원</a>
        			</li>
 			</ul>
 		</div>
