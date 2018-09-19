@@ -5,15 +5,18 @@
 <style>
 .footer-copyright {
     position:absolute;
-    bottom:0;
+    bottom:0px; 
     width:100%;
-    height:150px;   
-    line-height:150px;
+    height:500px;   
+    line-height:500px;
+    position:relative;
+    min-height:100%;
+    background-color: #60D0A0;
 }
 </style>
 
-<footer class="page-footer font-small blue">
-	<div class="footer-copyright text-center py-3 bg-info"> © 2018 Copyright: 
+<footer class="page-footer font-small pt-4">
+	<div class="footer-copyright text-center py-3"> © 2018 Copyright: 
 		<a href="<c:url value="#"/>">한국소스프웨어 인재개발원</a>
 	</div>
 </footer>

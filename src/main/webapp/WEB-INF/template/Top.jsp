@@ -46,15 +46,16 @@
 			font-weight: bold;
 			font-size:1.2em;
 		}
+		
+		.navbar-custom {
+		    background-color:#60D0A0;
+/*  		    color:#ffffff;  */
+		    border-radius:0;
+		}
 </style>
 
 <!-- navigationBar 시작 -->
-<<<<<<< HEAD
-<nav class="navbar navbar-default navbar-fixed-top ">
-=======
-
-<nav class="navbar navbar-default navbar-inverse navbar-fixed-top navbar-fixed-width">
->>>>>>> refs/heads/development
+<nav class="navbar navbar-fixed-top navbar-custom">
 	<div class="container-fluid">
 		<!-- 화면 작을때 -->
 		<div class="navbar-header">
@@ -71,7 +72,7 @@
 			</a>
 		</div> <!-- navbar-header -->
 		<!-- 화면 클때 -->
-		<div class="collapse navbar-collapse" id="collapseMenu">
+		<div class="collapse navbar-collapse" id="collapseMenu" style="margin-right:50px">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
        				<a href="<c:url value='#'/>">방검색</a>
@@ -104,12 +105,6 @@
        					<a href="<c:url value='/Member/Logout.bbs'/>">로그아웃</a>
        				</c:if>
        			</li>
-<<<<<<< HEAD
-=======
-       			<li>
-       				<a href="<c:url value='/BBS/List.bbs'/>">한줄 댓글 게시판</a>
-       			</li>
->>>>>>> refs/heads/development
 			</ul>
 		</div>
 	</div> <!-- container -->
