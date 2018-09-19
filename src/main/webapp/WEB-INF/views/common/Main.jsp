@@ -68,7 +68,7 @@
 </script>
 <!-- body는 아래에 -->
 <div class="row">
-<div class="jumbotron col-xs-12" style=" background-image: url('../Images/main.jpg');  background-color: red;">
+<div class="jumbotron col-xs-12" style=" background-image: url('./resources/images/main/main.jpg');">
 		<div class="container text-center" style="margin-top: 250px;">
 			<h1 class="display">따방으로 찜하자</h1>
 		</div>
@@ -88,7 +88,7 @@
 	
 		<div class="container text-center" style="margin-top: 50px;">
 				 <div class="expansion">
-				<a href="#" class="img1"><div  class="img" style="background-image: url('../Images/cat.jpg');">
+				<a href="#" class="img1"><div  class="img" style="background-image: url('./resources/images/main/cat.jpg');">
 					<div class="content sample_image">
 						<h3>반려동물</h3>
 						<h5>반려동물과  함께 살수 있는방 알아보기</h5>
@@ -97,7 +97,7 @@
 				</div></a>
 				</div>
 				<div class="expansion">
-				<a href="#" class="img1"><div  class="img" style="background-image: url('../Images/lower_house.jpg');">
+				<a href="#" class="img1"><div  class="img" style="background-image: url('./resources/images/main/lower_house.jpg');">
 					<div class="content sample_image">
 						<h3>저보증금</h3>
 						<h5>보증금 300만원 이하인 방 찾아보기</h5>
@@ -106,7 +106,7 @@
 				</div></a>
 				</div>
 				<div class="expansion">
-				<a href="#" class="img1"><div  class="img" style="background-image: url('../Images/360.jpg');">
+				<a href="#" class="img1"><div class="img" style="background-image: url('./resources/images/main/inhouse.jpg');">
 					<div class="content sample_image">
 						<h3>360도매물</h3>
 						<h5>3D 이미지로 더 자세히 볼수 있는 방 찾아보기</h5>
@@ -118,7 +118,7 @@
 		
 			<div class="container  text-center">
 				 <div class="expansion">
-				<a href="#" class="img1"><div  class="img" style="background-image: url('../Images/parking.jpg');">
+				<a href="#" class="img1"><div  class="img" style="background-image: url('./resources/images/main/parking.jpg');">
 					<div class="content sample_image">
 						<h3>주차 가능</h3>
 						<h5>주차공간이 확보된 방 찾아보기</h5>
@@ -127,7 +127,7 @@
 				</div></a>
 				</div>
 				<div class="expansion">
-				<a href="#" class="img1"><div  class="img" style="background-image: url('../Images/hand.jpg');">
+				<a href="#" class="img1"><div  class="img" style="background-image: url('./resources/images/main/hand.jpg');">
 					<div class="content sample_image">
 						<h3>직거래 매물</h3>
 						<h5>중개 수수료 없는 직거래 매물 찾아보기</h5>
@@ -136,7 +136,7 @@
 				</div></a>
 				</div>
 				<div class="expansion">
-				<a href="#" class="img1"><div  class="img" style="background-image: url('../Images/opistel.jpg');">
+				<a href="#" class="img1"><div  class="img" style="background-image: url('./resources/images/main/opistel.jpg');">
 					<div class="content sample_image">
 						<h3>오피스텔</h3>
 						<h5>깨끗하고 편리한 주거용 오피스텔 알아보기</h5>
