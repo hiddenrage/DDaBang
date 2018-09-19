@@ -49,11 +49,8 @@
 </style>
 
 <!-- navigationBar 시작 -->
-<<<<<<< HEAD
-<nav class="navbar navbar-default navbar-fixed-top navbar-inverse navbar-fixed-width">
-=======
+
 <nav class="navbar navbar-default navbar-inverse navbar-fixed-top navbar-fixed-width">
->>>>>>> branch 'development' of https://github.com/hiddenrage/DDaBang.git
 	<div class="container-fluid">
 		<!-- 화면 작을때 -->
 		<div class="navbar-header">
@@ -71,11 +68,7 @@
 		</div> <!-- navbar-header -->
 		<!-- 화면 클때 -->
 		<div class="collapse navbar-collapse" id="collapseMenu">
-<<<<<<< HEAD
 			<ul class="nav navbar-nav navbar-right">
-=======
-			<ul class="nav navbar-nav navbar-right">
->>>>>>> branch 'development' of https://github.com/hiddenrage/DDaBang.git
 				<li><a href="<c:url value='/'/>">HOME</a></li>
        			<li>
        				<c:if test="${empty sessionScope.id}" var="isNotLogin">
@@ -87,11 +80,7 @@
        			</li>
        			<li>
        				<a href="<c:url value='/BBS/List.bbs'/>">한줄 댓글 게시판</a>
-<<<<<<< HEAD
        			</li>
-=======
-       			</li>
->>>>>>> branch 'development' of https://github.com/hiddenrage/DDaBang.git
 			</ul>
 		</div>
 	</div> <!-- container -->
