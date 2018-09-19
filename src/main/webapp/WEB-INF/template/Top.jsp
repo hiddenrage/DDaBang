@@ -49,7 +49,12 @@
 </style>
 
 <!-- navigationBar 시작 -->
+<<<<<<< HEAD
 <nav class="navbar navbar-default navbar-fixed-top ">
+=======
+
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top navbar-fixed-width">
+>>>>>>> refs/heads/development
 	<div class="container-fluid">
 		<!-- 화면 작을때 -->
 		<div class="navbar-header">
@@ -99,6 +104,12 @@
        					<a href="<c:url value='/Member/Logout.bbs'/>">로그아웃</a>
        				</c:if>
        			</li>
+<<<<<<< HEAD
+=======
+       			<li>
+       				<a href="<c:url value='/BBS/List.bbs'/>">한줄 댓글 게시판</a>
+       			</li>
+>>>>>>> refs/heads/development
 			</ul>
 		</div>
 	</div> <!-- container -->
