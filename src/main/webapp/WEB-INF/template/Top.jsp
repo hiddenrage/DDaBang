@@ -49,7 +49,7 @@
 </style>
 
 <!-- navigationBar 시작 -->
-<nav class="navbar navbar-default navbar-fixed-top navbar-inverse navbar-fixed-width">
+<nav class="navbar navbar-default navbar-fixed-top ">
 	<div class="container-fluid">
 		<!-- 화면 작을때 -->
 		<div class="navbar-header">
@@ -59,16 +59,35 @@
 				<span class="icon-bar"></span> 
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="<c:url value='/'/>">
 				<%--<img alt="회사 로고 이미지" src="<c:url value='/images/logo.gif'/>" 
 						class="img-rounded"> --%>
-				따방 프로젝트
+				<span style="font-weight: bold;margin-left: 30px;">따방</span>
 			</a>
 		</div> <!-- navbar-header -->
 		<!-- 화면 클때 -->
 		<div class="collapse navbar-collapse" id="collapseMenu">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="<c:url value='/'/>">HOME</a></li>
+				<li>
+       				<a href="<c:url value='#'/>">방검색</a>
+       			</li>
+       			<li>
+       				<a href="<c:url value='#'/>">소식</a>
+       			</li>
+				<li>
+       				<a href="<c:url value='/Market/Research.bbs'/>">통계</a>
+       			</li>
+       			<%-- <li>
+       				<a href="<c:url value='/Market/Main.bbs'/>">경매장</a>
+       			</li> --%>
+				<li>
+       				<c:if test="${empty sessionScope.id}" var="isNotLogin">
+       					<a href="<c:url value='/Member/SignUp.bbs'/>">회원가입</a>
+       				</c:if>
+       				<c:if test="${not isNotLogin}">
+       					<a href="<c:url value='/Member/MyPage.bbs'/>">내 정보</a>
+       				</c:if>
+       			</li>
        			<li>
        				<c:if test="${empty sessionScope.id}" var="isNotLogin">
        					<a href="<c:url value='/Member/Login.bbs'/>">로그인</a>
@@ -78,13 +97,7 @@
        				</c:if>
        			</li>
        			<li>
-       				<a href="<c:url value='/BBS/List.bbs'/>">한줄 댓글 게시판</a>
-       			</li>
-       			<li>
-       				<a href="<c:url value='/Market/Research.bbs'/>">통계</a>
-       			</li>
-       			<li>
-       				<a href="<c:url value='/Market/Main.bbs'/>">경매장</a>
+       				<a href="<c:url value='#'/>">고객지원</a>
        			</li>
 			</ul>
 		</div>
