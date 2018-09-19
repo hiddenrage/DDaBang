@@ -71,16 +71,15 @@
 				<li><a href="<c:url value='/'/>">HOME</a></li>
        			<li>
        				<c:if test="${empty sessionScope.id}" var="isNotLogin">
-       					<a href="<c:url value='/Member/Login.bbs'/>">
-       							로그인</a>
+       					<a href="<c:url value='/Member/Login.bbs'/>">로그인</a>
        				</c:if>
        				<c:if test="${not isNotLogin}">
-       					<a href="<c:url value='/Member/Logout.bbs'/>">
-       							로그아웃</a>
+       					<a href="<c:url value='/Member/Logout.bbs'/>">로그아웃</a>
        				</c:if>
        			</li>
-       			<li><a href="<c:url value='/BBS/List.bbs'/>">
-       					한줄 댓글 게시판</a></li>
+       			<li>
+       				<a href="<c:url value='/BBS/List.bbs'/>">한줄 댓글 게시판</a>
+       			</li>
 			</ul>
 		</div>
 	</div> <!-- container -->
