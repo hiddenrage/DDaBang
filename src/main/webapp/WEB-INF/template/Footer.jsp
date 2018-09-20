@@ -11,7 +11,7 @@
     line-height:500px;
     position:relative;
     min-height:100%;
-    background-color: #60D0A0;
+    background-color: #000000;
 }
 </style>
 
