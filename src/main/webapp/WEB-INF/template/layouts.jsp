@@ -15,7 +15,7 @@
 	<script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
 </head>
 <body>
-	<div class="container">
+	<div>
 		<!-- 네비게이션바 -->
 		<tiles:insertAttribute name="Top"/>
 		<!-- 네비게이션바 -->
