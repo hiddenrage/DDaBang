@@ -48,8 +48,8 @@
 		}
 		
 		.navbar-custom {
-		    background-color:#60D0A0;
-/*  		    color:#ffffff;  */
+		    background-color:#222222;
+  		    color:#ffffff;
 		    border-radius:0;
 		}
 </style>
