@@ -32,9 +32,13 @@
 			<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 				<div></div>
 			</div>
-			<div class="col-xs-12 col-sm-6 col-sm-offset-3 ">
+			<div class="col-xs-12 col-sm-3 col-sm-offset-3">
 				<span id="searchPass" style="cursor: pointer">비밀번호 찾기</span>
 			</div>
+			<div class="col-xs-12 col-sm-3 col-sm-offset-3">
+				<span id="signup" style="cursor: pointer;background-color: red">회원가입</span>
+			</div>
+			
 		
 		</div>
 						
