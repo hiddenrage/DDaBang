@@ -18,44 +18,26 @@
 			padding-top: 50px;
 		}
 		
-		@media all and (min-width: 768px) {
-			.navbar-fixed-width {
-				width: 768px;
-				margin-left: auto;
-				margin-right: auto;
-			}
-		}
-		
-		@media all and (min-width: 992px) {
-			.navbar-fixed-width {
-				width: 992px;
-				margin-left: auto;
-				margin-right: auto;
-			}
-		}
-		
-		@media all and (min-width: 1200px) {
-			.navbar-fixed-width {
-				width: 1200px;
-				margin-left: auto;
-				margin-right: auto;
-			}
-		}
-		
 		.active {
 			font-weight: bold;
 			font-size:1.2em;
 		}
 		
 		.navbar-custom {
-		    background-color:#222222;
-  		    color:#ffffff;
+		    background-color:#ffffff;
+  		    color:aqua;
 		    border-radius:0;
+		}
+		
+		nav li a{
+			text-decoration: none;
+			color:#222222;
+			font-weight: bold;
 		}
 </style>
 
 <!-- navigationBar 시작 -->
-<nav class="navbar navbar-fixed-top navbar-custom">
+<nav class="navbar navbar-fixed-top navbar-custom navbar-right">
 	<div class="container-fluid">
 		<!-- 화면 작을때 -->
 		<div class="navbar-header">
@@ -68,7 +50,7 @@
 			<a class="navbar-brand" href="<c:url value='/'/>">
 				<%--<img alt="회사 로고 이미지" src="<c:url value='/images/logo.gif'/>" 
 						class="img-rounded"> --%>
-				<span style="font-weight: bold;margin-left: 30px;">따방</span>
+				<span style="font-weight: bold;margin-left: 30px;margin-right:30px">따방</span>
 			</a>
 		</div> <!-- navbar-header -->
 		<!-- 화면 클때 -->
@@ -77,12 +59,19 @@
 				<li>
        				<a href="<c:url value='#'/>">방검색</a>
        			</li>
-       			<li>
+       			<%-- <li>
        				<a href="<c:url value='#'/>">소식</a>
-       			</li>
+       			</li> --%>
 				<li>
-       				<a href="<c:url value='/Market/Research.bbs'/>">통계</a>
-       			</li>
+       				<%-- 비회원이거나 일반회원의 경우 --%>
+					<c:if test="${empty sessionScope.expert}" var="isNotExpert">
+       					<a href="<c:url value='#'/>">관심 목록</a>
+       				</c:if>
+					<%-- 공인중개사일 경우 --%>
+       				<c:if test="${not isNotExpert}">
+       					<a href="<c:url value='#'/>">매물 관리</a>
+       				</c:if>
+				</li>
        			<li>
        				<a href="<c:url value='#'/>">고객지원</a>
        			</li>
@@ -90,16 +79,13 @@
        				<a href="<c:url value='/Market/Main.bbs'/>">경매장</a>
        			</li> --%>
 				<li>
-       				<c:if test="${empty sessionScope.id}" var="isNotLogin">
-       					<a href="<c:url value='/Member/SignUp.bbs'/>">회원가입</a>
-       				</c:if>
-       				<c:if test="${not isNotLogin}">
+       				<c:if test="${not empty sessionScope.id}" var="isNotLogin">
        					<a href="<c:url value='/Member/MyPage.bbs'/>">내 정보</a>
        				</c:if>
        			</li>
        			<li>
        				<c:if test="${empty sessionScope.id}" var="isNotLogin">
-       					<a href="<c:url value='/Member/Login.bbs'/>">로그인</a>
+       					<a href="<c:url value='/Member/Login.bbs'/>">로그인 및 회원가입</a>
        				</c:if>
        				<c:if test="${not isNotLogin}">
        					<a href="<c:url value='/Member/Logout.bbs'/>">로그아웃</a>

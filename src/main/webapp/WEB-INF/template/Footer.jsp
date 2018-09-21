@@ -3,20 +3,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <style>
-.footer-copyright {
-    position:absolute;
+footer {
     bottom:0px; 
     width:100%;
-    height:500px;   
-    line-height:500px;
-    position:relative;
-    min-height:100%;
-    background-color: #000000;
+    height:200px;   
+    line-height:200px;
+    position:relative; 
+/*     min-height:100%; */
+    background-color: fuchsia;
 }
 </style>
-
-<footer class="page-footer font-small pt-4">
-	<div class="footer-copyright text-center py-3"> © 2018 Copyright: 
-		<a href="<c:url value="#"/>">한국소스프웨어 인재개발원</a>
-	</div>
-</footer>
+<div class=>
+	<footer class="footer font-small">
+		<div class="footer-copyright text-center"> © 2018 Copyright: 
+			<a href="<c:url value="#"/>">한국소스프웨어 인재개발원</a>
+		</div>
+	</footer>
+</div>
