@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- DataRoomTop.jsp -->
+<!-- Top.jsp -->
+<link href="<c:url value='/resources/css/Top.css'/>" rel="stylesheet">
 <script>
 	$(function(){
 	    $(".navbar-right li a").click(function(){
@@ -13,31 +14,9 @@
    	});
 </script>
 
-<style>
-		body {
-			padding-top: 50px;
-		}
-		
-		.active {
-			font-weight: bold;
-			font-size:1.2em;
-		}
-		
-		.navbar-custom {
-		    background-color:#ffffff;
-  		    color:aqua;
-		    border-radius:0;
-		}
-		
-		nav li a{
-			text-decoration: none;
-			color:#222222;
-			font-weight: bold;
-		}
-</style>
 
 <!-- navigationBar 시작 -->
-<nav class="navbar navbar-fixed-top navbar-custom navbar-right">
+<nav id="mainNav" class="navbar navbar-fixed-top navbar-custom navbar-right">
 	<div class="container-fluid">
 		<!-- 화면 작을때 -->
 		<div class="navbar-header">
@@ -75,9 +54,9 @@
        			<li>
        				<a href="<c:url value='#'/>">고객지원</a>
        			</li>
-       			<%-- <li>
+       			<li>
        				<a href="<c:url value='/Market/Main.bbs'/>">경매장</a>
-       			</li> --%>
+       			</li>
 				<li>
        				<c:if test="${not empty sessionScope.id}" var="isNotLogin">
        					<a href="<c:url value='/Member/MyPage.bbs'/>">내 정보</a>
