@@ -15,12 +15,12 @@
 			<form class="form-horizontal">
 				<div class="form-group">
 					<div class="col-xs-12 col-sm-6 col-sm-offset-3">
-						<input style="height: 50px" type="text" class="form-control" id="id" name="id" placeholder="아이디를 입력하세요">
+						<input style="height: 50px" type="email" class="form-control" id="id" name="id" placeholder="이메일 ">
 					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-xs-12 col-sm-6 col-sm-offset-3">
-						<input style="height: 50px" type="password" class="form-control" id="pass" name="pass" placeholder="Password">
+						<input style="height: 50px" type="password" class="form-control" id="pass" name="pass" placeholder="비밀번호">
 					</div>
 				</div>
 				<div class="form-group">
@@ -32,15 +32,13 @@
 			<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 				<div></div>
 			</div>
-			<div class="col-xs-12 col-sm-3 col-sm-offset-3">
-				<span id="searchPass" style="cursor: pointer">비밀번호 찾기</span>
+			<div class="col-xs-12 col-sm-3 col-sm-offset-2" style="text-align: center;">
+				<span id="searchPass" style="cursor: pointer;">비밀번호 찾기</span>
 			</div>
-			<div class="col-xs-12 col-sm-3 col-sm-offset-3">
-				<span id="signup" style="cursor: pointer;background-color: red">회원가입</span>
-			</div>
-			
-		
-		</div>
+			<div class="col-xs-12 col-sm-3 col-sm-offset-2" style="text-align: center;">
+				<span id="signup" style="cursor: pointer;margin-left: 30px;">회원가입</span>
+			</div>		
+		</div><!-- row -->
 						
 	</div><!-- container -->
 	
