@@ -42,4 +42,6 @@
 	
 	<!-- 리소스 파일 설정 -->
 	<context:property-placeholder location="classpath:ddabangresource/ddabang.properties"/>
+	
+	<beans:bean id="naverLoginBO" class="com.kosmo.ddabang.service.impl.NaverLoginBO"/>
 </beans:beans>
