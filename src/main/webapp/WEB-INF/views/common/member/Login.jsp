@@ -30,32 +30,21 @@
 					</div>			
 				</div>
 			</form>	
-				<div class="form-group">			
-					<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+			<div class="form-group">			
+				<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 					<div class="row">
 						<button id="login" class="btn btn-success btn-lg col-xs-12">네이버 아이디로 로그인</button>	
 					</div>	
-					</div>			
 				</div>			
-			<div class="col-xs-12 col-sm-6 col-sm-offset-3">
-<<<<<<< HEAD
-				<div></div>
-			</div>
+				</div>			
+			
 			<div class="col-xs-12 col-sm-3 col-sm-offset-2" style="text-align: center;">
 				<span id="searchPass" style="cursor: pointer;">비밀번호 찾기</span>
 			</div>
 			<div class="col-xs-12 col-sm-3 col-sm-offset-2" style="text-align: center;">
 				<span id="signup" style="cursor: pointer;margin-left: 30px;">회원가입</span>
 			</div>		
-		</div><!-- row -->
-=======
-				<div style="display: inline-block;"><span id="searchPass" style="cursor: pointer">비밀번호 찾기</span></div>
-				<div style="display: inline-block;float: right;"><span id="signup" style="cursor: pointer;">회원가입</span></div>
-			</div>
-			
-		
-		</div>
->>>>>>> branch 'guozhe' of https://github.com/hiddenrage/DDaBang.git
+		</div><!-- row -->	
 						
 	</div><!-- container -->
 	
