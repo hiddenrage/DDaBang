@@ -75,7 +75,7 @@
 		<div class="collapse navbar-collapse" id="collapseMenu" style="margin-right:50px">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-       				<a href="<c:url value='#'/>">방검색</a>
+       				<a href="<c:url value='/Search/Map.bbs'/>">방검색</a>
        			</li>
        			<li>
        				<a href="<c:url value='#'/>">소식</a>
