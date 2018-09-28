@@ -10,4 +10,5 @@ public class MemberController {
 	public String login() throws Exception{
 		return "common/member/Login.tiles";
 	}
+	
 }
