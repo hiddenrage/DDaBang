@@ -23,7 +23,7 @@ public class NaverLoginBO {
     //state: 애플리케이션이 생성한 상태 토큰
     private final static String CLIENT_ID = "QXYJIKHlTHxBWRcIsSY4";       //네이버API Client ID
     private final static String CLIENT_SECRET = "_afF1D3bnW";                      
-    private final static String REDIRECT_URI = "http://localhost:8080/ddabang/Member/callback.bbs";
+    private final static String REDIRECT_URI = "http://localhost:8080/ddabang/Member/Callback.bbs";
     private final static String SESSION_STATE = "oauth_state";
     /* 프로필 조회 API URL */
     private final static String PROFILE_API_URL = "https://openapi.naver.com/v1/nid/me";/// Api 종류 기본 !!
@@ -37,8 +37,7 @@ public class NaverLoginBO {
         setSession(session,state);        
 
         /* Scribe에서 제공하는 인증 URL 생성 기능을 이용하여 네아로 인증 URL 생성 */
-        OAuth20Service oauthService = new ServiceBuilder()                                                
-                .apiKey(CLIENT_ID)
+        OAuth20Service oauthService = new ServiceBuilder(CLIENT_ID)                                               
                 .apiSecret(CLIENT_SECRET)
                 .callback(REDIRECT_URI)
                 .state(state) //앞서 생성한 난수값을 인증 URL생성시 사용함
@@ -54,8 +53,7 @@ public class NaverLoginBO {
         String sessionState = getSession(session);
         if(StringUtils.pathEquals(sessionState, state)){
 
-            OAuth20Service oauthService = new ServiceBuilder()
-                    .apiKey(CLIENT_ID)
+            OAuth20Service oauthService = new ServiceBuilder(CLIENT_ID)              
                     .apiSecret(CLIENT_SECRET)
                     .callback(REDIRECT_URI)
                     .state(state)
@@ -83,16 +81,15 @@ public class NaverLoginBO {
         return (String) session.getAttribute(SESSION_STATE);
     }
     /* Access Token을 이용하여 네이버 사용자 프로필 API를 호출 */
-    public String getUserProfile(OAuth2AccessToken oauthToken) throws IOException{
+    public String getUserProfile(OAuth2AccessToken oauthToken) throws Exception{
 
-        OAuth20Service oauthService =new ServiceBuilder()
-                .apiKey(CLIENT_ID)
+        OAuth20Service oauthService =new ServiceBuilder(CLIENT_ID)           
                 .apiSecret(CLIENT_SECRET)
                 .callback(REDIRECT_URI).build(NaverLoginApi.instance());
-
-            OAuthRequest request = new OAuthRequest(Verb.GET, PROFILE_API_URL, oauthService);
-        oauthService.signRequest(oauthToken, request);
-        Response response = request.send();
+        	//oauthService
+            OAuthRequest request = new OAuthRequest(Verb.GET, PROFILE_API_URL);
+            oauthService.signRequest(oauthToken, request);
+        Response response = oauthService.execute(request);
         return response.getBody();
     }
 }

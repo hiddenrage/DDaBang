@@ -1,7 +1,6 @@
 package com.kosmo.ddabang.web;
 
 import java.io.IOException;
-import java.util.concurrent.ExecutionException;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -36,47 +35,21 @@ public class MemberController {
 	}
 	
 
-    //네이버 로그인 성공시 callback호출 메소드
-    @RequestMapping(value = "/Member/callback.bbs", method = { RequestMethod.GET, RequestMethod.POST })
+   //네이버 로그인 성공시 callback호출 메소드
+    @RequestMapping(value="/Member/Callback.bbs",method={ RequestMethod.GET, RequestMethod.POST })
     public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
-            throws IOException, InterruptedException, ExecutionException {
+            throws Exception {
         System.out.println("여기는 callback");
         OAuth2AccessToken oauthToken;
         oauthToken = naverLoginBO.getAccessToken(session, code, state);
         //로그인 사용자 정보를 읽어온다.
         apiResult = naverLoginBO.getUserProfile(oauthToken);
+        System.out.println(naverLoginBO.getUserProfile(oauthToken).toString());
         model.addAttribute("result", apiResult);
         System.out.println("result"+apiResult);
         
         //로그인 성공되였으니 여기다 db 작
-        
-        
-        
-        
-        
-        
-        
-        /* 네이버 로그인 성공 페이지 View 호출 */
-//      JSONObject jsonobj = jsonparse.stringToJson(apiResult, "response");
-//      String snsId = jsonparse.JsonToString(jsonobj, "id");
-//      String name = jsonparse.JsonToString(jsonobj, "name");
-//
-//      UserVO vo = new UserVO();
-//      vo.setUser_snsId(snsId);
-//      vo.setUser_name(name);
-//
-//      System.out.println(name);
-//      try {
-//          vo = service.naverLogin(vo);
-//      } catch (Exception e) {
-//          // TODO Auto-generated catch block
-//          e.printStackTrace();
-//      }
-
-
-//      session.setAttribute("login",vo);
-//      return new ModelAndView("user/loginPost", "result", vo);
-        
+      
         return "redirect://";
     }
 }

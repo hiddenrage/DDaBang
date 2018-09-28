@@ -30,14 +30,13 @@
 					</div>			
 				</div>
 			</form>	
-			<div class="form-group">			
-				<div class="col-xs-12 col-sm-6 col-sm-offset-3">
-					<div class="row">
-						<a href="${url}" id="login" class="btn btn-success btn-lg col-xs-12">네이버 아이디로 로그인</a>	
-					</div>	
-				</div>			
+								
+			<div class="col-xs-12 col-sm-6 col-sm-offset-3" style="background-color: red">
+				<div class="row">
+					<a href="${url}"><img src="<c:url value='/resources/images/login/img_naverlogin.png'/>" alt="네이버 로그인" style="height: 45px" class="col col-xs-12"/></a>
+				</div>	
 			</div>			
-			
+								
 			<div class="col-xs-12 col-sm-3 col-sm-offset-2" style="text-align: center;">
 				<span id="searchPass" style="cursor: pointer;">비밀번호 찾기</span>
 			</div>
