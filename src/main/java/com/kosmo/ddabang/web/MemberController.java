@@ -31,7 +31,6 @@ public class MemberController {
         model.addAttribute("url", naverAuthUrl);
 		return "common/member/Login.tiles";
 	}
-	
 
 	 //네이버 로그인 성공시 callback호출 메소드
     @RequestMapping(value="/Member/Callback.bbs",method={ RequestMethod.GET, RequestMethod.POST })
@@ -61,4 +60,5 @@ public class MemberController {
       
         return "redirect://";
     }
+
 }

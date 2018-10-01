@@ -92,7 +92,7 @@
        			</li> --%>
 				<li>
        				<c:if test="${empty sessionScope.id}" var="isNotLogin">
-       					<a href="<c:url value='/Member/SignUp.bbs'/>">회원가입</a>
+       					<a href="<c:url value='/Member/GeneralSignUp.bbs'/>">회원가입</a>
        				</c:if>
        				<c:if test="${not isNotLogin}">
        					<a href="<c:url value='/Member/MyPage.bbs'/>">내 정보</a>
