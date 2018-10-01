@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SearchController {
 	
 	@RequestMapping("/Search/Map.bbs")
-	public String mapList()throws Exception{	
+	public String mapList()throws Exception{
+		
+		
 		
 		return "common/item/search/Map.tiles";
 	}
