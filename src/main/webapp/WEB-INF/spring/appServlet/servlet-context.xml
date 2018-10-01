@@ -30,7 +30,8 @@
 		<beans:property name="definitions">
 		   	<!-- 전체 레이아웃 설정이 있는 xml파일을 등록 -->
 			<beans:list>
-				<beans:value>/WEB-INF/template/layouts.xml</beans:value>			
+				<beans:value>/WEB-INF/template/layouts.xml</beans:value>
+				<beans:value>/WEB-INF/template/admin_layouts.xml</beans:value>			
 			</beans:list>
 		</beans:property>
    	</beans:bean>
