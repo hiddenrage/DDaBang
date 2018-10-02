@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AdminMainController {
 
 	@RequestMapping("/Admin/Main.bbs")
-	public String main() throws Exception {
-		return "main.admin";
+	public String adminMain() throws Exception {
+		return "Main.admin";
 	}/// main
 	
 }/// class
