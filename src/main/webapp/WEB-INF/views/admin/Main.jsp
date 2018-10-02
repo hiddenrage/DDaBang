@@ -6,3 +6,6 @@
 <!-- script는 이쪽에 -->
 
 <!-- body는 아래에 -->
+<div class="row">
+	<h2>안녕</h2>
+</div>
