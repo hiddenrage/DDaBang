@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper  
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.Ddabang">
+	<!-- 
+	<select id="memoIsMember" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM member WHERE id=#{id} AND pass=#{pass}
+	</select>
+	 -->
+	<select id="itemSelectList" resultType="ItemDTO">
+		<!-- SELECT * 
+		FROM item I 
+			JOIN itemphoto P ON I.no=P.no
+			JOIN itemcategory C ON I.no=C.no
+		DESC no -->
+	</select>
+	
+	<select id="itemSelectOne" parameterType="java.util.Map" resultType="ItemDTO">
+		<!-- SELECT O.*, name
+		FROM onememo O JOIN member M ON O.id=M.id
+		WHERE no=#{no} -->
+	</select>
+</mapper>

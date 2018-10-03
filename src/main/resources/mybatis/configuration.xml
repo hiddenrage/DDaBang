@@ -3,11 +3,13 @@
 		PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
 		"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	<!-- 
 	<typeAliases>
-		<typeAlias type="com.kosmo.onememo.service.OneMemoDTO" alias="MemoDTO"/>
-	</typeAliases>
+		<typeAlias type="com.kosmo.onememo.service.~~" alias="~~"/>
+	</typeAliases> 
+	-->
 	
 	<mappers>
-		<mapper resource="mybatis/Memo.xml" />
+		<mapper resource="mybatis/ddabang.xml" />
 	</mappers>
 </configuration>
