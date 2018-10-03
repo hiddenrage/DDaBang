@@ -10,13 +10,14 @@ body {
 }
 
 .active {
-	font-weight: bold;
+/* 	font-weight: bold; */
 	font-size:1.2em;
 }
 
 .navbar-custom {
-    background-color:#dfdfdf;
+    background-color:#ffffff;
     border-radius:0;
+    
 }
 
 nav li a{
