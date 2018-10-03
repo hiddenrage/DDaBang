@@ -11,7 +11,7 @@
 			$("#naverLogin").css('margin-left','').css('width','100%');
 		}else{
 			$("#naverLogin").css('margin-left','8px').css('width','98%');
-		}		
+		}
 	};
 </script>
 
@@ -42,7 +42,7 @@
 								
 			<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 				<div class="row">
-					<a href="${url }"><img id="naverLogin" style="width:98%;height:60px;margin-left: 8px;" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
+					<a href="${url}"><img id="naverLogin" style="width:98%;height:60px;margin-left: 8px;" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
 				</div>	
 			</div>
 							
