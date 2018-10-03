@@ -14,39 +14,50 @@
 	<script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
 </head>
 <!-- script는 이쪽에 -->
+<script>
+	onresize = function() {
+		if(window.innerWidth < 450) {
+			$(".container").css('margin-top','50px').css('width','90%');
+		}else{
+			$(".container").css('margin-top','150px').css('width','400px');
+		}
+		if(window.innerHeight < 450){
+			$(".container").css('margin-top','50px');
+		}
+	};
+</script>
 <style>
-	.container {
- 		width: 90%; 
- 		margin-top: 100px;
- 		
+	 .container {
+ 		width: 400px; 
+ 		margin-top: 150px;
+ 		border: 1px solid grey;
+ 		padding: 10px;
+ 		text-align: center;
+	} 
+	.container div {
+		margin: 10px;
 	}
 	.form-control {
-		height: 60px;
+		height: 45px;
 	}
 </style>
 <!-- body는 아래에 -->
 <body>
 	<div class="container">
-		<div style="text-align: center;">
+		<div>
 			<h1>관리자 로그인</h1>
 		</div>
 		
-		<div class="row" style="margin-top: 50px;">
+		<div class="row">
 			<form method="POST" class="form-horizontal" action="<c:url value='/Admin/LoginProcess.bbs'/>">
-				<div class="form-group">
-					<div class="col-xs-12 col-sm-6 col-sm-offset-3">
-						<input type="email" class="form-control" id="id" name="id" placeholder="이메일 ">
-					</div>
+				<div>
+					<input type="email" class="form-control" id="id" name="id" placeholder="이메일 ">
 				</div>
-				<div class="form-group">
-					<div class="col-xs-12 col-sm-6 col-sm-offset-3">
-						<input type="password" class="form-control" id="pass" name="pass" placeholder="비밀번호">
-					</div>
+				<div>
+					<input type="password" class="form-control" id="pass" name="pass" placeholder="비밀번호">
 				</div>
-				<div class="form-group">
-					<div class="col-xs-12 col-sm-6 col-sm-offset-3">
-						<button type="submit" class="btn btn-success btn-lg col-xs-12 form-control">로그인</button>	
-					</div>			
+				<div>
+					<button type="submit" class="btn btn-success btn-lg col-xs-12 form-control">로그인</button>	
 				</div>
 			</form>	
 		</div><!-- row -->			
