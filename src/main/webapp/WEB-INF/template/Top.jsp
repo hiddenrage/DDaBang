@@ -13,50 +13,6 @@
 	   	});
    	});
 </script>
-<<<<<<< HEAD
-
-=======
-<style>
-		body {
-			padding-top: 50px;
-		}
-		
-		@media all and (min-width: 768px) {
-			.navbar-fixed-width {
-				width: 768px;
-				margin-left: auto;
-				margin-right: auto;
-			}
-		}
-		
-		@media all and (min-width: 992px) {
-			.navbar-fixed-width {
-				width: 992px;
-				margin-left: auto;
-				margin-right: auto;
-			}
-		}
-		
-		@media all and (min-width: 1200px) {
-			.navbar-fixed-width {
-				width: 1200px;
-				margin-left: auto;
-				margin-right: auto;
-			}
-		}
-		
-		.active {
-			font-weight: bold;
-			font-size:1.2em;
-		}
-		
-		.navbar-custom {
-		    background-color:#222222;
-  		    color:#ffffff;
-		    border-radius:0;
-		}
-</style>
->>>>>>> refs/heads/Jang
 
 <!-- navigationBar 시작 -->
 <nav id="mainNav" class="navbar navbar-fixed-top navbar-custom navbar-right">
