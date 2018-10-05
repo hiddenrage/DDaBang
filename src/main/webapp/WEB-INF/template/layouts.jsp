@@ -11,7 +11,7 @@
 <title>layouts.jsp</title>
 <link href="<c:url value='/Bootstrap/css/bootstrap.min.css'/>"
 	rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
 </head>
 <body>

@@ -41,13 +41,24 @@
 	 	text-align: center;
 	 	text-align: left;
 	 }
+	 .cluste{
+	 	width: 56px;
+	    height: 56px;
+	    border-radius: 100%;
+	    background: rgba(59,169,205,0.85);
+	    margin-top: -28px;
+	    margin-left: -28px;
+	    line-height: 56px;
+	    color: #fff;
+	    font-size: 15px;
+	 }
 	
 }
-
 </style>
 <script>
+	
 	$(function() {
-		
+			
 		$('#btnList').click(function() {
 			$('#map').css('display','none');			
 			$('#list').removeClass('col-sm-3').addClass('col-xs-12');	
@@ -100,9 +111,150 @@
 				$('#depositGt').val(0);
 			}
 		});
-		
 				
+		/* 기본맵 띄우기 */
+		var map = new naver.maps.Map('map', {
+		    zoom: 3,
+		    mapTypeControl: true,
+		    zoomControlOptions: {
+	            position: naver.maps.Position.TOP_LEFT,
+	            style: naver.maps.ZoomControlStyle.SMALL
+	        }
+		});
 		
+		var marker = new naver.maps.Marker({
+		    position: new naver.maps.LatLng(37.3595704, 127.105399),
+		    map: map
+		});
+		
+		/*로드 끝나후  ajax로 DB에서 전체주소 가져오기*/
+		 $.ajax({
+				url:'<c:url value="/Search/MapList.bbs" />',
+				type:'POST',
+				dataType:'json',
+				success:function(data){
+					successAllList(data);
+				},
+				error:function(request,err){
+					console.log('상태코드',request.status);
+					console.log('서버로받은 데이타',request.responseText);
+					console.log('에러',err);
+				}
+			});
+		 var markers = [];
+		 var htmlMarker1 = {
+			        content: '<div class="cluste" style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;"></div>',
+			        size: N.Size(40, 40),
+			        anchor: N.Point(20, 20)
+			    },
+			    htmlMarker2 = {
+				        content: '<div class="cluste" style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;"></div>',
+				        size: N.Size(40, 40),
+				        anchor: N.Point(20, 20)
+				    },
+			    htmlMarker3 = {
+				        content: '<div class="cluste" style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;"></div>',
+				        size: N.Size(40, 40),
+				        anchor: N.Point(20, 20)
+				    },
+			    htmlMarker4 = {
+				        content: '<div class="cluste" style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;"></div>',
+				        size: N.Size(40, 40),
+				        anchor: N.Point(20, 20)
+				    },
+			    htmlMarker5 = {
+				        content: '<div class="cluste" style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;"></div>',
+				        size: N.Size(40, 40),
+				        anchor: N.Point(20, 20)
+				    };
+		 /* ajax 성공 했을때 실행하는 함수	*/
+		 function successAllList(data) {
+			 
+			$.each(data,function(index,value){				
+				console.log(value.address);	
+				
+				/* 주소를 위 경도 바꿔주는 함수 호출해서 마크 찍기*/
+				searchAddressToCoordinate(value.address,function(x,y){
+						
+				   	var marker = new naver.maps.Marker({
+					    position: new naver.maps.LatLng(y, x),
+					    map: map
+					});
+				   	
+				   	markers.push(marker);
+				   					   					   	
+				});	/* searchAddressToCoordinate */								
+			});/* each */
+		}
+		 
+		 
+		 /* 주소를 위 경도 바꿔주는 함수 */
+		 function searchAddressToCoordinate(addr,fnCallBack){
+			
+			 naver.maps.Service.geocode({
+			        address: addr
+			    }, function(status, response) {
+			        if (status === naver.maps.Service.Status.ERROR) {
+			            return alert('없는 주소입니다!');
+			        }
+
+			        var item = response.result.items[0];
+			    
+			        //successAllList에서 보내준 콜백함수에 위,경도 반환		  
+			        fnCallBack(item.point.x,item.point.y);
+			     			        
+			    });
+		 }
+		 var markerClustering = new MarkerClustering({
+		        minClusterSize: 2,
+		        maxZoom: 8,
+		        map: map,
+		        markers: markers,
+		        disableClickZoom: false,
+		        gridSize: 120,
+		        icons: [htmlMarker1, htmlMarker2, htmlMarker3, htmlMarker4, htmlMarker5],
+		        indexGenerator: [10, 100, 200, 500, 1000],
+		        stylingFunction: function(clusterMarker, count) {
+		            $(clusterMarker.getElement()).find('div:first-child').text(count);
+		        }
+		    });
+		 
+		
+		
+		/* search */
+		/* function searchAddressToCoordinate(address) {
+		    naver.maps.Service.geocode({
+		        address: address
+		    }, function(status, response) {
+		        if (status === naver.maps.Service.Status.ERROR) {
+		            return alert('없는 주소입니다!');
+		        }
+
+		        var item = response.result.items[0],
+		            point = new naver.maps.Point(item.point.x, item.point.y);
+
+		        map.setCenter(point);
+		    });
+		} */
+		
+		
+		/* function initGeocoder() {		    
+		    $('#address').on('keydown', function(e) {
+		        var keyCode = e.which;
+		        if (keyCode === 13) { // Enter Key
+		            searchAddressToCoordinate($('#address').val());
+		        }
+		    });
+		    $('#submit').on('click', function(e) {
+		        e.preventDefault();
+		        searchAddressToCoordinate($('#address').val());
+		    });
+		}
+		naver.maps.onJSContentLoaded = initGeocoder; */
+		/* search */ 
+		 
+		
+	
 	});
 
 </script>
@@ -110,6 +262,7 @@
 <!-- body는 아래에 -->
 
 <div id="head">
+
 	<div class="dropdown">
 		<button class="btn btn-default dropdown-toggle"data-toggle="dropdown" id="dropdown1">
 	 		매물종류<span class="caret"></span>
@@ -245,12 +398,22 @@
 	
 		
 </div><!-- head -->
+
 <!-- content -->
-<div class="row">
+<div class="row" style="position: relative;">
+
 	<!-- map -->
 	<div id="map" class="col col-sm-9" style="height: 800px;background-color: red;">
 	
 	</div>
+	<!-- 검색창 -->
+	<div style="width: 500px;position: absolute;top: 50px;left: 25%">
+		<form class="form-inline" method="post" style=" max-width: 500px;">
+			<input  type="text" style="width:70%;" id="address" placeholder="관심지역 또는 매물 번호를 검색해보세요" class="form-control" />
+			<button id="submit" class="btn btn-primary" style="margin-left: 5px">방검색</button>
+		</form>	
+	</div>
+
 	<!-- list -->
 	<div id="list" class="col col-sm-3 bg-success" style="height: 800px;">
 		<div class="col col-xs-12 bg-primary">
@@ -280,8 +443,8 @@
 							</div>
 						</div>
 					   <!-- 반복할코드 -->	
-					</div>		
-				</div>
+					</div>	 <!-- row -->		
+				</div><!-- row -->	
 			</div>
 		</div>
 	</div>
