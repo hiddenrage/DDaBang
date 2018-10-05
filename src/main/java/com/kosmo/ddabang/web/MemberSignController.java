@@ -25,7 +25,7 @@ public class MemberSignController {
 	}
 	
 	//개인정보처리방침 페이지 이동용
-		@RequestMapping("/Member/PersonalInfo.bbs")
+	@RequestMapping("/Member/PersonalInfo.bbs")
 	public String personal() throws Exception{
 		return "common/member/signup/terms/PersonalInfo.tiles";
 	}
