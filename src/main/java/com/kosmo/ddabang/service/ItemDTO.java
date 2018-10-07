@@ -21,8 +21,20 @@ public class ItemDTO {
 	private String content;//내용
 	private java.sql.Date regedate;//등록 날짜	
 	private String path;//매물사진 경로
-	private float x;//주소로 지도  x좌표 구한값을 저장 
-	private float y;//주소로 지도  y좌표 구한값을 저장 
+	private double x;//주소로 지도  x좌표 구한값을 저장 
+	private double y;//주소로 지도  y좌표 구한값을 저장 
+	public double getX() {
+		return x;
+	}
+	public void setX(double x) {
+		this.x = x;
+	}
+	public double getY() {
+		return y;
+	}
+	public void setY(double y) {
+		this.y = y;
+	}
 	public String getNo() {
 		return no;
 	}
