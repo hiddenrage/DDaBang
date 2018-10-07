@@ -48,34 +48,12 @@ public class MemberController {
         model.addAttribute("result", apiResult);
         System.out.println("result"+apiResult);
         
-        //로그인 성공되였으니 여기다 db 작
+        //로그인 여기다 db 작
         
         
         
         
-        
-        
-        
-        /* 네이버 로그인 성공 페이지 View 호출 */
-//      JSONObject jsonobj = jsonparse.stringToJson(apiResult, "response");
-//      String snsId = jsonparse.JsonToString(jsonobj, "id");
-//      String name = jsonparse.JsonToString(jsonobj, "name");
-//
-//      UserVO vo = new UserVO();
-//      vo.setUser_snsId(snsId);
-//      vo.setUser_name(name);
-//
-//      System.out.println(name);
-//      try {
-//          vo = service.naverLogin(vo);
-//      } catch (Exception e) {
-//          // TODO Auto-generated catch block
-//          e.printStackTrace();
-//      }
-
-
-//      session.setAttribute("login",vo);
-//      return new ModelAndView("user/loginPost", "result", vo);
+    
         
         return "redirect://";
     }
