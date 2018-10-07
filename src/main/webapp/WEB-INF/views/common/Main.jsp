@@ -7,7 +7,7 @@
 <style>
 
 .jumbotron{
-    	height: 460px; 
+    	height: 500px; 
     	background-size: 100% 100%; 
     }  
 
@@ -68,19 +68,14 @@
 </script>
 <!-- body는 아래에 -->
 <div class="row">
-<div class="jumbotron col-xs-12" style=" background-image: url('./resources/images/main/main.jpg');">
-		<div class="container text-center" style="margin-top: 250px;">
-			<h1 class="display">따방으로 찜하자</h1>
+<div class="jumbotron col-xs-12" style=" background-image: url('./resources/images/main/ddabang2.jpg');">
+		<div style="background-color: rgba(80,80,80,0.5); height: 83px; " >		
+			<form action="/Search/MapList.bbs?page=main" class="form-inline" method="post" style="text-align: center; max-width: 500px; margin: auto; margin-top: 370px;">
+				<input  type="text" style="width:80%; margin: auto; margin-top: 25px" name="searchWord" placeholder="관심지역 또는 매물 번호를 검색해보세요" class="form-control" />
+				<button type="submit" class="btn btn-primary" style="margin-top: 25px; margin-left: 5px">방검색</button>
+			</form>	
 		</div>
-		
-		<form class="form-inline" method="post" style="text-align: center; max-width: 500px; margin: auto;">
-			<input  type="text" style="width:80%; margin: auto;" name="searchWord" placeholder="관심지역 또는 매물 번호를 검색해보세요" class="form-control"/>
-			<button type="submit" class="btn btn-primary">방검색</button>
-		</form>
-		
 	</div>
-	
-	
 		<div style="text-align: center; margin-top: 50px;">
 			<h2>테마 검색</h2>
 			<h4>다방의 다양한 검색조건으로 방을 찾아보세요.</h4>
@@ -220,9 +215,9 @@
 		
 		<div class="col-xs-12 col-md-12" style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
 			<button type="button" class="btn btn-default">회사 소개</button>
-			<button type="button" class="btn btn-default">공인 중개사 회원가입</button>
-			<button type="button" class="btn btn-default">이용 약관</button>
-			<button type="button" class="btn btn-default">개인정보 처리방침</button>
+			<a href="<c:url value='/Member/LreasignupTerms.bbs'/>"><button type="button" class="btn btn-default">공인 중개사 회원가입</button></a>
+			<a href="<c:url value='/Member/TotalTerms.bbs'/>"><button type="button" class="btn btn-default">이용 약관</button></a>
+			<a href="<c:url value='/Member/PersonalInfo.bbs'/>"><button type="button" class="btn btn-default">개인정보 처리방침</button></a>
 			<button type="button" class="btn btn-default">매물 관리 규정</button>
 			<button type="button" class="btn btn-default">자동저장 서비스</button>
 		</div>

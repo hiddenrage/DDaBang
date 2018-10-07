@@ -1,8 +1,5 @@
 package com.kosmo.ddabang.web;
 
-import java.io.IOException;
-import java.util.concurrent.ExecutionException;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -34,20 +31,37 @@ public class MemberController {
         model.addAttribute("url", naverAuthUrl);
 		return "common/member/Login.tiles";
 	}
-	
 
+<<<<<<< HEAD
     //네이버 로그인 성공시 callback호출 메소드
     @RequestMapping(value = "/Member/Callback.bbs", method = { RequestMethod.GET, RequestMethod.POST })
+=======
+	 //네이버 로그인 성공시 callback호출 메소드
+    @RequestMapping(value="/Member/Callback.bbs",method={ RequestMethod.GET, RequestMethod.POST })
+>>>>>>> branch 'guozhe' of https://github.com/hiddenrage/DDaBang.git
     public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
-            throws IOException, InterruptedException, ExecutionException {
+            throws Exception {
         System.out.println("여기는 callback");
         OAuth2AccessToken oauthToken;
         oauthToken = naverLoginBO.getAccessToken(session, code, state);
         //로그인 사용자 정보를 읽어온다.
-        apiResult = naverLoginBO.getUserProfile(oauthToken);
-        model.addAttribute("result", apiResult);
-        System.out.println("result"+apiResult);
+        apiResult = naverLoginBO.getUserProfile(oauthToken);   
+        String[] result = apiResult.split(",");
+        String email = null;
+        String name = null;
+        for(int i=0;i<result.length;i++) {
+        	if(result[i].indexOf("email") != -1) {
+        		String[] value = result[i].split(":");
+        		email = value[1];
+        	}else if(result[i].indexOf("name") != -1) {
+        		String[] value = result[i].split(":");
+        		name = value[1];
+        	}
+        }
+        System.out.println(email+" "+name);
+ 
         
+<<<<<<< HEAD
         //로그인 여기다 db 작
         
         
@@ -55,6 +69,11 @@ public class MemberController {
         
     
         
+=======
+        //로그인 성공되였으니 여기다 db 작
+      
+>>>>>>> branch 'guozhe' of https://github.com/hiddenrage/DDaBang.git
         return "redirect://";
     }
+
 }
