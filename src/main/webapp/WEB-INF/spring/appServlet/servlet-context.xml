@@ -23,7 +23,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.kosmo.ddabang" />
+	<context:component-scan base-package="com.kosmo.ddabang"/>
 	
 	<!-- tiles 사용을 위한 bean동록 -->
    	<beans:bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
