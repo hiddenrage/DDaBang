@@ -115,12 +115,32 @@
 		        content: '<div class="cluste" style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;"></div>',
 		        size: N.Size(40, 40),
 		        anchor: N.Point(20, 20)
-		    };
+		    },
+		    htmlMarker2 = {
+			        content: '<div class="cluste" style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;"></div>',
+			        size: N.Size(40, 40),
+			        anchor: N.Point(20, 20)
+			    },
+		    htmlMarker3 = {
+			        content: '<div class="cluste" style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;"></div>',
+			        size: N.Size(40, 40),
+			        anchor: N.Point(20, 20)
+			    },
+		    htmlMarker4 = {
+			        content: '<div class="cluste" style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;"></div>',
+			        size: N.Size(40, 40),
+			        anchor: N.Point(20, 20)
+			    },
+		    htmlMarker5 = {
+			        content: '<div class="cluste" style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;"></div>',
+			        size: N.Size(40, 40),
+			        anchor: N.Point(20, 20)
+			    };
 		    
 		
 		/* 기본맵 띄우기 */
 		var map = new naver.maps.Map('map', {
-		    zoom: 3,
+		    zoom: 6,
 		    mapTypeControl: true,
 		    zoomControlOptions: {
 	            position: naver.maps.Position.TOP_LEFT,
@@ -155,13 +175,13 @@
 			 });
 			 			var markerClustering = new MarkerClustering({
 			        minClusterSize: 2,
-			        maxZoom: 8,
+			        maxZoom: 10,
 			        map: map,
 			        markers: markers,
 			        disableClickZoom: false,
 			        gridSize: 120,
-			        icons: [htmlMarker1],
-			        indexGenerator: [10, 100, 200, 500, 1000],
+			        icons: [htmlMarker1,htmlMarker2,htmlMarker3,htmlMarker4,htmlMarker5],
+			        indexGenerator: [10,100,200,500,2000],
 			        stylingFunction: function(clusterMarker, count) {
 			            $(clusterMarker.getElement()).find('div:first-child').text(count);
 			            console.log(clusterMarker);
@@ -222,9 +242,16 @@
 		naver.maps.onJSContentLoaded = initGeocoder; */
 		/* search */ 
 		 
+		 $("#menu1 li a").on('click',function(){
+			
+			$("#dropdown1").html($(this).html());
+			console.log(returnSelectId($(this).html()));
+		 });
+		
 		
 	
 	});
+	
 
 </script>
 
@@ -307,7 +334,7 @@
 	</div><!-- 4 -->
 	<div class="dropdown">
 		<div class="btn btn-default dropdown-toggle"data-toggle="dropdown" id="dropdown5">
-	 		월세<span class="caret"></span>
+	 		월세가격<span class="caret"></span>
 	 	</div>	 	
 	 	<ul id="menu4" class="dropdown-menu" style="width: 280px;">
 	 		<li class="dropdown-header">월세 (ex. 10,000만원 = 1억원)</li>
