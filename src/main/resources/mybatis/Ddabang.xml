@@ -9,16 +9,65 @@
 	</select>
 	 -->
 	<select id="itemSelectList" resultType="ItemDTO">
-		<!-- SELECT * 
-		FROM item I 
-			JOIN itemphoto P ON I.no=P.no
-			JOIN itemcategory C ON I.no=C.no
-		DESC no -->
+		SELECT *
+		FROM item
 	</select>
 	
 	<select id="itemSelectOne" parameterType="java.util.Map" resultType="ItemDTO">
-		<!-- SELECT O.*, name
-		FROM onememo O JOIN member M ON O.id=M.id
-		WHERE no=#{no} -->
+		SELECT *
+		FROM item
+		WHERE no=#{no}
 	</select>
+	
+	<insert id=itemInsert" parameterType="java.util.Map">
+		<!-- INSERT INTO item 
+		VALUES(
+			SEQ_ITEM_NO.nextval,
+			#{id},
+			#{address},
+			#{address_dedail},
+			#{shortterm},
+			#{kind},
+			#{house_floor},
+			#{select_floor},
+			#{supply_area},
+			#{use_area},
+			#{manage_money},
+			#{manage_detail},
+			#{parking},
+			#{heating},
+			#{moving_date},
+			#{room_option},
+			#{title},
+			#{content},
+			#{regidate},
+			#{lat},
+			#{lng}
+		) -->
+	</insert>
+	
+	<update id="itemUpdate" parameterType="java.util.Map">
+		<!-- UPDATE item 
+		SET
+		id=#{id},
+		address=#{address},
+		address_dedail=#{address_dedail},
+		shortterm=#{shortterm},
+		kind=#{kind},
+		house_floor=#{house_floor},
+		select_floor=#{select_floor},
+		supply_area=#{supply_area},
+		use_area=#{use_area},
+		manage_money=#{manage_money},
+		manage_detail=#{manage_detail},
+		parking=#{parking},
+		heating=#{heating},
+		moving_date=#{moving_date},
+		room_option=#{room_option},
+		title=#{title},
+		content=#{content},
+		regidate=#{regidate},
+		lat=#{lat},
+		lng=#{lng} -->
+	</update>
 </mapper>
