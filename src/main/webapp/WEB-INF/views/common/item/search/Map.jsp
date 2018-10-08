@@ -82,22 +82,21 @@
 		});
 		
 		/* 드랍다운 내부를 클릭했을때 서브메뉴가 유지하는 코드 */
-		$(function() {
-		      $('.dropdown').on({
-		          "click": function(event) {
-		            if ($(event.target).closest('.dropdown-toggle').length) {
-		              $(this).data('closable', true);
-		            } else {
-		              $(this).data('closable', false);
-		            }
-		          },
-		          "hide.bs.dropdown": function(event) {
-		            hide = $(this).data('closable');
-		            $(this).data('closable', true);
-		            return hide;
-		          }
-		      });
-		  });/* 드랍다운 내부를 클릭했을때 유지하는 코드 */
+		
+	      $('.dropdown').on({
+	          "click": function(event) {
+	            if ($(event.target).closest('.dropdown-toggle').length) {
+	              $(this).data('closable', true);
+	            } else {
+	              $(this).data('closable', false);
+	            }
+	          },
+	          "hide.bs.dropdown": function(event) {
+	            hide = $(this).data('closable');
+	            $(this).data('closable', true);
+	            return hide;
+	          }
+	      });/* 드랍다운 내부를 클릭했을때 유지하는 코드 */
 		
 		$('#depositLgMenu h2').click(function() {
 			$('#depositLg').val($(this).html());
@@ -111,7 +110,14 @@
 				$('#depositGt').val(0);
 			}
 		});
-				
+		
+		var htmlMarker1 = {
+		        content: '<div class="cluste" style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;"></div>',
+		        size: N.Size(40, 40),
+		        anchor: N.Point(20, 20)
+		    };
+		    
+		
 		/* 기본맵 띄우기 */
 		var map = new naver.maps.Map('map', {
 		    zoom: 3,
@@ -122,74 +128,51 @@
 	        }
 		});
 		
-		var marker = new naver.maps.Marker({
-		    position: new naver.maps.LatLng(37.3595704, 127.105399),
-		    map: map
-		});
-		
+		var markers = [];
 		/*로드 끝나후  ajax로 DB에서 전체주소 가져오기*/
 		 $.ajax({
 				url:'<c:url value="/Search/MapList.bbs" />',
 				type:'POST',
 				dataType:'json',
 				success:function(data){
-					successAllList(data);
+					fnSuccess(data);
 				},
 				error:function(request,err){
 					console.log('상태코드',request.status);
 					console.log('서버로받은 데이타',request.responseText);
 					console.log('에러',err);
 				}
-			});
-		 var markers = [];
-		 var htmlMarker1 = {
-			        content: '<div class="cluste" style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;"></div>',
-			        size: N.Size(40, 40),
-			        anchor: N.Point(20, 20)
-			    },
-			    htmlMarker2 = {
-				        content: '<div class="cluste" style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;"></div>',
-				        size: N.Size(40, 40),
-				        anchor: N.Point(20, 20)
-				    },
-			    htmlMarker3 = {
-				        content: '<div class="cluste" style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;"></div>',
-				        size: N.Size(40, 40),
-				        anchor: N.Point(20, 20)
-				    },
-			    htmlMarker4 = {
-				        content: '<div class="cluste" style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;"></div>',
-				        size: N.Size(40, 40),
-				        anchor: N.Point(20, 20)
-				    },
-			    htmlMarker5 = {
-				        content: '<div class="cluste" style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;"></div>',
-				        size: N.Size(40, 40),
-				        anchor: N.Point(20, 20)
-				    };
-		 /* ajax 성공 했을때 실행하는 함수	*/
-		 function successAllList(data) {
-			 
-			$.each(data,function(index,value){				
-				console.log(value.address);	
-				
-				/* 주소를 위 경도 바꿔주는 함수 호출해서 마크 찍기*/
-				searchAddressToCoordinate(value.address,function(x,y){
-						
-				   	var marker = new naver.maps.Marker({
-					    position: new naver.maps.LatLng(y, x),
-					    map: map
-					});
-				   	
-				   	markers.push(marker);
-				   					   					   	
-				});	/* searchAddressToCoordinate */								
-			});/* each */
-		}
+			});		
 		 
-		 
+		 function fnSuccess (data){
+			 $.each(data,function(index,value){
+				 marker = new naver.maps.Marker({
+		                position: new naver.maps.LatLng(value.y, value.x),
+		          
+		                draggable: true
+		         });
+				 markers.push(marker);
+			 });
+			 			var markerClustering = new MarkerClustering({
+			        minClusterSize: 2,
+			        maxZoom: 8,
+			        map: map,
+			        markers: markers,
+			        disableClickZoom: false,
+			        gridSize: 120,
+			        icons: [htmlMarker1],
+			        indexGenerator: [10, 100, 200, 500, 1000],
+			        stylingFunction: function(clusterMarker, count) {
+			            $(clusterMarker.getElement()).find('div:first-child').text(count);
+			            console.log(clusterMarker);
+			        }
+			    });
+			 console.log($('.cluste').html());
+
+		 }
+		 		 
 		 /* 주소를 위 경도 바꿔주는 함수 */
-		 function searchAddressToCoordinate(addr,fnCallBack){
+		 function searchAddressToCoordinate(addr,callback){
 			
 			 naver.maps.Service.geocode({
 			        address: addr
@@ -199,25 +182,11 @@
 			        }
 
 			        var item = response.result.items[0];
-			    
-			        //successAllList에서 보내준 콜백함수에 위,경도 반환		  
-			        fnCallBack(item.point.x,item.point.y);
+			      		        
+			        callback(item.point.x,item.point.y);
 			     			        
 			    });
 		 }
-		 var markerClustering = new MarkerClustering({
-		        minClusterSize: 2,
-		        maxZoom: 8,
-		        map: map,
-		        markers: markers,
-		        disableClickZoom: false,
-		        gridSize: 120,
-		        icons: [htmlMarker1, htmlMarker2, htmlMarker3, htmlMarker4, htmlMarker5],
-		        indexGenerator: [10, 100, 200, 500, 1000],
-		        stylingFunction: function(clusterMarker, count) {
-		            $(clusterMarker.getElement()).find('div:first-child').text(count);
-		        }
-		    });
 		 
 		
 		
