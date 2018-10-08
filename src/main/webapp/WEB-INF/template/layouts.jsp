@@ -15,10 +15,10 @@
 	<script src="<c:url value='/Bootstrap/js/bootstrap.min.js'/>"></script>
 </head>
 <body>
-	<div>
+	<div class="wrapper">
 		<!-- 네비게이션바 -->
 		<tiles:insertAttribute name="Top"/>
-		<!-- 네비게이션바 -->
+		<!-- 네비게이션바 끗 -->
 		<!-- 내용 시작 -->
 		<tiles:insertAttribute name="Body" />
 		<!-- 내용 끝 -->
