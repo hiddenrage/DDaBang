@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<<<<<< HEAD
+
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=sUnEYZTXO8khVLsEBsLE&submodules=geocoder"></script>
 <script type="text/javascript" src="https://navermaps.github.io/maps.js/docs/js/MarkerClustering.js?_=1538909087322"></script>
 
 <!-- DataRoomTop.jsp -->
-=======
+
 <!-- Top.jsp -->
 <link href="<c:url value='/resources/css/Top.css'/>" rel="stylesheet">
->>>>>>> refs/heads/development
+
 <script>
 	$(function(){
 	    $(".navbar-right li a").click(function(){
