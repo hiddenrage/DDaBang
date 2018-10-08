@@ -32,15 +32,8 @@ public class MemberController {
 		return "common/member/Login.tiles";
 	}
 
-<<<<<<< HEAD
     //네이버 로그인 성공시 callback호출 메소드
-    @RequestMapping(value = "/Member/Callback.bbs", method = { RequestMethod.GET, RequestMethod.POST })
-
-=======
-
-	 //네이버 로그인 성공시 callback호출 메소드
-    @RequestMapping(value="/Member/Callback.bbs",method={ RequestMethod.GET, RequestMethod.POST })
->>>>>>> refs/heads/development
+   @RequestMapping(value = "/Member/Callback.bbs", method = { RequestMethod.GET, RequestMethod.POST })
     public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
             throws Exception {
         System.out.println("여기는 callback");
