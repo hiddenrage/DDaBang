@@ -20,6 +20,32 @@ DROP TABLE statistics CASCADE CONSTRAINTS;
 
 
 
+/* Drop Sequences */
+
+DROP SEQUENCE SEQ_ARTICLES_NO;
+DROP SEQUENCE SEQ_FAQ_NO;
+DROP SEQUENCE SEQ_FAVORITE_F_NO;
+DROP SEQUENCE SEQ_ITEMCATEGORY_I_NO;
+DROP SEQUENCE SEQ_ITEMPHOTO_P_NO;
+DROP SEQUENCE SEQ_ITEM_NO;
+DROP SEQUENCE SEQ_QNA_NO;
+DROP SEQUENCE SEQ_REVIEW_NO;
+
+
+
+
+/* Create Sequences */
+
+CREATE SEQUENCE SEQ_ARTICLES_NO;
+CREATE SEQUENCE SEQ_FAQ_NO;
+CREATE SEQUENCE SEQ_FAVORITE_F_NO;
+CREATE SEQUENCE SEQ_ITEMCATEGORY_I_NO;
+CREATE SEQUENCE SEQ_ITEMPHOTO_P_NO;
+CREATE SEQUENCE SEQ_ITEM_NO;
+CREATE SEQUENCE SEQ_QNA_NO;
+CREATE SEQUENCE SEQ_REVIEW_NO;
+
+
 
 /* Create Tables */
 
@@ -150,7 +176,7 @@ CREATE TABLE item
 	-- 입주가능일
 	moving_date nvarchar2(10) DEFAULT '즉시 입주',
 	-- 옵션 항목
-	option nvarchar2(50) NOT NULL,
+	room_option nvarchar2(50) NOT NULL,
 	-- 제목
 	title nvarchar2(50) NOT NULL,
 	-- 내용
@@ -245,7 +271,7 @@ CREATE TABLE QNA
 	-- 등록일
 	regidate date DEFAULT SYSDATE,
 	-- 답변
-	comment nvarchar2(2000) NOT NULL,
+	admin_comment nvarchar2(2000) NOT NULL,
 	-- 답변일
 	commentdate date,
 	PRIMARY KEY (no)
@@ -405,7 +431,7 @@ COMMENT ON COLUMN item.manage_detail IS '관리비 항목';
 COMMENT ON COLUMN item.parking IS '주차 여부';
 COMMENT ON COLUMN item.heating IS '난방 종류';
 COMMENT ON COLUMN item.moving_date IS '입주가능일';
-COMMENT ON COLUMN item.option IS '옵션 항목';
+COMMENT ON COLUMN item.room_option IS '옵션 항목';
 COMMENT ON COLUMN item.title IS '제목';
 COMMENT ON COLUMN item.content IS '내용';
 COMMENT ON COLUMN item.regidate IS '작성 날짜';
@@ -435,7 +461,7 @@ COMMENT ON COLUMN QNA.id IS '아이디';
 COMMENT ON COLUMN QNA.title IS '제목';
 COMMENT ON COLUMN QNA.content IS '내용';
 COMMENT ON COLUMN QNA.regidate IS '등록일';
-COMMENT ON COLUMN QNA.comment IS '답변';
+COMMENT ON COLUMN QNA.admin_comment IS '답변';
 COMMENT ON COLUMN QNA.commentdate IS '답변일';
 COMMENT ON TABLE review IS '평가보기';
 COMMENT ON COLUMN review.no IS '리뷰 등록 번호';
