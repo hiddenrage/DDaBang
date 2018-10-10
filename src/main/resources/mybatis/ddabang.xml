@@ -19,8 +19,8 @@
 		WHERE no=#{no}
 	</select>
 	
-	<insert id=itemInsert" parameterType="java.util.Map">
-		<!-- INSERT INTO item 
+	<insert id="itemInsert" parameterType="java.util.Map">
+		INSERT INTO item 
 		VALUES(
 			SEQ_ITEM_NO.nextval,
 			#{id},
@@ -43,7 +43,7 @@
 			#{regidate},
 			#{lat},
 			#{lng}
-		) -->
+		)
 	</insert>
 	
 	<update id="itemUpdate" parameterType="java.util.Map">
@@ -70,4 +70,6 @@
 		lat=#{lat},
 		lng=#{lng} -->
 	</update>
+	
+	
 </mapper>

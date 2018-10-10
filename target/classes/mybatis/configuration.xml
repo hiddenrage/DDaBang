@@ -11,5 +11,6 @@
 	
 	<mappers>
 		<mapper resource="mybatis/ddabang.xml" />
+		<mapper resource="mybatis/member.xml" />
 	</mappers>
 </configuration>
