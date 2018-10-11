@@ -40,7 +40,7 @@
 			#{room_option},
 			#{title},
 			#{content},
-			#{regidate},
+			SYSDATE,
 			#{lat},
 			#{lng}
 		)
@@ -70,6 +70,4 @@
 		lat=#{lat},
 		lng=#{lng} -->
 	</update>
-	
-	
 </mapper>

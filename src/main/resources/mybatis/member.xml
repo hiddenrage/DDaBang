@@ -42,7 +42,27 @@
 			#{id},
 			#{name},
 			#{tel},
+			SYSDATE
+			#{kind})
+	</insert>
+	
+	<insert id="memberGeneralInsert" parameterType="java.util.Map">
+		INSERT INTO member
+		VALUES(
+			#{id},
+			#{name},
+			#{tel},
 			SYSDATE)
+	</insert>
+	
+	<insert id="memberInsert" parameterType="java.util.Map">
+		INSERT INTO member
+		VALUES(
+			#{id},
+			#{name},
+			#{tel},
+			SYSDATE
+			#{kind})
 	</insert>
 	
 	<insert id="signupInsert" parameterType="java.util.Map">
@@ -92,6 +112,12 @@
 		business_number=#{business_number},
 		business_photo=#{business_photo},
 		WHERE id=#{id}	
+	</update>
+	
+	<update id="expertValidUpdate" parameterType="java.util.Map">
+		UPDATE expert SET
+		isValid='Y'
+		WHERE id=#{id}
 	</update>
 	
 	<delete id="memberDelete" parameterType="java.util.Map">
