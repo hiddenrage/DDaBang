@@ -3,13 +3,13 @@
 
 DROP TABLE admin CASCADE CONSTRAINTS;
 DROP TABLE articles CASCADE CONSTRAINTS;
+DROP TABLE review CASCADE CONSTRAINTS;
+DROP TABLE expert CASCADE CONSTRAINTS;
+DROP TABLE FAQ CASCADE CONSTRAINTS;
 DROP TABLE favorites CASCADE CONSTRAINTS;
 DROP TABLE itemcategory CASCADE CONSTRAINTS;
 DROP TABLE itemphoto CASCADE CONSTRAINTS;
 DROP TABLE item CASCADE CONSTRAINTS;
-DROP TABLE review CASCADE CONSTRAINTS;
-DROP TABLE expert CASCADE CONSTRAINTS;
-DROP TABLE FAQ CASCADE CONSTRAINTS;
 DROP TABLE market CASCADE CONSTRAINTS;
 DROP TABLE marketconditions CASCADE CONSTRAINTS;
 DROP TABLE markethistory CASCADE CONSTRAINTS;
@@ -107,7 +107,7 @@ CREATE TABLE expert
 	-- 사업자 등록번호 사진
 	business_photo nvarchar2(100) NOT NULL,
 	-- 회원 승인 여부
-	isVaild char(1) DEFAULT 'N',
+	isValid char(1) DEFAULT 'N',
 	PRIMARY KEY (id)
 );
 
@@ -253,6 +253,8 @@ CREATE TABLE member
 	tel varchar2(15) NOT NULL,
 	-- 가입일
 	regidate date DEFAULT SYSDATE,
+	-- 회원 종류
+	kind nvarchar2(30) DEFAULT 'general',
 	PRIMARY KEY (id)
 );
 
@@ -318,63 +320,73 @@ CREATE TABLE statistics
 
 /* Create Foreign Keys */
 
-ALTER TABLE item
-	ADD FOREIGN KEY (id)
-	REFERENCES expert (id)
-;
-
-
 ALTER TABLE review
 	ADD FOREIGN KEY (expert_id)
 	REFERENCES expert (id)
+	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE favorites
 	ADD FOREIGN KEY (no)
 	REFERENCES item (no)
+	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE itemcategory
 	ADD FOREIGN KEY (no)
 	REFERENCES item (no)
+	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE itemphoto
 	ADD FOREIGN KEY (no)
 	REFERENCES item (no)
+	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE expert
 	ADD FOREIGN KEY (id)
 	REFERENCES member (id)
+	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE favorites
 	ADD FOREIGN KEY (id)
 	REFERENCES member (id)
+	ON DELETE CASCADE
+;
+
+
+ALTER TABLE item
+	ADD FOREIGN KEY (id)
+	REFERENCES member (id)
+	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE QNA
 	ADD FOREIGN KEY (id)
 	REFERENCES member (id)
+	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE review
 	ADD FOREIGN KEY (user_id)
 	REFERENCES member (id)
+	ON DELETE CASCADE
 ;
 
 
 ALTER TABLE signupmember
 	ADD FOREIGN KEY (id)
 	REFERENCES member (id)
+	ON DELETE CASCADE
 ;
 
 
@@ -404,7 +416,7 @@ COMMENT ON COLUMN expert.broker_number IS '중개등록번호';
 COMMENT ON COLUMN expert.broker_photo IS '중개등록증 사진';
 COMMENT ON COLUMN expert.business_number IS '사업자 등록번호';
 COMMENT ON COLUMN expert.business_photo IS '사업자 등록번호 사진';
-COMMENT ON COLUMN expert.isVaild IS '회원 승인 여부';
+COMMENT ON COLUMN expert.isValid IS '회원 승인 여부';
 COMMENT ON TABLE FAQ IS '새 테이블';
 COMMENT ON COLUMN FAQ.no IS '글 번호';
 COMMENT ON COLUMN FAQ.title IS '제목';
@@ -455,6 +467,7 @@ COMMENT ON COLUMN member.id IS '아이디';
 COMMENT ON COLUMN member.name IS '이름';
 COMMENT ON COLUMN member.tel IS 'tel';
 COMMENT ON COLUMN member.regidate IS '가입일';
+COMMENT ON COLUMN member.kind IS '회원 종류';
 COMMENT ON TABLE QNA IS '1대1 문의';
 COMMENT ON COLUMN QNA.no IS '문의 번호';
 COMMENT ON COLUMN QNA.id IS '아이디';

@@ -36,51 +36,32 @@
 		FROM member m JOIN expert e ON m.id=e.id
 	</select>
 	
-	<insert id="memberInsert" parameterType="java.util.Map">
-		INSERT INTO member
-		VALUES(
-			#{id},
-			#{name},
-			#{tel},
-			SYSDATE
-			#{kind})
-	</insert>
 	
-	<insert id="memberGeneralInsert" parameterType="java.util.Map">
-		INSERT INTO member
-		VALUES(
-			#{id},
-			#{name},
-			#{tel},
-			SYSDATE)
-	</insert>
-	
-	<insert id="memberInsert" parameterType="java.util.Map">
-		INSERT INTO member
-		VALUES(
-			#{id},
-			#{name},
-			#{tel},
-			SYSDATE
-			#{kind})
-	</insert>
 	
 	<insert id="signupInsert" parameterType="java.util.Map">
-		INSERT INTO signupmember
-		VALUES(
-			#{id},#{pwd})
+		INSERT ALL
+		INTO member VALUES(#{id},#{name},#{tel},SYSDATE,DEFAULT)
+		INTO signupmember VALUES(#{id},#{pwd})
+		SELECT * FROM DUAL
+	</insert>
+	
+	<insert id="socialInsert" parameterType="java.util.Map">
+		INSERT INTO member
+		VALUES(#{id},#{name},#{tel},SYSDATE,#{kind})
 	</insert>
 	
 	<insert id="expertInsert" parameterType="java.util.Map">
-		INSERT INTO expert
+		INSERT ALL
+		INTO member VALUES(#{id},#{name},#{tel},SYSDATE,DEFAULT)
+		INTO expert
 		VALUES(
 			#{id},
-			#{manager_tel},
-			#{position},
-			#{authority},
 			#{office_name},
 			#{address},
 			#{manager_name},
+			#{manager_tel},
+			#{position},
+			#{authority},
 			#{broker_number},
 			#{broker_photo},
 			#{business_number},
