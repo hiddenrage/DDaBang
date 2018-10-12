@@ -5,7 +5,7 @@ public class ItemDTO {
 	private String id;//중개사 아이디
 	private String address;//검색용주소
 	private String address_detail;//상세주소
-	private String shortTerm;//단기여부
+	private String shortTerm;//단기여부 : 기본값 N / Y
 	private String kind;//방종류
 	private String whoole_floor;//건물층수
 	private String that_floor;//해당층수
@@ -13,16 +13,17 @@ public class ItemDTO {
 	private String use_area;//전용면적
 	private String manage_money;//관리비
 	private String manage_detail;//관리비항목
-	private String parking;//주차여부
+	private String parking;//주차여부 : 기본값 N / Y
 	private String heating;//난방종류
-	private String moving_date;//입주가능일
+	private String moving_date;//입주가능일 : 기본값 '즉시 입주'
 	private String option;//옵션항목
 	private String title;//제목
 	private String content;//내용
-	private java.sql.Date regedate;//등록 날짜	
+	private java.sql.Date regedate;//등록 날짜 : 기본값 SYSDATE
 	private String path;//매물사진 경로
 	private double x;//주소로 지도  x좌표 구한값을 저장 
 	private double y;//주소로 지도  y좌표 구한값을 저장 
+	
 	public double getX() {
 		return x;
 	}
@@ -154,8 +155,5 @@ public class ItemDTO {
 	}
 	public void setPath(String path) {
 		this.path = path;
-	}
-	
-	
-	
-}
+	}	
+}/// class
