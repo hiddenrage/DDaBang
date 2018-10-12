@@ -10,15 +10,14 @@ import org.springframework.stereotype.Service;
 import com.kosmo.ddabang.service.MemberService;
 import com.kosmo.ddabang.service.MemberDTO;
 
-@Service("memberService")
+@Service
 public class MemberServiceImpl implements MemberService {
 	@Resource(name="memberDAO")
 	private MemberDAO dao;
 
 	@Override
 	public boolean memberLogin(Map map) {
-		// TODO Auto-generated method stub
-		return false;
+		return dao.memberLogin(map);
 	}
 
 	@Override
@@ -29,20 +28,17 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberDTO memberSelectOne(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.memberSelectOne(map);
 	}
 
 	@Override
 	public List<MemberDTO> expertSelectList(Map map) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public MemberDTO expertSelectOne(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.expertSelectOne(map);
 	}
 
 	@Override

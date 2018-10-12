@@ -18,8 +18,7 @@ public class MemberDAO implements MemberService {
 
 	@Override
 	public boolean memberLogin(Map map) {
-		// TODO Auto-generated method stub
-		return false;
+		return template.selectOne("memberLogin",map).equals(1)?true:false;
 	}
 
 	@Override
@@ -30,20 +29,17 @@ public class MemberDAO implements MemberService {
 
 	@Override
 	public MemberDTO memberSelectOne(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		return template.selectOne("memberSelectOne",map);
 	}
 
 	@Override
 	public List<MemberDTO> expertSelectList(Map map) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public MemberDTO expertSelectOne(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		return template.selectOne("expertSelectOne",map);
 	}
 
 	@Override

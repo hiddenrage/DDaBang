@@ -1,5 +1,7 @@
 package com.kosmo.ddabang.web;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
@@ -8,8 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.kosmo.ddabang.service.MemberDTO;
+import com.kosmo.ddabang.service.MemberService;
 import com.kosmo.ddabang.service.impl.NaverLoginBO;
 
 @Controller
@@ -17,6 +22,35 @@ public class MemberController {
 	@Resource(name="naverLoginBO")
 	private NaverLoginBO naverLoginBO;
     private String apiResult = null;
+    
+    @Resource(name="memberServiceImpl")
+    private MemberService service;
+    
+    // 일반회원 로그인
+    @RequestMapping(value="/Member/GenenalLogin.bbs")
+    public String generalLogin(@RequestParam Map map, Model model,HttpSession session) throws Exception {
+    	map.put("pwd", map.get("pass"));
+    	System.out.println(String.format("%s,%s", map.get("id"),map.get("pwd")));
+    	if(service.memberLogin(map)) {
+    		model.addAllAttributes(map);
+    		MemberDTO dto=service.memberSelectOne(map);
+    		session.setAttribute("id", dto.getId());
+    		session.setAttribute("kind", dto.getKind());
+    		//model.addAttribute("kind",dto.getKind());
+    		return "forward:/";
+    	} else {
+    		/*
+    		 * 일반/중개사 로그인 실패시 로직 
+    		 */
+    		return "forward:/Member/Login.bbs";
+    	}/// if
+    }/// generalLogin 일반회원 로그인
+    
+    @RequestMapping("/Member/Logout.bbs")
+    public String logout(HttpSession session) throws Exception {
+    	session.invalidate();;
+    	return "redirect:/";
+    }/// logout
 	
 	@RequestMapping("/Member/Login.bbs")
 	public String login(Model model, HttpSession session) throws Exception{

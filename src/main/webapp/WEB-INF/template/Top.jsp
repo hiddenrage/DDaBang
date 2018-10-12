@@ -43,11 +43,11 @@
        			</li> --%>
 				<li>
        				<%-- 비회원이거나 일반회원의 경우 --%>
-					<c:if test="${empty sessionScope.expert}" var="isNotExpert">
+					<c:if test="${not 'general' eq sessionScope.kind}">
        					<a href="<c:url value='#'/>">관심 목록</a>
        				</c:if>
 					<%-- 공인중개사일 경우 --%>
-       				<c:if test="${not isNotExpert}">
+       				<c:if test="${not 'expert' eq sessionScope.kind}">
        					<a href="<c:url value='#'/>">매물 관리</a>
        				</c:if>
 				</li>

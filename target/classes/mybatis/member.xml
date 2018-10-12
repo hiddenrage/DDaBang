@@ -19,19 +19,19 @@
 		WHERE id=#{id}
 	</select>
 	
-	<select id="memberLogin" parameterType="java.util.Map" resultType="LoginDTO">
-		SELECT *
+	<select id="memberLogin" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*)
 		FROM signupmember
-		WHERE id=#{id}
+		WHERE id=#{id} AND pwd=#{pwd}
 	</select>
 	
-	<select id="expertSelectOne" parameterType="java.util.Map" resultType="ExpertDTO">
+	<select id="expertSelectOne" parameterType="java.util.Map" resultType="MemberDTO">
 		SELECT *
 		FROM member m JOIN expert e ON m.id=e.id
 		WHERE id=#{id}
 	</select>
 	
-	<select id="expertSelectList" parameterType="java.util.Map" resultType="ExpertDTO">
+	<select id="expertSelectList" parameterType="java.util.Map" resultType="MemberDTO">
 		SELECT *
 		FROM member m JOIN expert e ON m.id=e.id
 	</select>

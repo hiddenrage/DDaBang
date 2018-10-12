@@ -8,6 +8,7 @@ public class MemberDTO {
 	private String name; // 이름
 	private String tel; // 전화번호
 	private Date regidate; // 가입일 
+	private String kind; // 가입 종류 : general(일반)/expert(중개사)/naver,daum 등등
 	// 가입 회원용 데이터
 	private String pwd; // 가입회원 비밀번호
 	/// 공인중개사용 인자들
@@ -23,6 +24,12 @@ public class MemberDTO {
 	private String business_photo; // 사업자 등록증 사진
 	private char isValid; // 인증된 회원인지 : 기본값 N / Y
 	
+	public String getKind() {
+		return kind;
+	}
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
 	public String getId() {
 		return id;
 	}

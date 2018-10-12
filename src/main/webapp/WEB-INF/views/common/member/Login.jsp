@@ -22,7 +22,7 @@
 		</div>
 		
 		<div class="row" style="margin-top: 50px;">
-			<form class="form-horizontal">
+			<form class="form-horizontal" method="post" action="<c:url value='/Member/GenenalLogin.bbs'/>">
 				<div class="form-group">
 					<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 						<input style="height: 60px" type="email" class="form-control" id="id" name="id" placeholder="이메일 ">
