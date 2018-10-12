@@ -54,9 +54,9 @@
        					<a href="<c:url value='#'/>">관심 목록</a>
        				</c:if>
 					<%-- 공인중개사일 경우 --%>
-       				<c:if test="${not isNotExpert}">
-       					<a href="<c:url value='#'/>">매물 관리</a>
-       				</c:if>
+<%--        				<c:if test="${not isNotExpert}"> --%>
+       					<a href="<c:url value='/Deal/List.bbs'/>">매물 관리</a>
+<%--        				</c:if> --%>
 				</li>
        			<li>
        				<a href="<c:url value='#'/>">고객지원</a>
@@ -65,7 +65,6 @@
        				<a href="<c:url value='/Market/Main.bbs'/>">경매장</a>
        			</li>
 				<li>
-
        				<c:if test="${empty sessionScope.id}" var="isNotLogin">
        					<a href="#" data-toggle="modal" data-target="#exampleModal">회원가입</a>
        				</c:if>
