@@ -50,9 +50,49 @@
 				<span id="searchPass" style="cursor: pointer;">비밀번호 찾기</span>
 			</div>
 			<div class="col-xs-12 col-sm-3 col-sm-offset-2" style="text-align: center;margin-top: 10px">
-				<span id="signup" style="cursor: pointer;margin-left: 30px;">회원가입</span>
+				<a href="#" data-toggle="modal" data-target="#exampleModal"><span id="signup" style="cursor: pointer;margin-left: 30px;">회원가입</span></a>
 			</div>		
 		</div><!-- row -->	
 						
 	</div><!-- container -->
+	<!-- 모달창 -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2 class="modal-title" id="exampleModalLabel" style="margin-left: 10px">회원가입</h2>
+				<small style="margin-left: 10px">※이용하실 회원 구분을 선택하세요</small>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="false">&times;</span>
+				</button>
+				</br>
+			</div>
+			</br>
+			<div class="modal-body text-center">
+				<div class="">
+					<a href="<c:url value='/Member/LreasignupTerms.bbs'/>"><button
+							type="button" class="btn btn-primary btn-lg"
+							style="margin-bottom: 30px; margin-right: 20px; height: 130px; width: 200px; font-size: 2em">공인중개사</button></a>
+					<a href="<c:url value='/Member/GeneralSignUp.bbs'/>"><button
+							type="button" class="btn btn-default btn-lg"
+							style="margin-bottom: 30px; margin-left: 20px; height: 130px; width: 200px; font-size: 2em">일반회원</button></a>
+				</div>
+				<p style="margin-left: 25px; text-align: left; margin-bottom: 1px">※회원정보
+					변경을 원할시</p>
+				<p style="margin-left: 25px; text-align: left; font-size: 0.8em">-
+					가입된 회원정보 변경은 사이트 메인 > 계정관리 에서 수정/변경이 가능합니다.</p>
+				<p style="margin-left: 25px; text-align: left; margin-bottom: 1px">※하위계정
+					추가 및 수정/삭제</p>
+				<p style="margin-left: 25px; text-align: left; font-size: 0.8em">-
+					계정관리 > 하위계정관리에서 추가/수정/삭제가 가능합니다.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 모달창 -->
 	

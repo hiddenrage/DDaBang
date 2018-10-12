@@ -14,47 +14,6 @@
    	});
 </script>
 
-<style>
-		body {
-			padding-top: 50px;
-		}
-		
-		@media all and (min-width: 768px) {
-			.navbar-fixed-width {
-				width: 768px;
-				margin-left: auto;
-				margin-right: auto;
-			}
-		}
-		
-		@media all and (min-width: 992px) {
-			.navbar-fixed-width {
-				width: 992px;
-				margin-left: auto;
-				margin-right: auto;
-			}
-		}
-		
-		@media all and (min-width: 1200px) {
-			.navbar-fixed-width {
-				width: 1200px;
-				margin-left: auto;
-				margin-right: auto;
-			}
-		}
-		
-		.active {
-			font-weight: bold;
-			font-size:1.2em;
-		}
-		
-		.navbar-custom {
-		    background-color:#222222;
-  		    color:#ffffff;
-		    border-radius:0;
-		}
-</style>
-
 
 <!-- navigationBar 시작 -->
 <nav id="mainNav" class="navbar navbar-fixed-top navbar-custom navbar-right">
@@ -85,7 +44,7 @@
 				<li>
        				<%-- 비회원이거나 일반회원의 경우 --%>
 					<c:if test="${empty sessionScope.expert}" var="isNotExpert">
-       					<a href="<c:url value='#'/>">관심 목록</a>
+       					<a href="<c:url value='/Search/Select.bbs'/>">관심 목록</a>
        				</c:if>
 					<%-- 공인중개사일 경우 --%>
        				<c:if test="${not isNotExpert}">

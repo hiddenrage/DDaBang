@@ -30,6 +30,18 @@ public class MemberSignController {
 		return "common/member/signup/terms/PersonalInfo.tiles";
 	}
 	
+	//매물관리 규정 페이지 이동용
+		@RequestMapping("/Member/SalesTerms.bbs")
+		public String salesterms() throws Exception{
+			return "common/member/signup/terms/SalesTerms.tiles";
+	}
+		
+	//자동저장 서비스 약관 페이지 이동용
+	@RequestMapping("/Member/AutosaveTerms.bbs")
+	public String autosave() throws Exception{
+		return "common/member/signup/terms/AutosaveTerms.tiles";
+	}
+	
 	//공인중개사 회원가입 -> 이용약관
 	@RequestMapping("/Member/LreasignupTerms.bbs")
 	public String lrea() throws Exception{

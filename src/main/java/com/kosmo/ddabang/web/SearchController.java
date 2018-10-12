@@ -11,4 +11,12 @@ public class SearchController {
 		
 		return "common/item/search/Map.tiles";
 	}
+	
+	//탑메뉴 -> 본방/찜방
+	@RequestMapping("/Search/Select.bbs")
+	public String selectRoom()throws Exception{	
+		
+		return "common/member/normal/SelectRoom.tiles";
+	}
+	
 }
