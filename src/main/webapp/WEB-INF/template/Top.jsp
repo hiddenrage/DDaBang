@@ -2,9 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=sUnEYZTXO8khVLsEBsLE&submodules=geocoder"></script>
-<script type="text/javascript" src="https://navermaps.github.io/maps.js/docs/js/MarkerClustering.js?_=1538909087322"></script>
-
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bd6d42e938d967a6dfa90b6717f8df61"></script>
+<script src="<c:url value='/resources/js/clusterer.js'/>"></script>
+<script src="<c:url value='/resources/js/service.js'/>"></script>
 <!-- DataRoomTop.jsp -->
 
 <!-- Top.jsp -->

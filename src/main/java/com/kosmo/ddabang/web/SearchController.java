@@ -1,14 +1,20 @@
 package com.kosmo.ddabang.web;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
+
 import org.json.simple.JSONArray;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmo.ddabang.service.ItemDTO;
@@ -18,13 +24,19 @@ public class SearchController {
 	
 	@RequestMapping("/Search/Map.bbs")
 	public String map(Model model)throws Exception{	
-		JSONArray array = new JSONArray();
 		return "common/item/search/Map.tiles";
 	}
+	
+	
+	@Value("${PAGESIZE}")
+	private int pageSize;
+	@Value("${BLOCKPAGE}")
+	private int blockPage;
+	
 	@ResponseBody
-	@RequestMapping(value="/Search/MapList.bbs",produces="text/plain; charset=UTF-8")
+	@RequestMapping(value="/Search/MapList.bbs",produces="text/plain; charset=UTF-8",method=RequestMethod.POST)
 	public String mapList()throws Exception{
-		Map map = new HashMap();
+		System.out.println("mapList()");
 		List<Map> collections = new Vector<Map>();
 		List<ItemDTO> lists = new Vector<>();
 		ItemDTO dto = new ItemDTO();
@@ -61,5 +73,11 @@ public class SearchController {
 		System.out.println(JSONArray.toJSONString(collections));	
 		
 		return JSONArray.toJSONString(collections);
+	}
+	
+	@RequestMapping("/Search/View.bbs")
+	public String view(@RequestParam Map map,Model model)throws Exception{
+		System.out.println(map.size());
+		return "common/item/search/View.tiles";
 	}
 }
