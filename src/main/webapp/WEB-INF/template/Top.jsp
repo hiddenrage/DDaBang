@@ -14,6 +14,7 @@
    	});
 </script>
 
+<<<<<<< HEAD
 <style>
 		body {
 			padding-top: 50px;
@@ -56,6 +57,8 @@
 </style>
 
 
+=======
+>>>>>>> branch 'development' of https://github.com/hiddenrage/DDaBang.git
 <!-- navigationBar 시작 -->
 <nav id="mainNav" class="navbar navbar-fixed-top navbar-custom navbar-right">
 	<div class="container-fluid">
@@ -99,6 +102,10 @@
        				<a href="<c:url value='/Market/Main.bbs'/>">경매장</a>
        			</li>
 				<li>
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'development' of https://github.com/hiddenrage/DDaBang.git
        				<c:if test="${empty sessionScope.id}" var="isNotLogin">
        					<a href="#" data-toggle="modal" data-target="#exampleModal">회원가입</a>
        				</c:if>
