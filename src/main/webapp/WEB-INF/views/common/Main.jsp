@@ -70,7 +70,7 @@
 <div class="row">
 <div class="jumbotron col-xs-12" style=" background-image: url('./resources/images/main/ddabang2.jpg');">
 		<div style="background-color: rgba(80,80,80,0.5); height: 83px; " >		
-			<form class="form-inline" method="post" style="text-align: center; max-width: 500px; margin: auto; margin-top: 370px;">
+			<form action="/Search/MapList.bbs?page=main" class="form-inline" method="post" style="text-align: center; max-width: 500px; margin: auto; margin-top: 370px;">
 				<input  type="text" style="width:80%; margin: auto; margin-top: 25px" name="searchWord" placeholder="관심지역 또는 매물 번호를 검색해보세요" class="form-control" />
 				<button type="submit" class="btn btn-primary" style="margin-top: 25px; margin-left: 5px">방검색</button>
 			</form>	
