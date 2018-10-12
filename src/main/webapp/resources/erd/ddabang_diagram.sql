@@ -183,10 +183,10 @@ CREATE TABLE item
 	content nvarchar2(2000) NOT NULL,
 	-- 작성 날짜
 	regidate date DEFAULT SYSDATE NOT NULL,
-	-- 위도
-	lat number NOT NULL,
 	-- 경도
-	lng number NOT NULL,
+	x number NOT NULL,
+	-- 위도
+	y number NOT NULL,
 	PRIMARY KEY (no)
 );
 
@@ -253,7 +253,8 @@ CREATE TABLE member
 	tel varchar2(15) NOT NULL,
 	-- 가입일
 	regidate date DEFAULT SYSDATE,
-	-- 회원 종류
+	-- 회원 종류 : default : general
+	-- expert / naver / ... 등등
 	kind nvarchar2(30) DEFAULT 'general',
 	PRIMARY KEY (id)
 );
@@ -447,8 +448,8 @@ COMMENT ON COLUMN item.room_option IS '옵션 항목';
 COMMENT ON COLUMN item.title IS '제목';
 COMMENT ON COLUMN item.content IS '내용';
 COMMENT ON COLUMN item.regidate IS '작성 날짜';
-COMMENT ON COLUMN item.lat IS '위도';
-COMMENT ON COLUMN item.lng IS '경도';
+COMMENT ON COLUMN item.x IS '경도';
+COMMENT ON COLUMN item.y IS '위도';
 COMMENT ON TABLE itemcategory IS '거래 종류';
 COMMENT ON COLUMN itemcategory.i_no IS '매물 종류 번호';
 COMMENT ON COLUMN itemcategory.no IS '매물번호';
@@ -467,7 +468,8 @@ COMMENT ON COLUMN member.id IS '아이디';
 COMMENT ON COLUMN member.name IS '이름';
 COMMENT ON COLUMN member.tel IS 'tel';
 COMMENT ON COLUMN member.regidate IS '가입일';
-COMMENT ON COLUMN member.kind IS '회원 종류';
+COMMENT ON COLUMN member.kind IS '회원 종류 : default : general
+expert / naver / ... 등등';
 COMMENT ON TABLE QNA IS '1대1 문의';
 COMMENT ON COLUMN QNA.no IS '문의 번호';
 COMMENT ON COLUMN QNA.id IS '아이디';
