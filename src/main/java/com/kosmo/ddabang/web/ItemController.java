@@ -21,7 +21,7 @@ public class ItemController {
 		return "common/item/deal/Write.tiles";
 	}/// write
 	
-	@RequestMapping(value="/Item/Write.bbs",method=RequestMethod.POST)
+	@RequestMapping(value="/Deal/Write.bbs",method=RequestMethod.POST)
 	public String writeComplete(@RequestParam Map map) throws Exception {
 		
 		return "common/item/deal/View.tiles";

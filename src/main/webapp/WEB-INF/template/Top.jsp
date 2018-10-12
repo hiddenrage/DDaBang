@@ -54,6 +54,8 @@
        					<a href="<c:url value='#'/>">관심 목록</a>
        				</c:if>
 					<%-- 공인중개사일 경우 --%>
+					</li>
+					<li>
 <%--        				<c:if test="${not isNotExpert}"> --%>
        					<a href="<c:url value='/Deal/List.bbs'/>">매물 관리</a>
 <%--        				</c:if> --%>
