@@ -64,7 +64,7 @@
    });
      
   </script>
-  
+  <div class="container">
       <div class="container">
          <h1>방 등록하기</h1>
          <p style="background-color: gray;">
@@ -77,7 +77,7 @@
       </div>
       <h1>위치정보</h1>
       <!-- 위치정보 테이블 시작 -->
-      <form method="post" class="form-inline" action="<c:url value='/Deal/Write.bbs'/>">
+      <form method="post" class="form-inline" action="<c:url value='/Deal/View.bbs'/>">
       <div class="container-fluid">
          
             <table style="margin-top: 10px; border-top: 2px solid black; margin-bottom: 30px; border-bottom: 2px solid black;">
@@ -140,12 +140,14 @@
 						<span class="tag">전세</span> 
 						<input type="text"
 							class="form-control" style="width: 100px; margin-left: 15px;"
-							value="전세">&nbsp;&nbsp; <span>만원</span>
+							>&nbsp;&nbsp; <span>만원</span>
 					</div>
 					<div>
-					<span class="tag">월세</span> <input type="text"
-					class="form-control" style="width: 100px; margin-left: 15px;"
-					value="월세" placeholder="ex)500/30">&nbsp;&nbsp;<span>만원</span>
+						<span class="tag">월세</span> 
+							<input type="text"
+								class="form-control" style="width: 100px; margin-left: 15px;" 
+								 placeholder="ex)500/30">&nbsp;&nbsp;
+						<span>만원</span>
 					</div>
 					<div style="color: #ef4351;">
                         <span style="font-size: 0.7em">(예치금이 있는 경우 보증금 입력란에 필히 예치금을 입력 하세요.
@@ -153,6 +155,7 @@
                   </div>
                </td>
             </tr>
+
             <tr style="border-bottom: 2px solid black">
                <th style="background-color: gray; text-align: center; line-height: 100px; height: 100px;" rowspan="2">건물 층수</th>
                <td>
@@ -253,6 +256,7 @@
                               <td><span>전용 면적</span></td>
                               <td><input type="text" class="form-control" id="Exclusivearea" name="Exclusivearea"></td>
                               <td><span>평(㎡)</span></td>
+
                            </tr>
                         </table>
                      </div>
@@ -317,7 +321,7 @@
                <tr>
                   <th>입주가능일</th>
                   <td  colspan="3">
-                     <input type="text" id="datepicker">
+                     <input type="text" id="datepicker" name="moving_date">
                      <input type="checkbox" style="margin-left: 15px" id="moveinok" name="movein" value="즉시 입주" >&nbsp;&nbsp;즉시 입주
                      <input type="checkbox" style="margin-left: 15px" id="moveinno" name="movein" value="날짜 협의">&nbsp;&nbsp;날짜 협의
                   </td>
@@ -383,3 +387,8 @@
          </div>
    </div>
 </form>
+</div>
+
+
+
+

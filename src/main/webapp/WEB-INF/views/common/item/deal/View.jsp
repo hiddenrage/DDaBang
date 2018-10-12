@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
   
 <style>
 	.table tr td:nth-child(odd){
@@ -24,6 +25,7 @@
 	  background-color: white;
 	  border: 1px solid gray;
 	}
+
 </style>
 <script>
 	$(function(){
@@ -86,9 +88,9 @@
     		</tr>
     		<tr>
     			<td>난방종류</td>
-    			<td>개별난방</td>
+    			<td>${hiter}</td>
     			<td>입주가능일</td>
-    			<td>날짜협의</td>
+    			<td>${moving_date}</td>
     		</tr>
     		<tr>
     			<td>주차</td>
@@ -115,35 +117,37 @@
     	
     	<table style="text-align: center;">
     		<h3>옵션</h3>
-    		<tr>
-    	<td>
-							<input type="checkbox" style="margin-left: 15px">&nbsp;&nbsp;에어컨
-							<input type="checkbox" style="margin-left: 15px">&nbsp;&nbsp;세탁기
-							<input type="checkbox" style="margin-left: 15px">&nbsp;&nbsp;침대
-							<input type="checkbox" style="margin-left: 15px">&nbsp;&nbsp;책상
-							<input type="checkbox" style="margin-left: 15px">&nbsp;&nbsp;옷장
-							<input type="checkbox" style="margin-left: 15px">&nbsp;&nbsp;TV
-							<input type="checkbox" style="margin-left: 15px">&nbsp;&nbsp;신발장
-						</td>
-						</tr>
-						<tr>
-						<td>
-							<input type="checkbox" style="margin-left: 15px">&nbsp;&nbsp;냉장고
-							<input type="checkbox" style="margin-left: 15px">&nbsp;&nbsp;가스레인지
-							<input type="checkbox" style="margin-left: 15px">&nbsp;&nbsp;인덕션
-							<input type="checkbox" style="margin-left: 15px">&nbsp;&nbsp;전자레인지
-							<input type="checkbox" style="margin-left: 15px">&nbsp;&nbsp;전자도어락
-							<input type="checkbox" style="margin-left: 15px">&nbsp;&nbsp;비데
-		
-						</td>
-						</tr>					
+    		<c:set var="black" value="${fn:split('1-1aircon,2-1washer,3-1bed,4-1desk,5-1dressroom,6-1tv,7-1shoesroom,8-1Refrigerator,9-1gasrange,10-1induction,11-1microwave,12-1doorlock,13-1bidet', ',')}"></c:set>
+			<c:set var="color" value="${fn:split('1aircon,2washer,3bed,4desk,5dressroom,6tv,7shoesroom,8Refrigerator,9gasrange,10induction,11microwave,12doorlock,13bidet', ',') }"></c:set>
+		 	<c:set var="selectedOption" value="${fn:join(paramValues.option,',')}"/>
+			<c:set var="options" value="${fn:split('에어컨,세탁기,침대,책상,옷장,TV,신발장,냉장고,가스레인지,인덕션,전자레인지,전자도어락,비데', ',')}"></c:set>
+					
+			<c:forEach var="item" items="${options}" varStatus="i">
+				<c:if test="${i.index eq 0 || i.index eq 7 }">
+					<tr style="text-align: center;">
+				</c:if>
+					<td>	
+						<c:if test="${fn:contains(selectedOption,item)}" var="image">
+								<img style="margin-right: 26px;"src="<c:url value='/resources/images/options/${color[i.index]}.png'/>"></img>
+						</c:if>
+						<c:if test="${!image}">
+								<img style="margin-right: 26px;"src="<c:url value='/resources/images/options/${black[i.index]}.png'/>"></img>
+						</c:if>
+					</td>
+				<c:if test="${i.index eq 6 || i.index eq 12 }">
+					</tr>
+				</c:if>		
+			</c:forEach>				
     	</table>
     	<h3>상세설명</h3>
-    	<TEXTAREA rows="100" cols="100">
+    	<td>
+    	<TEXTAREA rows="20" cols="100">
     	</TEXTAREA>
+    	</td>
     	<div style=" text-align: center;">
 			<button style="width:200px; height: 50px;" id="Main">취소</button>
 			<button style="width:200px; height: 50px;" id="EditRoom">수정</button>
 			<button style="width:200px; height: 50px;" id="List">목록</button>
 		</div>
     </div>
+    
