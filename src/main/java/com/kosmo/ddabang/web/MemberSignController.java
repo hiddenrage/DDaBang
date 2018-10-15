@@ -1,14 +1,9 @@
 package com.kosmo.ddabang.web;
 
-<<<<<<< HEAD
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-=======
-import javax.websocket.Session;
-
->>>>>>> refs/heads/guozhe
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -74,14 +69,8 @@ public class MemberSignController {
 	
 	//일반 회원가입 -> 이용약관 -> 입력폼 -> 가입완료 후 마이페이지 이동
 	@RequestMapping("/Member/MyPage.bbs")
-<<<<<<< HEAD
-	public String mypage(HttpSession session,Model model) throws Exception{
-		
-=======
-	public String mypage() throws Exception{
->>>>>>> refs/heads/guozhe
-		
-		
+
+	public String mypage(HttpSession session,Model model) throws Exception{	
 		return "common/member/MyPage.tiles";
 	}
 	

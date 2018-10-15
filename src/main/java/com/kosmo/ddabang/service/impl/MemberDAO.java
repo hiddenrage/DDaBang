@@ -43,13 +43,8 @@ public class MemberDAO implements MemberService {
 	}
 
 	@Override
-	public int signupInsert(Map map) {
-<<<<<<< HEAD
-		
+	public int signupInsert(Map map) {		
 		return template.insert("signupInsert", map);
-=======
-		return template.insert("socialInsert",map);
->>>>>>> refs/heads/guozhe
 	}
 
 	@Override
