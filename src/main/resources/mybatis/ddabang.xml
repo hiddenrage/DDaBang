@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper  
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.Ddabang">
+	<!-- 
+	<select id="memoIsMember" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM member WHERE id=#{id} AND pass=#{pass}
+	</select>
+	 -->
+	<select id="itemSelectList" resultType="ItemDTO">
+		SELECT *
+		FROM item
+	</select>
+	
+	<select id="itemSelectOne" parameterType="java.util.Map" resultType="ItemDTO">
+		SELECT *
+		FROM item
+		WHERE no=#{no}
+	</select>
+	
+	<insert id="itemInsert" parameterType="java.util.Map">
+		INSERT INTO item 
+		VALUES(
+			SEQ_ITEM_NO.nextval,
+			#{id},
+			#{address},
+			#{address_dedail},
+			#{shortterm},
+			#{kind},
+			#{house_floor},
+			#{select_floor},
+			#{supply_area},
+			#{use_area},
+			#{manage_money},
+			#{manage_detail},
+			#{parking},
+			#{heating},
+			#{moving_date},
+			#{room_option},
+			#{title},
+			#{content},
+			SYSDATE,
+			#{lat},
+			#{lng}
+		)
+	</insert>
+	
+	<update id="itemUpdate" parameterType="java.util.Map">
+		<!-- UPDATE item 
+		SET
+		id=#{id},
+		address=#{address},
+		address_dedail=#{address_dedail},
+		shortterm=#{shortterm},
+		kind=#{kind},
+		house_floor=#{house_floor},
+		select_floor=#{select_floor},
+		supply_area=#{supply_area},
+		use_area=#{use_area},
+		manage_money=#{manage_money},
+		manage_detail=#{manage_detail},
+		parking=#{parking},
+		heating=#{heating},
+		moving_date=#{moving_date},
+		room_option=#{room_option},
+		title=#{title},
+		content=#{content},
+		regidate=#{regidate},
+		lat=#{lat},
+		lng=#{lng} -->
+	</update>
+</mapper>

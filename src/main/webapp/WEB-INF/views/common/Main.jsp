@@ -61,6 +61,28 @@
 	margin-bottom: 30px;
 	overflow: hidden;
 }
+
+#div1 {
+	background-image: url('<c:url value="/resources/images/main/ddabang2.jpg"/>');
+}
+#div2 {
+	background-image: url('<c:url value="/resources/images/main/cat.jpg"/>');
+}
+#div3 {
+ 	background-image: url('<c:url value="/resources/images/main/lower_house.jpg"/>'); 
+}
+#div4 {
+	background-image: url('<c:url value="/resources/images/main/inhouse.jpg"/>');
+}
+#div5 {
+	background-image: url('<c:url value="/resources/images/main/parking.jpg"/>');
+}
+#div6 {
+	background-image: url('<c:url value="/resources/images/main/hand.jpg"/>');
+}
+#div7 {	
+	background-image: url('<c:url value="/resources/images/main/opistel.jpg"/>');
+}
 </style>
 <script>
 	$('nav').removeClass('navbar-fixed-width');
@@ -68,7 +90,7 @@
 </script>
 <!-- body는 아래에 -->
 <div class="row">
-<div class="jumbotron col-xs-12" style=" background-image: url('./resources/images/main/ddabang2.jpg');">
+<div id="div1" class="jumbotron col-xs-12" >
 		<div style="background-color: rgba(80,80,80,0.5); height: 83px; " >		
 			<form action="/Search/MapList.bbs?page=main" class="form-inline" method="post" style="text-align: center; max-width: 500px; margin: auto; margin-top: 370px;">
 				<input  type="text" style="width:80%; margin: auto; margin-top: 25px" name="searchWord" placeholder="관심지역 또는 매물 번호를 검색해보세요" class="form-control" />
@@ -83,7 +105,7 @@
 	
 		<div class="container text-center" style="margin-top: 50px;">
 				 <div class="expansion">
-				<a href="#" class="img1"><div  class="img" style="background-image: url('./resources/images/main/cat.jpg');">
+				<a href="#" class="img1"><div id="div2" class="img">
 					<div class="content sample_image">
 						<h3>반려동물</h3>
 						<h5>반려동물과  함께 살수 있는방 알아보기</h5>
@@ -92,7 +114,8 @@
 				</div></a>
 				</div>
 				<div class="expansion">
-				<a href="#" class="img1"><div  class="img" style="background-image: url('./resources/images/main/lower_house.jpg');">
+				<a href="#" class="img1">
+					<div id="div3" class="img">
 					<div class="content sample_image">
 						<h3>저보증금</h3>
 						<h5>보증금 300만원 이하인 방 찾아보기</h5>
@@ -101,7 +124,7 @@
 				</div></a>
 				</div>
 				<div class="expansion">
-				<a href="#" class="img1"><div class="img" style="background-image: url('./resources/images/main/inhouse.jpg');">
+				<a href="#" class="img1"><div id="div4" class="img">
 					<div class="content sample_image">
 						<h3>360도매물</h3>
 						<h5>3D 이미지로 더 자세히 볼수 있는 방 찾아보기</h5>
@@ -113,7 +136,7 @@
 		
 			<div class="container  text-center">
 				 <div class="expansion">
-				<a href="#" class="img1"><div  class="img" style="background-image: url('./resources/images/main/parking.jpg');">
+				<a href="#" class="img1"><div id="div5" class="img">
 					<div class="content sample_image">
 						<h3>주차 가능</h3>
 						<h5>주차공간이 확보된 방 찾아보기</h5>
@@ -122,7 +145,7 @@
 				</div></a>
 				</div>
 				<div class="expansion">
-				<a href="#" class="img1"><div  class="img" style="background-image: url('./resources/images/main/hand.jpg');">
+				<a href="#" class="img1"><div id="div6" class="img">
 					<div class="content sample_image">
 						<h3>직거래 매물</h3>
 						<h5>중개 수수료 없는 직거래 매물 찾아보기</h5>
@@ -131,7 +154,7 @@
 				</div></a>
 				</div>
 				<div class="expansion">
-				<a href="#" class="img1"><div  class="img" style="background-image: url('./resources/images/main/opistel.jpg');">
+				<a href="#" class="img1"><div id="div7" class="img">
 					<div class="content sample_image">
 						<h3>오피스텔</h3>
 						<h5>깨끗하고 편리한 주거용 오피스텔 알아보기</h5>

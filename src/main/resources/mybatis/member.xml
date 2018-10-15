@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.Member">
+	<!-- 
+	<select id="memoIsMember" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM member WHERE id=#{id} AND pass=#{pass}
+	</select>
+	 -->
+	<select id="memberSelectList" resultType="MemberDTO">
+		SELECT *
+		FROM member
+	</select>
+	
+	<select id="memberSelectOne" parameterType="java.util.Map" resultType="MemberDTO">
+		SELECT *
+		FROM member
+		WHERE id=#{id}
+	</select>
+	
+	<select id="memberLogin" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*)
+		FROM signupmember
+		WHERE id=#{id} AND pwd=#{pwd}
+	</select>
+	
+	<select id="expertSelectOne" parameterType="java.util.Map" resultType="MemberDTO">
+		SELECT *
+		FROM member m JOIN expert e ON m.id=e.id
+		WHERE id=#{id}
+	</select>
+	
+	<select id="expertSelectList" parameterType="java.util.Map" resultType="MemberDTO">
+		SELECT *
+		FROM member m JOIN expert e ON m.id=e.id
+	</select>
+	
+	
+	
+	<insert id="signupInsert" parameterType="java.util.Map">
+		INSERT ALL
+		INTO member VALUES(#{id},#{name},#{tel},SYSDATE,DEFAULT)
+		INTO signupmember VALUES(#{id},#{pwd})
+		SELECT * FROM DUAL
+	</insert>
+	
+	<insert id="socialInsert" parameterType="java.util.Map">
+		INSERT INTO member
+		VALUES(#{id},#{name},#{tel},SYSDATE,#{kind})
+	</insert>
+	
+	<insert id="expertInsert" parameterType="java.util.Map">
+		INSERT ALL
+		INTO member VALUES(#{id},#{name},#{tel},SYSDATE,DEFAULT)
+		INTO expert
+		VALUES(
+			#{id},
+			#{office_name},
+			#{address},
+			#{manager_name},
+			#{manager_tel},
+			#{position},
+			#{authority},
+			#{broker_number},
+			#{broker_photo},
+			#{business_number},
+			#{business_photo},
+			DEFAULT)
+	</insert>
+	
+	<update id="memberUpdate" parameterType="java.util.Map">
+		UPDATE member SET
+		name=#{name},tel=#{tel}
+		WHERE id=#{id}
+	</update>
+	
+	<update id="pwdUpdate" parameterType="java.util.Map">
+		UPDATE signupmember SET
+		pwd=#{pwd} WHERE id=#{id}	
+	</update>
+	
+	<update id="expertUpdate" parameterType="java.util.Map">
+		UPDATE expert SET
+		manager_tel=#{manager_tel},
+		position=#{position},
+		authority=#{authority},
+		office_name=#{office_name},
+		address=#{address},
+		manager_name=#{manager_name},
+		broker_number=#{broker_number},
+		broker_photo=#{broker_photo},
+		business_number=#{business_number},
+		business_photo=#{business_photo},
+		WHERE id=#{id}	
+	</update>
+	
+	<update id="expertValidUpdate" parameterType="java.util.Map">
+		UPDATE expert SET
+		isValid='Y'
+		WHERE id=#{id}
+	</update>
+	
+	<delete id="memberDelete" parameterType="java.util.Map">
+		DELETE member 
+		WHERE id=#{id}
+	</delete>
+</mapper>
