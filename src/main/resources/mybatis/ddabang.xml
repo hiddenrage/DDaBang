@@ -25,8 +25,7 @@
 			SEQ_ITEM_NO.nextval,
 			#{id},
 			#{address},
-			#{address_dedail},
-			#{shortterm},
+			#{address_detail},
 			#{kind},
 			#{house_floor},
 			#{select_floor},
@@ -36,13 +35,15 @@
 			#{manage_detail},
 			#{parking},
 			#{heating},
-			#{moving_date},
-			#{room_option},
+			#{animal},
+			#{elevator},
+			#{movein},
+			#{option},
 			#{title},
 			#{content},
 			SYSDATE,
-			#{lat},
-			#{lng}
+			#{x},
+			#{y}
 		)
 	</insert>
 	

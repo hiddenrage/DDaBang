@@ -40,19 +40,20 @@
 	
 	<insert id="signupInsert" parameterType="java.util.Map">
 		INSERT ALL
-		INTO member VALUES(#{id},#{name},#{tel},SYSDATE,DEFAULT)
+		INTO member VALUES(#{id},#{name},#{tel},SYSDATE,'0')
 		INTO signupmember VALUES(#{id},#{pwd})
 		SELECT * FROM DUAL
 	</insert>
 	
 	<insert id="socialInsert" parameterType="java.util.Map">
-		INSERT INTO member
-		VALUES(#{id},#{name},#{tel},SYSDATE,#{kind})
+		INSERT INTO member(id,name,regidate,kind)
+		VALUES(#{id},#{name},SYSDATE,'1')
 	</insert>
 	
 	<insert id="expertInsert" parameterType="java.util.Map">
 		INSERT ALL
-		INTO member VALUES(#{id},#{name},#{tel},SYSDATE,DEFAULT)
+		INTO member VALUES(#{id},#{name},#{tel},SYSDATE,'2')
+		INTO signupmember VALUES(#{id},#{pwd})
 		INTO expert
 		VALUES(
 			#{id},
@@ -67,6 +68,7 @@
 			#{business_number},
 			#{business_photo},
 			DEFAULT)
+		SELECT * FROM DUAL
 	</insert>
 	
 	<update id="memberUpdate" parameterType="java.util.Map">

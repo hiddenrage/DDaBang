@@ -43,20 +43,17 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int signupInsert(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.signupInsert(map);
 	}
 
 	@Override
 	public int socialInsert(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.socialInsert(map);
 	}
 
 	@Override
 	public int expertInsert(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.expertInsert(map);
 	}
 
 	@Override
@@ -79,13 +76,11 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int expertValidUpdate(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.expertValidUpdate(map);
 	}
 
 	@Override
 	public int memberDelete(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.memberDelete(map);
 	}
 }/// class
