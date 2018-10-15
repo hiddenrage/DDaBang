@@ -43,7 +43,11 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int signupInsert(Map map) {
+<<<<<<< HEAD
 		
+=======
+		// TODO Auto-generated method stub
+>>>>>>> refs/heads/guozhe
 		return dao.signupInsert(map);
 	}
 
