@@ -25,7 +25,7 @@ $(function(){
    					<td style="vertical-align: middle; background-color: rgba(80,80,80,0.1);">본인 성명</td>
    					<td>
    						<div class="col-sm-7">
-   							<input type="text" class="form-control" id="username" placeholder="이름을 입력해 주세요" >
+   							<input type="text" class="form-control" id="name" placeholder="이름을 입력해 주세요" >
    						</div>
    					</td>
    				</tr>
@@ -34,7 +34,7 @@ $(function(){
    					<td>
    						<form class="form-inline">
  							<div class="form-group">    							
-  								<select class="form-control" style="margin-left: 15px" id="number"> 
+  								<select class="form-control" style="margin-left: 15px" id="tel"> 
    									<option value="010">010</option> 
    									<option value="011">011</option> 
    									<option value="016">016</option> 
@@ -45,11 +45,11 @@ $(function(){
    								<label style="margin-left:10px ;margin-right: 10px">-</label>
    							</div>
    							<div class="form-group">
-   								<input type="text" class="form-control" id="number2" style="width: 120px">
+   								<input type="text" class="form-control" id="tel2" style="width: 120px">
    								<label style="margin-left:10px ;margin-right: 10px">-</label>
    							</div>
    							<div class="form-group">
-   								<input type="text" class="form-control" id="number3" style="width: 120px">
+   								<input type="text" class="form-control" id="tel3" style="width: 120px">
    							</div>
    						</form>
    					</td>
@@ -59,11 +59,11 @@ $(function(){
    					<td>
    						<form class="form-inline">
  							<div class="form-group">
-    							<input type="email" class="form-control" id="email" placeholder="이메일을 입력하세요" style="margin-left: 15px">
+    							<input type="email" class="form-control" id="id" placeholder="이메일을 입력하세요" style="margin-left: 15px">
     							<label for="email">@</label>
   							</div>
    							<div class="form-group">
-   							<select class="form-control" style="margin-left: 10px" id="email2"> 
+   							<select class="form-control" style="margin-left: 10px" id="id2"> 
    								<option value="userinsert">직접입력</option> 
    								<option value="daum">daum.net</option> 
    								<option value=naver>naver.com</option> 

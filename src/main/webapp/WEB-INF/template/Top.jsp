@@ -73,10 +73,7 @@
        				<a href="<c:url value='/Market/Main.bbs'/>">경매장</a>
        			</li>
 				<li>
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'development' of https://github.com/hiddenrage/DDaBang.git
        				<c:if test="${empty sessionScope.id}" var="isNotLogin">
        					<a href="#" data-toggle="modal" data-target="#exampleModal">회원가입</a>
        				</c:if>
