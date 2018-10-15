@@ -55,7 +55,7 @@
 				<li>
        				<%-- 비회원이거나 일반회원의 경우 --%>
 					<c:if test="${empty sessionScope.expert}" var="isNotExpert">
-       					<a href="<c:url value='#'/>">관심 목록</a>
+       					<a href="<c:url value='/Member/SelectRoom.bbs'/>">관심 목록</a>
        				</c:if>
 					<%-- 공인중개사일 경우 --%>
        				<c:if test="${not isNotExpert}">

@@ -66,6 +66,12 @@ public class MemberController {
         
         return "redirect://";
     }
+   
+   	//관심목록 페이지 이동용
+ 	@RequestMapping("/Member/SelectRoom.bbs")
+ 	public String totalterms() throws Exception{
+ 		return "common/member/normal/SelectRoom.tiles";
+ 	}
 
 }
 
