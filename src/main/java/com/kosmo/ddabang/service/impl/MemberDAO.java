@@ -44,8 +44,7 @@ public class MemberDAO implements MemberService {
 
 	@Override
 	public int signupInsert(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return template.insert("socialInsert",map);
 	}
 
 	@Override

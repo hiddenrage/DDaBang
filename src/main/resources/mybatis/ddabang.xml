@@ -41,8 +41,8 @@
 			#{title},
 			#{content},
 			SYSDATE,
-			#{lat},
-			#{lng}
+			#{x},
+			#{y}
 		)
 	</insert>
 	

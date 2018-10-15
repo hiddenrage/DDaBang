@@ -1,5 +1,7 @@
 package com.kosmo.ddabang.web;
 
+import javax.websocket.Session;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -57,6 +59,8 @@ public class MemberSignController {
 	//일반 회원가입 -> 이용약관 -> 입력폼 -> 가입완료 후 마이페이지 이동
 	@RequestMapping("/Member/MyPage.bbs")
 	public String mypage() throws Exception{
+		
+		
 		return "common/member/MyPage.tiles";
 	}
 	

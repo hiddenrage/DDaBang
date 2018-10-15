@@ -1,5 +1,6 @@
 package com.kosmo.ddabang.web;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -52,6 +53,7 @@ public class MemberController {
     	return "redirect:/";
     }/// logout
 	
+    //네이버 로그인
 	@RequestMapping("/Member/Login.bbs")
 	public String login(Model model, HttpSession session) throws Exception{
 		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
@@ -87,18 +89,23 @@ public class MemberController {
         		name = value[1];
         	}
         }
-        System.out.println(email+" "+name);
- 
-        
-
+        System.out.println(email+" "+name);     
         //로그인 여기다 db 작
-        
-        
-        
-        
-    
-        
-        return "redirect://";
+        Map map = new HashMap();
+        map.put("id", email);
+        map.put("name", name);
+        MemberDTO dto = service.memberSelectOne(map);
+        if(dto == null) {
+        	int affect = service.signupInsert(map);
+        	dto = service.memberSelectOne(map);
+        	System.out.println("네이버 회원가입");
+        	session.setAttribute("id", dto.getId());
+    		session.setAttribute("kind", dto.getKind()); 
+        	return "forward:/Member/MyPage.bbs";
+        }      	
+        session.setAttribute("id", dto.getId());
+		session.setAttribute("kind", dto.getKind());      
+       return "redirect://";
     }
 
 }
