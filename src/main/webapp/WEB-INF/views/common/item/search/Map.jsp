@@ -247,7 +247,6 @@ $(function() {
         level: 10 // 지도의 확대 레벨
     };
 	var map = new daum.maps.Map(mapElement, mapOption); 
-	//기본 지도 뛰두기
 	
 	//주소를 좌표로 만들어줄 객체
 	var geocoder = new daum.maps.services.Geocoder();
@@ -271,7 +270,7 @@ $(function() {
 		}
 	});
 	
-	// 마커 클러스터러를 생성합니다 
+	// 마커 클러스터헤즐 객체를 생성합니다 
   	var clusterer = new daum.maps.MarkerClusterer({
         map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
         averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
@@ -287,45 +286,50 @@ $(function() {
 	var availableTags =[];
 	//검색해온 count수
 	var count=0;
-	//주소 마크 찍고 클러스터화해주기,리스트 뷰그려주는  함수 호출	
-	drawData(data);
-	function drawData(data){
-		if(data.length>0){
-			$.each(data,function(index,value){
-				count++;
-				 // 데이터에서 좌표 값을 가지고 마커를 표시합니다
-		        // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
-		        console.log(value.y+" "+value.x);
-		        var marker = new daum.maps.Marker({
-		                position : new daum.maps.LatLng(value.y, value.x)
-		            });
-		        markers.push(marker);
-		        //list 담기
-		           list+='<div title="'+value.address+'" class="col col-xs-12 list_content_content">';   
-		           
-					   	list+='<div class="row">';
-					   		list+='<div class="col col-xs-4 list_content_image"';
-					   		list+=' style="background-image: url(\'<c:url value="/resources/images/main/cat.jpg"/>\');"></div>';				
-					   		  list+='<div class="col col-xs-8 list_content_item">';
-					   		 	list+='<div class="row">';
-					   		 		list+='<div class="col-xs-12">'+value.x+'</div>';
-					   		 		list+='<div class="col-xs-12">2</div>';
-					   		 		list+='<div class="col-xs-12">3</div>';
-					   		 		list+='<div class="col-xs-12">4</div>';
-					   		 		list+='<input type="hidden" value="'+value.x+'"/>';
-					   		 		list+='<input type="hidden" value="'+value.y+'"/>';
-								list+='</div>';
-							 list+='</div>';
-						 list+='</div>';
-					list+='</div>';	
-					
-					//자동검색을 위한 배열
-					availableTags.push(value.address);
-			});
-		}else{
-			list+="<div style='text-align:center;width:100%;'><h2>데이타가 없습니다<h2></div>";
-		}
+	//주소 마크 찍고 클러스터화해주기	
+	if(data.length>0){
+		$.each(data,function(index,value){
+			count++;
+			// 데이터에서 좌표 값을 가지고 마커를 표시합니다
+	        // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
+	        var marker = new daum.maps.Marker({
+	                position : new daum.maps.LatLng(value.y, value.x)
+	            });
+			//지도 마크 클러스터화 해주기 위한 객체에 마크를 담기
+	        markers.push(marker);
+	        //리스트 뷰 그려주는 함수호출	
+	        setList(value);				
+			//자동검색을 위한 배열
+			availableTags.push(value.address);
+		});
+	}else{
+		list+="<div style='text-align:center;width:100%;'><h2>데이타가 없습니다<h2></div>";
 	}
+	
+	// 클러스터러에 마커들을 추가합니다
+    clusterer.addMarkers(markers);
+	
+	 //리스트 뷰 그려주는 함수	
+	function setList(value) {
+		list+='<div title="'+value.address+'" class="col col-xs-12 list_content_content">';   
+        
+	   	list+='<div class="row">';
+	   		list+='<div class="col col-xs-4 list_content_image"';
+	   		list+=' style="background-image: url(\'<c:url value="/resources/images/main/cat.jpg"/>\');"></div>';				
+	   		  list+='<div class="col col-xs-8 list_content_item">';
+	   		 	list+='<div class="row">';
+	   		 		list+='<div class="col-xs-12">'+value.x+'</div>';
+	   		 		list+='<div class="col-xs-12">2</div>';
+	   		 		list+='<div class="col-xs-12">3</div>';
+	   		 		list+='<div class="col-xs-12">4</div>';
+	   		 		list+='<input type="hidden" value="'+value.x+'"/>';
+	   		 		list+='<input type="hidden" value="'+value.y+'"/>';
+				list+='</div>';
+			  list+='</div>';
+			 list+='</div>';
+		 list+='</div>';	
+	}
+		
 	//list해더에 개수 알려주기
 	$("#count").html(count);
 	
@@ -370,9 +374,7 @@ $(function() {
 		gpsMarker.setMap(null);
 	});
 		
-	// 클러스터러에 마커들을 추가합니다
-    clusterer.addMarkers(markers);
-	
+		
  	// 마커 클러스터러에 클릭이벤트를 등록합니다
     // 마커 클러스터러를 생성할 때 disableClickZoom을 true로 설정하지 않은 경우
     // 이벤트 헨들러로 cluster 객체가 넘어오지 않을 수도 있습니다
@@ -383,8 +385,7 @@ $(function() {
         if(level >= 6){
         	map.setLevel(level, {anchor: cluster.getCenter()});
         	// 좌표를 주소로 바꿔서 이벤트 발생
-        	var latlnt = new daum.maps.LatLng(cluster.getCenter().jb, cluster.getCenter().ib)
-        	console.log(latlnt);
+        	var latlnt = new daum.maps.LatLng(cluster.getCenter().jb, cluster.getCenter().ib);
         	searchDetailAddrFromCoords(latlnt, function(result, status){
         		if (status === daum.maps.services.Status.OK) {
         			var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
