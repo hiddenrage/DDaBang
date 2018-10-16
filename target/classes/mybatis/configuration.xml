@@ -11,6 +11,7 @@
 	<typeAliases>
 		<typeAlias type="com.kosmo.ddabang.service.ItemDTO" alias="ItemDTO"/>
 		<typeAlias type="com.kosmo.ddabang.service.MemberDTO" alias="MemberDTO"/>
+		<typeAlias type="com.kosmo.ddabang.service.AdminDTO" alias="AdminDTO"/>
 	</typeAliases> 
 	
 	<mappers>

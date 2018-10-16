@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kosmo.ddabang.service.MemberService;
+import com.kosmo.ddabang.service.AdminDTO;
 import com.kosmo.ddabang.service.MemberDTO;
 
 @Repository
@@ -86,5 +87,30 @@ public class MemberDAO implements MemberService {
 	public int memberDelete(Map map) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<AdminDTO> adminSelectList(Map map) {
+		return template.selectOne("adminSelectOne",map);
+	}
+	
+	@Override
+	public boolean adminLogin(Map map) {
+		return template.selectOne("adminLogin",map).equals(1)?true:false;
+	}
+
+	@Override
+	public int adminInsert(Map map) {
+		return template.insert("adminInsert",map);
+	}
+
+	@Override
+	public int adminUpdate(Map map) {
+		return template.update("adminUpdate",map);
+	}
+
+	@Override
+	public int adminDelete(Map map) {
+		return template.delete("adminDelete",map);
 	}
 }// class

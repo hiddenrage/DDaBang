@@ -22,4 +22,10 @@ public interface MemberService {
 	int expertValidUpdate(Map map);
 	
 	int memberDelete(Map map);
+	
+	List<AdminDTO> adminSelectList(Map map);
+	boolean adminLogin(Map map);
+	int adminInsert(Map map);
+	int adminUpdate(Map map);
+	int adminDelete(Map map);
 }/// interface
