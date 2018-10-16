@@ -38,7 +38,7 @@
 			#{animal},
 			#{elevator},
 			#{movein},
-			#{option},
+			#{selected_option},
 			#{title},
 			#{content},
 			SYSDATE,

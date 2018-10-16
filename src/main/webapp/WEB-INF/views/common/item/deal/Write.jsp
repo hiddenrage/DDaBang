@@ -311,15 +311,11 @@
 				<table class="table table-bordered table_align"
 					style="margin-bottom: 30px;">
 					<tr>
-						<th rowspan="2"
-							style="text-align: center; height: 70px; line-height: 70px; width: 100px;">관리비</th>
-						<td colspan="3"><input type="checkbox"
-							style="margin-left: 15px" id="moneyok" name="manage_money"
-							value="있음" />&nbsp;&nbsp;있음 <input
-							type="text" class="form-control"
-							style="width: 100px; margin-left: 15px;" value="만원">&nbsp;&nbsp;만원
-							<input type="checkbox" style="margin-left: 15px" id="moneyno"
-							name="manage_money" value="없음" />&nbsp;&nbsp;없음
+						<th rowspan="2" style="text-align: center; height: 70px; line-height: 70px; width: 100px;">관리비</th>
+						<td colspan="3">
+							<input type="checkbox" style="margin-left: 15px" id="moneyok" name="manage" value="있음" />&nbsp;&nbsp;있음 
+							<input type="text" class="form-control" style="width: 100px; margin-left: 15px;" value="만원" name="manage_money">&nbsp;&nbsp;만원
+							<input type="checkbox" style="margin-left: 15px" id="moneyno" name="manage" value="없음" />&nbsp;&nbsp;없음
 						</td>
 					</tr>
 					<tr>
@@ -340,12 +336,10 @@
 					<tr>
 						<th style="text-align: center; height: 10px; line-height: 10px;">주차
 							여부</th>
-						<td><input type="checkbox" style="margin-left: 15px"
-							id="pakingok" name="parking" value="가능">&nbsp;&nbsp;가능 <input
-							type="text" class="form-control"
-							style="width: 100px; margin-left: 15px;">&nbsp;&nbsp;만원 <input
-							type="checkbox" style="margin-left: 15px" id="parkingno"
-							name="parking" value="불가능">&nbsp;&nbsp;불가능</td>
+						<td><input type="checkbox" style="margin-left: 15px" id="pakingok" name="parking" value="가능">&nbsp;&nbsp;가능 
+							<input type="text" class="form-control" style="width: 100px; margin-left: 15px;" name="parking_pay">&nbsp;&nbsp;만원 
+							<input type="checkbox" style="margin-left: 15px" id="parkingno" name="parking" value="불가능">&nbsp;&nbsp;불가능
+							</td>
 						<th>난방 종류</th>
 						<td><select style="width: 150px" class="form-control"
 							id="heating" name="heating">
@@ -378,19 +372,19 @@
 					<tr>
 						<th>옵션항목</th>
 						<td colspan="3">
-							<input type="checkbox" style="margin-left: 15px" id="aircon" name="option" value="에어컨">&nbsp;&nbsp;에어컨
-							<input type="checkbox" style="margin-left: 15px" id="washer" name="option" value="세탁기">&nbsp;&nbsp;세탁기 
-							<input type="checkbox" style="margin-left: 15px" id="bed" name="option" value="침대">&nbsp;&nbsp;침대 
-							<input type="checkbox" style="margin-left: 15px" id="desk" name="option" value="책상">&nbsp;&nbsp;책상
-							<input type="checkbox" style="margin-left: 15px" id="dressroom" name="option" value="옷장">&nbsp;&nbsp;옷장 
-							<input type="checkbox" style="margin-left: 15px" id="tv" name="option" value="TV">&nbsp;&nbsp;TV 
-							<input type="checkbox" style="margin-left: 15px" id="shoesroom" name="option" value="신발장">&nbsp;&nbsp;신발장 
-							<input type="checkbox" style="margin-left: 15px" id="Refrigerator" name="option" value="냉장고">&nbsp;&nbsp;냉장고 
-							<input type="checkbox" style="margin-left: 15px" id="gasrange" name="option" value="가스레인지">&nbsp;&nbsp;가스레인지 
-							<input type="checkbox" style="margin-left: 15px" id="induction" name="option" value="인덕션">&nbsp;&nbsp;인덕션 
-							<input type="checkbox" style="margin-left: 15px" id="microwave" name="option" value="전자레인지">&nbsp;&nbsp;전자레인지 
-							<input type="checkbox" style="margin-left: 15px" id="doorlock" name="option" value="전자도어락">&nbsp;&nbsp;전자도어락 
-							<input type="checkbox" style="margin-left: 15px" id="bidet" name="option" value="비데">&nbsp;&nbsp;비데
+							<input type="checkbox" style="margin-left: 15px" id="aircon" name="selected_option" value="에어컨">&nbsp;&nbsp;에어컨
+							<input type="checkbox" style="margin-left: 15px" id="washer" name="selected_option" value="세탁기">&nbsp;&nbsp;세탁기 
+							<input type="checkbox" style="margin-left: 15px" id="bed" name="selected_option" value="침대">&nbsp;&nbsp;침대 
+							<input type="checkbox" style="margin-left: 15px" id="desk" name="selected_option" value="책상">&nbsp;&nbsp;책상
+							<input type="checkbox" style="margin-left: 15px" id="dressroom" name="selected_option" value="옷장">&nbsp;&nbsp;옷장 
+							<input type="checkbox" style="margin-left: 15px" id="tv" name="selected_option" value="TV">&nbsp;&nbsp;TV 
+							<input type="checkbox" style="margin-left: 15px" id="shoesroom" name="selected_option" value="신발장">&nbsp;&nbsp;신발장 
+							<input type="checkbox" style="margin-left: 15px" id="Refrigerator" name="selected_option" value="냉장고">&nbsp;&nbsp;냉장고 
+							<input type="checkbox" style="margin-left: 15px" id="gasrange" name="selected_option" value="가스레인지">&nbsp;&nbsp;가스레인지 
+							<input type="checkbox" style="margin-left: 15px" id="induction" name="selected_option" value="인덕션">&nbsp;&nbsp;인덕션 
+							<input type="checkbox" style="margin-left: 15px" id="microwave" name="selected_option" value="전자레인지">&nbsp;&nbsp;전자레인지 
+							<input type="checkbox" style="margin-left: 15px" id="doorlock" name="selected_option" value="전자도어락">&nbsp;&nbsp;전자도어락 
+							<input type="checkbox" style="margin-left: 15px" id="bidet" name="selected_option" value="비데">&nbsp;&nbsp;비데
 						</td>
 					</tr>
 				</table>

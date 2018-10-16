@@ -178,7 +178,7 @@ CREATE TABLE item
 	-- 입주가능일
 	movein nvarchar2(10) DEFAULT '즉시 입주',
 	-- 옵션 항목
-	option nvarchar2(50),
+	select_option nvarchar2(50),
 	-- 제목
 	title nvarchar2(50) NOT NULL,
 	-- 내용
@@ -448,7 +448,7 @@ COMMENT ON COLUMN item.heating IS '난방 종류';
 COMMENT ON COLUMN item.animal IS '애완동물';
 COMMENT ON COLUMN item.elevator IS '엘레베이터';
 COMMENT ON COLUMN item.movein IS '입주가능일';
-COMMENT ON COLUMN item.option IS '옵션 항목';
+COMMENT ON COLUMN item.select_option IS '옵션 항목';
 COMMENT ON COLUMN item.title IS '제목';
 COMMENT ON COLUMN item.content IS '내용';
 COMMENT ON COLUMN item.regidate IS '작성 날짜';

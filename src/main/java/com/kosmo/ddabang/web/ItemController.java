@@ -1,6 +1,7 @@
 package com.kosmo.ddabang.web;
 
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -33,6 +34,19 @@ public class ItemController {
 	@RequestMapping(value="/Deal/Write.bbs",method=RequestMethod.POST)
 	public String writeComplete(@RequestParam Map map,HttpSession session) throws Exception {
 		System.out.println("입력하기위해 등장");
+		Set<String> set=map.keySet();
+		for(String key:set) System.out.println(key+" : "+map.get(key));
+
+		if(map.get("manage_money")=="" || Integer.parseInt(map.get("manage_money").toString())<0)
+			map.put("manage_money", 0);
+		
+		if(map.get("parking_pay")=="" || Integer.parseInt(map.get("parking_pay").toString())<0)
+			map.put("parking", 0);
+		else 
+			map.put("parking", map.get("parking_pay"));
+		
+		map.put("elevator", map.get("elevator")=="있음"?'Y':'N');
+		map.put("animal", map.get("animal")=="가능"?'Y':'N');
 		map.put("id", session.getAttribute("id"));
 		service.itemInsert(map);
 		return "common/item/deal/View.tiles";
