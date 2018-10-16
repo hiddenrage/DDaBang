@@ -22,7 +22,7 @@
 		</div>
 		
 		<div class="row" style="margin-top: 50px;">
-			<form class="form-horizontal">
+			<form class="form-horizontal" method="post" action="<c:url value='/Member/GenenalLogin.bbs'/>">
 				<div class="form-group">
 					<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 						<input style="height: 60px" type="email" class="form-control" id="id" name="id" placeholder="이메일 ">
@@ -38,8 +38,8 @@
 						<button style="height: 60px;" type="submit" class="btn btn-success btn-lg col-xs-12 form-control">로그인</button>	
 					</div>			
 				</div>
-			</form>	
-								
+			</form>			
+
 			<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 				<div class="row">
 					<a href="${url }"><img id="naverLogin" style="width:98%;height:60px;margin-left: 8px;" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
