@@ -49,7 +49,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int socialInsert(Map map) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.socialInsert(map);
 	}
 
 	@Override

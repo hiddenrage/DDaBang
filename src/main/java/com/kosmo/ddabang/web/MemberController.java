@@ -96,7 +96,7 @@ public class MemberController {
         map.put("name", name);
         MemberDTO dto = service.memberSelectOne(map);
         if(dto == null) {
-        	int affect = service.signupInsert(map);
+        	int affect = service.socialInsert(map);
         	dto = service.memberSelectOne(map);
         	System.out.println("네이버 회원가입");
         	session.setAttribute("id", dto.getId());

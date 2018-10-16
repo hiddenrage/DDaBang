@@ -56,14 +56,14 @@ public class MemberSignController {
 	
 	//일반 회원가입 -> 이용약관 
 		@RequestMapping("/Member/GeneralSignUp.bbs")
-		public String generalsignup() throws Exception{
+		public String generalsignup() throws Exception{			
 			return "common/member/signup/terms/Terms.tiles";
 		}
 	
 	//일반 회원가입 -> 이용약관 -> 입력폼
 	@RequestMapping("/Member/Signup.bbs")
 	public String signup() throws Exception{
-		
+				
 		return "common/member/signup/Signup.tiles";
 	}
 	

@@ -32,7 +32,7 @@ $(function(){
    				<tr>
    					<td style="background-color: rgba(80,80,80,0.1);vertical-align: middle;">휴대폰 번호</td>
    					<td>
-   						<form class="form-inline">
+   						<div class="form-inline">
  							<div class="form-group">    							
   								<select class="form-control" style="margin-left: 15px" id="tel"> 
    									<option value="010">010</option> 
@@ -51,13 +51,13 @@ $(function(){
    							<div class="form-group">
    								<input type="text" class="form-control" id="tel3" style="width: 120px">
    							</div>
-   						</form>
+   						</div>
    					</td>
    				</tr>
    				<tr>
    					<td style="background-color: rgba(80,80,80,0.1); vertical-align: middle;">이메일 주소</td>
    					<td>
-   						<form class="form-inline">
+   						<div class="form-inline">
  							<div class="form-group">
     							<input type="email" class="form-control" id="id" placeholder="이메일을 입력하세요" style="margin-left: 15px">
     							<label for="email">@</label>
@@ -86,7 +86,7 @@ $(function(){
    								<option value="link">link.com</option> 
    							</select> 
    							</div>
-   						</form>
+   						</div>
    					</td>
    				</tr>
    				<tr>
