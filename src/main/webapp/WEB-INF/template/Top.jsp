@@ -65,9 +65,11 @@
     			<li>
 					
 				</li>
+				<c:if test="${not empty sessionScope.id}">
        			<li>
-       				<a href="<c:url value='#'/>">고객지원</a>
+       				<a href="<c:url value='/Support/QnAList.bbs'/>">고객지원</a>
        			</li>
+       			</c:if>
        			<li>
        				<a href="<c:url value='/Market/Main.bbs'/>">경매장</a>
        			</li>
