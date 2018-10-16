@@ -255,16 +255,10 @@ CREATE TABLE member
 	tel varchar2(15),
 	-- 가입일
 	regidate date DEFAULT SYSDATE,
-<<<<<<< HEAD
-	-- 회원 종류 : default : general
-	-- expert / naver / ... 등등
-	kind nvarchar2(30) DEFAULT 'general',
-=======
 	-- 회원 종류 : 0 : 일반회원
 	-- 1 : 소셜회원
 	-- 2 : 중개회원
 	kind char(1) NOT NULL,
->>>>>>> refs/heads/mybatis_new_branch
 	PRIMARY KEY (id)
 );
 
@@ -478,14 +472,9 @@ COMMENT ON COLUMN member.id IS '아이디';
 COMMENT ON COLUMN member.name IS '이름';
 COMMENT ON COLUMN member.tel IS 'tel';
 COMMENT ON COLUMN member.regidate IS '가입일';
-<<<<<<< HEAD
-COMMENT ON COLUMN member.kind IS '회원 종류 : default : general
-expert / naver / ... 등등';
-=======
 COMMENT ON COLUMN member.kind IS '회원 종류 : 0 : 일반회원
 1 : 소셜회원
 2 : 중개회원';
->>>>>>> refs/heads/mybatis_new_branch
 COMMENT ON TABLE QNA IS '1대1 문의';
 COMMENT ON COLUMN QNA.no IS '문의 번호';
 COMMENT ON COLUMN QNA.id IS '아이디';
