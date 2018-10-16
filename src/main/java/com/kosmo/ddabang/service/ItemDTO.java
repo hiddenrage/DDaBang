@@ -5,37 +5,25 @@ public class ItemDTO {
 	private String id;//중개사 아이디
 	private String address;//검색용주소
 	private String address_detail;//상세주소
-	private String shortTerm;//단기여부 : 기본값 N / Y
 	private String kind;//방종류
-	private String whoole_floor;//건물층수
-	private String that_floor;//해당층수
+	private String house_floor;//건물층수
+	private String select_floor;//해당층수
 	private String supply_area;//공급면적
 	private String use_area;//전용면적
 	private String manage_money;//관리비
 	private String manage_detail;//관리비항목
 	private String parking;//주차여부 : 기본값 N / Y
 	private String heating;//난방종류
-	private String moving_date;//입주가능일 : 기본값 '즉시 입주'
-	private String option;//옵션항목
+	private String animal; //애완동물 가능 여부
+	private String elevator;// 엘리베이터 유무
+	private String movein;//입주가능일 : 기본값 '즉시 입주'
+	private String selected_option;//옵션항목
 	private String title;//제목
 	private String content;//내용
 	private java.sql.Date regedate;//등록 날짜 : 기본값 SYSDATE
-	private String path;//매물사진 경로
 	private double x;//주소로 지도  x좌표 구한값을 저장 
 	private double y;//주소로 지도  y좌표 구한값을 저장 
 	
-	public double getX() {
-		return x;
-	}
-	public void setX(double x) {
-		this.x = x;
-	}
-	public double getY() {
-		return y;
-	}
-	public void setY(double y) {
-		this.y = y;
-	}
 	public String getNo() {
 		return no;
 	}
@@ -60,29 +48,23 @@ public class ItemDTO {
 	public void setAddress_detail(String address_detail) {
 		this.address_detail = address_detail;
 	}
-	public String getShortTerm() {
-		return shortTerm;
-	}
-	public void setShortTerm(String shortTerm) {
-		this.shortTerm = shortTerm;
-	}
 	public String getKind() {
 		return kind;
 	}
 	public void setKind(String kind) {
 		this.kind = kind;
 	}
-	public String getWhoole_floor() {
-		return whoole_floor;
+	public String getHouse_floor() {
+		return house_floor;
 	}
-	public void setWhoole_floor(String whoole_floor) {
-		this.whoole_floor = whoole_floor;
+	public void setHouse_floor(String house_floor) {
+		this.house_floor = house_floor;
 	}
-	public String getThat_floor() {
-		return that_floor;
+	public String getSelect_floor() {
+		return select_floor;
 	}
-	public void setThat_floor(String that_floor) {
-		this.that_floor = that_floor;
+	public void setSelect_floor(String select_floor) {
+		this.select_floor = select_floor;
 	}
 	public String getSupply_area() {
 		return supply_area;
@@ -120,17 +102,29 @@ public class ItemDTO {
 	public void setHeating(String heating) {
 		this.heating = heating;
 	}
-	public String getMoving_date() {
-		return moving_date;
+	public String getAnimal() {
+		return animal;
 	}
-	public void setMoving_date(String moving_date) {
-		this.moving_date = moving_date;
+	public void setAnimal(String animal) {
+		this.animal = animal;
 	}
-	public String getOption() {
-		return option;
+	public String getElevator() {
+		return elevator;
 	}
-	public void setOption(String option) {
-		this.option = option;
+	public void setElevator(String elevator) {
+		this.elevator = elevator;
+	}
+	public String getMovein() {
+		return movein;
+	}
+	public void setMovein(String movein) {
+		this.movein = movein;
+	}
+	public String getSelected_option() {
+		return selected_option;
+	}
+	public void setSelected_option(String selected_option) {
+		this.selected_option = selected_option;
 	}
 	public String getTitle() {
 		return title;
@@ -150,10 +144,16 @@ public class ItemDTO {
 	public void setRegedate(java.sql.Date regedate) {
 		this.regedate = regedate;
 	}
-	public String getPath() {
-		return path;
+	public double getX() {
+		return x;
 	}
-	public void setPath(String path) {
-		this.path = path;
-	}	
+	public void setX(double x) {
+		this.x = x;
+	}
+	public double getY() {
+		return y;
+	}
+	public void setY(double y) {
+		this.y = y;
+	}
 }/// class
