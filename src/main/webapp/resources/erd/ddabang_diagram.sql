@@ -494,6 +494,3 @@ COMMENT ON TABLE signupmember IS '홈페이지 회원가입 회원';
 COMMENT ON COLUMN signupmember.id IS '아이디';
 COMMENT ON COLUMN signupmember.pwd IS '비밀번호';
 COMMENT ON TABLE statistics IS '통계';
-
-
-
