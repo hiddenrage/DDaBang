@@ -34,6 +34,7 @@ public class MemberDAO implements MemberService {
 
 	@Override
 	public List<MemberDTO> expertSelectList(Map map) {
+		//TODO Auto-generated method stub
 		return null;
 	}
 
@@ -43,19 +44,18 @@ public class MemberDAO implements MemberService {
 	}
 
 	@Override
-	public int signupInsert(Map map) {		
-		return template.insert("signupInsert", map);
+	public int signupInsert(Map map) {
+		return template.insert("signupInsert",map);
 	}
 
 	@Override
 	public int socialInsert(Map map) {
-		return template.insert("socialInsert", map);
+		return template.insert("socialInsert",map);
 	}
 
 	@Override
 	public int expertInsert(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return template.insert("expertInsert",map);
 	}
 
 	@Override
