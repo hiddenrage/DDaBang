@@ -6,3 +6,9 @@
 <!-- script는 이쪽 아래에 -->
 
 <!-- body는 아래에 -->
+<div class="row">
+	<h3>웹 크롤링</h3>
+	<form action="<c:url value='/Admin/ItemCollecting.bbs'/>">
+		<input type="submit" value="정보 수집"/>
+	</form> 
+</div>

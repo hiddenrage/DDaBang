@@ -116,7 +116,7 @@
 	                        <a href="#">실시간 매물 관리</a>
 	                    </li>
 	                    <li>
-	                        <a href="#">매물 수집</a>
+	                        <a href="<c:url value='/Admin/ItemCollect.bbs'/>">매물 수집</a>
 	                    </li>
 	                </ul>
 	                <!-- /.nav-second-level -->
