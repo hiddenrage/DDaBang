@@ -8,10 +8,23 @@
 		SELECT COUNT(*) FROM member WHERE id=#{id} AND pass=#{pass}
 	</select>
 	 -->
-	<select id="itemSelectList" resultType="ItemDTO">
-		SELECT *
-		FROM item
+	<select id="itemSelectList" parameterType="java.util.Map" resultType="ItemDTO">
+		SELECT * FROM item		
 	</select>
+	<!-- 페이징 용 list -->
+	<select id="itemSelectAll" parameterType="java.util.Map" resultType="ItemDTO">		
+		SELECT * FROM (SELECT T.*,ROWNUM R FROM item T
+		<if test="searchColumn != null">
+			WHERE ${searchColumn} LIKE '%' || #{searchWord} || '%'
+		</if>
+		)
+		WHERE R BETWEEN #{start} AND #{end}			
+	</select>
+	
+	<select id="getItemTotalCount" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM item
+	</select>
+	
 	
 	<select id="itemSelectOne" parameterType="java.util.Map" resultType="ItemDTO">
 		SELECT *
@@ -27,6 +40,7 @@
 			#{address},
 			#{address_detail},
 			#{kind},
+			#{pay_kind},
 			#{house_floor},
 			#{select_floor},
 			#{supply_area},

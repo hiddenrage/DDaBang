@@ -6,7 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,13 +20,34 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmo.ddabang.service.ItemDTO;
+import com.kosmo.ddabang.service.impl.ItemServiceImpl;
+import com.kosmo.ddabang.service.impl.PagingUtil;
 
 @Controller
 public class SearchController {
+	@Resource(name="itemServiceImpl")
+    private ItemServiceImpl service;
+	
 	
 	@RequestMapping("/Search/Map.bbs")
 	public String map(Model model)throws Exception{	
 		return "common/item/search/Map.tiles";
+	}
+	//지도용
+	@ResponseBody
+	@RequestMapping(value="/Search/MapList.bbs",produces="text/plain; charset=UTF-8",method=RequestMethod.POST)
+	public String map()throws Exception{
+		
+		List<Map> collections = new Vector<Map>();
+		List<ItemDTO> lists = service.itemSelectList(null);
+			
+		for(ItemDTO  list:lists) {
+		Map record = new HashMap();				
+			record.put("x", list.getX());
+			record.put("y", list.getY());
+			collections.add(record);
+		}			
+		return JSONArray.toJSONString(collections);
 	}
 	
 	
@@ -30,52 +55,69 @@ public class SearchController {
 	private int pageSize;
 	@Value("${BLOCKPAGE}")
 	private int blockPage;
-	
+	//지도 리스트용
 	@ResponseBody
-	@RequestMapping(value="/Search/MapList.bbs",produces="text/plain; charset=UTF-8",method=RequestMethod.POST)
-	public String mapList()throws Exception{
-		System.out.println("mapList()");
+	@RequestMapping(value="/Search/MapList.bbs",produces="text/plain; charset=UTF-8",method=RequestMethod.GET)
+	public String list(
+			HttpServletRequest req,//페이징용 메소드에 전달
+			@RequestParam Map map,//검색용 파라미터 받기
+			@RequestParam(required=false,defaultValue="1") int nowPage
+			)throws Exception{
+		
+		int totalRecordCount= service.getItemTotalCount(map);
+		System.out.println(totalRecordCount);
+		
+		int start = (nowPage-1)*pageSize+1;
+		int end   = nowPage*pageSize;
+		
+		map.put("start",start);
+		map.put("end",end);
+		
+		String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage,req.getContextPath()+ "/Search/MapList.bbs?");
+		
 		List<Map> collections = new Vector<Map>();
-		List<ItemDTO> lists = new Vector<>();
-		ItemDTO dto = new ItemDTO();
-		dto.setAddress("서울특별시 광진구 능동로 415, 참존빌딩 3층 (중곡동)");
-		dto.setX(127.1284868);
-		dto.setY(37.549963);
-		lists.add(dto);
-		
-		dto = new ItemDTO();
-		dto.setAddress("서울특별시 광진구 동일로 74 (자양동)");
-		dto.setX(127.0626864);
-		dto.setY(37.5392775);
-		lists.add(dto);
-		
-		dto = new ItemDTO();
-		dto.setAddress("서울특별시 강동구 상암로11길 5, 2층 (암사동)");
-		dto.setX(127.1284868);
-		dto.setY(37.549963);
-		lists.add(dto);
-		
-		dto = new ItemDTO();
-		dto.setAddress("서울특별시 강동구 상암로11길 5, 2층 (암사동)");
-		dto.setX(127.0841901);
-		dto.setY(37.5661775);
-		lists.add(dto);
-		
+		List<ItemDTO> lists = service.itemSelectAll(map);
+		Map record = null;		
 		for(ItemDTO  list:lists) {
-			Map record = new HashMap();
+			record = new HashMap();
+			record.put("no", list.getNo());
+			record.put("id", list.getId());
 			record.put("address", list.getAddress());
+			record.put("kind", list.getKind());
+			record.put("select_floor", list.getSelect_floor());
+			record.put("manage_money", list.getManage_money());
+			record.put("parking", list.getParking());
+			record.put("content", list.getContent());				
 			record.put("x", list.getX());
 			record.put("y", list.getY());
 			collections.add(record);
 		}
-		System.out.println(JSONArray.toJSONString(collections));	
-		
+		record = new HashMap();
+		record.put("pagingString", pagingString);
+		collections.add(record);			
 		return JSONArray.toJSONString(collections);
 	}
 	
-	@RequestMapping("/Search/View.bbs")
-	public String view(@RequestParam Map map,Model model)throws Exception{
-		System.out.println(map.size());
+	@RequestMapping(value="/Search/View.bbs")
+	public String move(@RequestParam Map map,Model model)throws Exception{
+		
+		ItemDTO dto = service.itemSelectOne(map);
+		Map collection = new HashMap();
+		
+		collection.put("no", dto.getNo());
+		collection.put("id", dto.getId());
+		collection.put("address", dto.getAddress());
+		collection.put("kind", dto.getKind());
+		collection.put("select_floor", dto.getSelect_floor());
+		collection.put("manage_money", dto.getManage_money());
+		collection.put("parking", dto.getParking());
+		collection.put("content", dto.getContent());				
+		collection.put("x", dto.getX());
+		collection.put("y", dto.getY());
+		System.out.println(JSONObject.toJSONString(collection));	
+		model.addAttribute("dto", JSONObject.toJSONString(collection));	
+		
 		return "common/item/search/View.tiles";
 	}
+	
 }

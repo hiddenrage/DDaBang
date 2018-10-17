@@ -7,9 +7,6 @@
 	.footer{
 		display: none;
 	}
-	.wrapper{
-		height: 100%;		
-	}
 	#map_head{
 		width: 100%;
 		border-bottom: 1px solid gray;
@@ -70,7 +67,7 @@
 		}
 	 }
 	 #map{	 	
-	 	height: 100%;
+	 	height: 900px;
 	 	background-color: red;
 	 	width: 75%;
 	 }
@@ -80,11 +77,20 @@
 	 }
 	 #list{	 
 	 	width:25%;	
-	 	height: 100%;
+	 	height: 900px;
 	 	position: absolute;
 	 	top: 0;
 	 	right: 0;
 	 	background-color: white;
+	 	overflow:scroll;
+	 }
+	 #list .row{
+	 	position: relative;
+	 	height: 100%;
+	 }
+	 #pagingString{
+	 	position: absolute;
+	 	bottom: 0;
 	 }
 	 
 	#list_head{
@@ -94,6 +100,9 @@
 	 #list_head span{
 	 	font-size: 2em;
 	 }
+	 .list_content{
+	 	height: 100%;
+	 }	 
 	 .list_content_content{
 	 	cursor: pointer;
 	 }
@@ -134,7 +143,7 @@
 <script>
 
 $(function() {
-	/* 드랍다운 내부를 클릭했을때 서브메뉴가 유지하는 코드 */
+	/*드랍다운 내부를 클릭했을때 서브메뉴가 유지하는 코드 */
 	$('.dropdown').on({
 	    "click": function(event) {
 	      if ($(event.target).closest('.dropdown-toggle').length) {
@@ -252,24 +261,24 @@ $(function() {
 	var geocoder = new daum.maps.services.Geocoder();
 	
 	//데이타를 담아줄 변수
-	var data;
+	var mapData;
 	
-	//온로드 댔을때 data값 저장하기 
+	//온로드 되였을때 data값 저장하기 		
 	$.ajax({
 		url : '<c:url value="/Search/MapList.bbs"/>',
 		type : 'POST',
 		dataType : 'json',
 		async : false,
 		success : function(result){
-			data = result;		
+			mapData = result;	
 		},
 		error : function(request,err){
 			console.log('상태코드',request.status);
 			console.log('서버로받은 데이타',request.responseText);
 			console.log('에러',err);
 		}
-	});
-	
+	});	
+		
 	// 마커 클러스터헤즐 객체를 생성합니다 
   	var clusterer = new daum.maps.MarkerClusterer({
         map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
@@ -286,44 +295,81 @@ $(function() {
 	var availableTags =[];
 	//검색해온 count수
 	var count=0;
-	//주소 마크 찍고 클러스터화해주기	
-	if(data.length>0){
-		$.each(data,function(index,value){
-			count++;
-			// 데이터에서 좌표 값을 가지고 마커를 표시합니다
-	        // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
-	        var marker = new daum.maps.Marker({
-	                position : new daum.maps.LatLng(value.y, value.x)
-	            });
-			//지도 마크 클러스터화 해주기 위한 객체에 마크를 담기
-	        markers.push(marker);
-	        //리스트 뷰 그려주는 함수호출	
-	        setList(value);				
-			//자동검색을 위한 배열
-			availableTags.push(value.address);
-		});
-	}else{
-		list+="<div style='text-align:center;width:100%;'><h2>데이타가 없습니다<h2></div>";
-	}
-	
+	//반복문 돌면서 data의 주소로 마크 찍고 클러스터화해주기		
+	$.each(mapData,function(index,value){
+		count++;			
+		// 데이터에서 좌표 값을 가지고 마커를 표시합니다
+        // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
+        var marker = new daum.maps.Marker({
+                position : new daum.maps.LatLng(value.y, value.x)
+            });
+		//지도 마크 클러스터화 해주기 위한 객체에 마크를 담기
+        markers.push(marker);		  			
+		//자동검색을 위한 배열
+		availableTags.push(value.address);			
+	});
+		
 	// 클러스터러에 마커들을 추가합니다
     clusterer.addMarkers(markers);
 	
+	//온로드 되였을때 list 뿌려주는 전체데이타 불러오기
+	var url = '<c:url value="/Search/MapList.bbs"/>';
+	
+	function onLoadList(url){
+		console.log("클릭");
+		$.ajax({
+			url : url,
+			type : 'GET',
+			dataType : 'json',
+			async : false,
+			success : function(result){
+				successList(result);	
+			},
+			error : function(request,err){
+				console.log('상태코드',request.status);
+				console.log('서버로받은 데이타',request.responseText);
+				console.log('에러',err);
+			}
+		});	
+	}
+	onLoadList(url);
+	//onLoadList함수 ajax성공 했을때 실행하는 함수
+	function successList(data){
+		list="";
+		if(data.length>0){			
+			$.each(data,function(index,value){
+				if(index < data.length-1){
+					setList(value);
+				}else{
+					$("#pagingString").html(value.pagingString);
+				}
+			});
+		}else{
+			list+="<div style='text-align:center;width:100%;'><h2>데이타가 없습니다<h2></div>";
+		}
+		$("#list_content .row").html(list);
+	}
+	//페이징 클릭이벤트
+	$(document).on("click",".pagingClick",function(){
+		var url = $(this).prop('title');		
+		var tagUrl = "<c:url value='"+url+"'/>"
+		onLoadList(tagUrl);
+    });
+		
 	 //리스트 뷰 그려주는 함수	
 	function setList(value) {
-		list+='<div title="'+value.address+'" class="col col-xs-12 list_content_content">';   
-        
-	   	list+='<div class="row">';
-	   		list+='<div class="col col-xs-4 list_content_image"';
-	   		list+=' style="background-image: url(\'<c:url value="/resources/images/main/cat.jpg"/>\');"></div>';				
-	   		  list+='<div class="col col-xs-8 list_content_item">';
-	   		 	list+='<div class="row">';
-	   		 		list+='<div class="col-xs-12">'+value.x+'</div>';
-	   		 		list+='<div class="col-xs-12">2</div>';
-	   		 		list+='<div class="col-xs-12">3</div>';
-	   		 		list+='<div class="col-xs-12">4</div>';
-	   		 		list+='<input type="hidden" value="'+value.x+'"/>';
-	   		 		list+='<input type="hidden" value="'+value.y+'"/>';
+		list+='<div title="'+value.no+'" class="col col-xs-12 list_content_content">';        
+	   		list+='<div class="row">';
+	   			list+='<div class="col col-xs-4 list_content_image"';
+	   			list+=' style="background-image: url(\'<c:url value="/resources/images/main/cat.jpg"/>\');"></div>';				
+	   		  		list+='<div class="col col-xs-8 list_content_item">';
+	   		 			list+='<div class="row">';
+	   		 			list+='<div class="col-xs-12">'+value.kind+'</div>';
+	   		 			list+='<div class="col-xs-12">'+value.manage_money+'</div>';
+	   		 			list+='<div class="col-xs-12">'+value.parking+'</div>';
+	   		 			list+='<div class="col-xs-12">'+value.content+'</div>';
+	   		 			list+='<input type="hidden" value="'+value.x+'"/>';
+	   		 			list+='<input type="hidden" value="'+value.y+'"/>';	   		 
 				list+='</div>';
 			  list+='</div>';
 			 list+='</div>';
@@ -342,7 +388,7 @@ $(function() {
     });
 	
 	//list아이템을 클릭했을때 상세페이지로 이동
-	$(".list_content_content").click(function() {		
+	$(document).on("click",".list_content_content",function(){		
 		var no = $(this).attr('title');		
 		location.href = "<c:url value='/Search/View.bbs?no="+no+"'/>";	
 	});
@@ -618,7 +664,7 @@ $(function() {
 		   		<!-- 반복할코드 -->		   			   
 				</div>
 			</div>
-			<div id="pagingString" class="row"></div>
+			<div id="pagingString" class="col col-xs-12"></div>
 		</div>
 	</div>
 </div>
