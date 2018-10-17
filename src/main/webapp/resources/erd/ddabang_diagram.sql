@@ -256,19 +256,11 @@ CREATE TABLE member
 	-- tel
 	tel varchar2(15),
 	-- 가입일
-<<<<<<< HEAD
 	regidate date DEFAULT SYSDATE,
-=======
-	regidate date DEFAULT SYSDATE,
->>>>>>> branch 'development' of https://github.com/hiddenrage/DDaBang.git
 	-- 회원 종류 : 0 : 일반회원
 	-- 1 : 소셜회원
 	-- 2 : 중개회원
-<<<<<<< HEAD
 	kind char(1) NOT NULL,
-=======
-	kind char(1) NOT NULL,
->>>>>>> branch 'development' of https://github.com/hiddenrage/DDaBang.git
 	PRIMARY KEY (id)
 );
 
@@ -482,18 +474,11 @@ COMMENT ON TABLE member IS '일반회원';
 COMMENT ON COLUMN member.id IS '아이디';
 COMMENT ON COLUMN member.name IS '이름';
 COMMENT ON COLUMN member.tel IS 'tel';
-<<<<<<< HEAD
+
 COMMENT ON COLUMN member.regidate IS '가입일';
-=======
-COMMENT ON COLUMN member.regidate IS '가입일';
->>>>>>> branch 'development' of https://github.com/hiddenrage/DDaBang.git
 COMMENT ON COLUMN member.kind IS '회원 종류 : 0 : 일반회원
 1 : 소셜회원
-<<<<<<< HEAD
 2 : 중개회원';
-=======
-2 : 중개회원';
->>>>>>> branch 'development' of https://github.com/hiddenrage/DDaBang.git
 COMMENT ON TABLE QNA IS '1대1 문의';
 COMMENT ON COLUMN QNA.no IS '문의 번호';
 COMMENT ON COLUMN QNA.id IS '아이디';
