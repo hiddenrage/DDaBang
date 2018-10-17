@@ -55,7 +55,7 @@ public class PagingUtil {
 		int intTemp = ((nowPage - 1) / blockPage) * blockPage + 1;
 
 		//처음 및 이전을 위한 로직
-		if(intTemp != 1){
+		/*if(intTemp != 1){
 			pagingStr+="<li>\r\n" + 
 					"<a href='"+page+"nowPage=1'>\r\n" + 
 					"<span >&laquo;</span>\r\n" + 
@@ -67,6 +67,21 @@ public class PagingUtil {
 					"</a>\r\n" + 
 					"</li>";   
 			
+		}*/
+		if(intTemp != 1){
+			pagingStr+="<li>\r\n" + 
+					/*"<a href='javascript:onLoadList(\""+page+"nowPage=1\")'>\r\n" +*/ 
+					"<a href='#' class='pagingClick' title='"+page+"nowPage=1'>\r\n" +
+					"<span >&laquo;</span>\r\n" + 
+					"</a>\r\n" + 
+					"</li>\r\n" + 
+					"<li >\r\n" + 
+					/*"<a href='javascript:onLoadList(\""+page+"nowPage="+(intTemp -blockPage)+"\")'>\r\n" +*/ 
+					"<a href='#' class='pagingClick' title='"+page+"nowPage="+(intTemp -blockPage)+"'>\r\n" +
+					"<span>&lsaquo;</span>\r\n" + 
+					"</a>\r\n" + 
+					"</li>";   
+			
 		}
 		
 		//페이지 표시 제어를 위한 변수
@@ -74,22 +89,35 @@ public class PagingUtil {
 		
 		//페이지를 뿌려주는 로직
 		//블락 페이지 수만큼 혹은 마지막 페이지가 될때까지 페이지를 표시한다1 
-		while(blockCount <= blockPage && intTemp <= totalPage){  // 페이지 오버 를 체크
+		/*while(blockCount <= blockPage && intTemp <= totalPage){  // 페이지 오버 를 체크
 				//현재 페이지를 의미함
 			if(intTemp == nowPage){  
 				pagingStr+="<li><a href='#'><span style='Color:red'>"+intTemp+"</span></a></li>";
 			}
 		     else
 		    	 pagingStr+="<li><a href='"+page+"nowPage="+intTemp+"'>"+intTemp+"</a></li>";
-		       
+		       				
 			intTemp = intTemp + 1;
 			blockCount = blockCount + 1;
 		
+		}*/
+		while(blockCount <= blockPage && intTemp <= totalPage){  // 페이지 오버 를 체크
+		if(intTemp == nowPage){  
+			pagingStr+="<li><a href='#'><span style='Color:red'>"+intTemp+"</span></a></li>";
 		}
+	     else	
+	    	 			
+	    	/*pagingStr+="<li><a href='javascript:onLoadList(\""+page+"nowPage="+intTemp+"\")'>"+intTemp+"</a></li>";*/
+	    	 pagingStr+="<li><a href='#' class='pagingClick' title='"+page+"nowPage="+intTemp+"'>"+intTemp+"</a></li>";
+	       				
+		intTemp = intTemp + 1;
+		blockCount = blockCount + 1;
+	
+	}
 
 		//다음 및 마지막을 위한 로직
 			
-		if(intTemp <= totalPage){
+		/*if(intTemp <= totalPage){
 			pagingStr+="<li>\r\n" + 
 					"<a href='"+page+"nowPage="+intTemp+"'>\r\n" + 
 					"<span >&rsaquo;</span>\r\n" + 
@@ -99,8 +127,21 @@ public class PagingUtil {
 					"<a href='"+page+"nowPage="+totalPage+"' >\r\n" + 
 					"<span >&raquo;</span>\r\n" + 
 					"</a>\r\n" + 
-					"</li>";
-							   
+					"</li>";						   
+		}*/
+		if(intTemp <= totalPage){
+			pagingStr+="<li>\r\n" + 
+					/*"<a href='javascript:onLoadList(\""+page+"nowPage="+intTemp+"\")'>\r\n"+*/
+					"<a href='#' class='pagingClick' title='"+page+"nowPage="+intTemp+"'>\r\n"+
+					"<span >&rsaquo;</span>\r\n" + 
+					"</a>\r\n" + 
+					"</li>\r\n" + 
+					"<li>\r\n" + 
+					/*"<a href='javascript:onLoadList(\""+page+"nowPage="+totalPage+"\")'>\r\n"+*/
+					"<a href='#' class='pagingClick' title='"+page+"nowPage="+totalPage+"'>\r\n"+
+					"<span >&raquo;</span>\r\n" + 
+					"</a>\r\n" + 
+					"</li>";							   
 		}
 		pagingStr+="</ul></nav>";
 		return pagingStr;

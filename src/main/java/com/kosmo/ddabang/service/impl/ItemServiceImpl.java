@@ -18,14 +18,12 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public ItemDTO itemSelectOne(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.itemSelectOne(map);
 	}
 
 	@Override
 	public List<ItemDTO> itemSelectList(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.itemSelectList(map);
 	}
 
 	@Override
@@ -62,5 +60,17 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public int getItemTotalCount(Map map) {
+		return dao.getItemTotalCount(map);
+	}
+
+	@Override
+	public List<ItemDTO> itemSelectAll(Map map) {
+		return dao.itemSelectAll(map);
+	}
+
+	
 
 }

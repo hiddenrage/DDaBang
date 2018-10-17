@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.session.ResultHandler;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -19,14 +20,12 @@ public class ItemDAO implements ItemService {
 
 	@Override
 	public ItemDTO itemSelectOne(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		return template.selectOne("itemSelectOne",map);
 	}
 
 	@Override
 	public List<ItemDTO> itemSelectList(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		return template.selectList("itemSelectList",map);
 	}
 
 	@Override
@@ -64,4 +63,16 @@ public class ItemDAO implements ItemService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public int getItemTotalCount(Map map) {
+		return template.selectOne("getItemTotalCount",map);
+	}
+
+	@Override
+	public List<ItemDTO> itemSelectAll(Map map) {
+		return template.selectList("itemSelectAll",map);
+	}
+
+	
 }/// class
