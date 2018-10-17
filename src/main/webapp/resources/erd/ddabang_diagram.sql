@@ -155,6 +155,8 @@ CREATE TABLE item
 	address_detail nvarchar2(50) NOT NULL,
 	-- 방종류
 	kind nvarchar2(20) NOT NULL,
+	-- 전세/월세 종류
+	pay_kind nvarchar2(10),
 	-- 건물 층수
 	house_floor number NOT NULL,
 	-- 해당 층수
@@ -164,7 +166,7 @@ CREATE TABLE item
 	-- 전용 면적
 	use_area number NOT NULL,
 	-- 관리비
-	manage_money varchar2(10) NOT NULL,
+	manage_money varchar2(10),
 	-- 관리비 항목
 	manage_detail nvarchar2(30),
 	-- 주차 여부
@@ -172,7 +174,7 @@ CREATE TABLE item
 	-- 난방 종류
 	heating nvarchar2(10) NOT NULL,
 	-- 애완동물
-	animal char(1) NOT NULL,
+	animal char(1),
 	-- 엘레베이터
 	elevator char(1),
 	-- 입주가능일
@@ -254,11 +256,19 @@ CREATE TABLE member
 	-- tel
 	tel varchar2(15),
 	-- 가입일
+<<<<<<< HEAD
 	regidate date DEFAULT SYSDATE,
+=======
+	regidate date DEFAULT SYSDATE,
+>>>>>>> branch 'development' of https://github.com/hiddenrage/DDaBang.git
 	-- 회원 종류 : 0 : 일반회원
 	-- 1 : 소셜회원
 	-- 2 : 중개회원
+<<<<<<< HEAD
 	kind char(1) NOT NULL,
+=======
+	kind char(1) NOT NULL,
+>>>>>>> branch 'development' of https://github.com/hiddenrage/DDaBang.git
 	PRIMARY KEY (id)
 );
 
@@ -437,6 +447,7 @@ COMMENT ON COLUMN item.id IS '아이디';
 COMMENT ON COLUMN item.address IS '주소';
 COMMENT ON COLUMN item.address_detail IS '상세주소';
 COMMENT ON COLUMN item.kind IS '방종류';
+COMMENT ON COLUMN item.pay_kind IS '전세/월세 종류';
 COMMENT ON COLUMN item.house_floor IS '건물 층수';
 COMMENT ON COLUMN item.select_floor IS '해당 층수';
 COMMENT ON COLUMN item.supply_area IS '공급 면적';
@@ -471,10 +482,18 @@ COMMENT ON TABLE member IS '일반회원';
 COMMENT ON COLUMN member.id IS '아이디';
 COMMENT ON COLUMN member.name IS '이름';
 COMMENT ON COLUMN member.tel IS 'tel';
+<<<<<<< HEAD
 COMMENT ON COLUMN member.regidate IS '가입일';
+=======
+COMMENT ON COLUMN member.regidate IS '가입일';
+>>>>>>> branch 'development' of https://github.com/hiddenrage/DDaBang.git
 COMMENT ON COLUMN member.kind IS '회원 종류 : 0 : 일반회원
 1 : 소셜회원
+<<<<<<< HEAD
 2 : 중개회원';
+=======
+2 : 중개회원';
+>>>>>>> branch 'development' of https://github.com/hiddenrage/DDaBang.git
 COMMENT ON TABLE QNA IS '1대1 문의';
 COMMENT ON COLUMN QNA.no IS '문의 번호';
 COMMENT ON COLUMN QNA.id IS '아이디';

@@ -6,6 +6,7 @@ public class ItemDTO {
 	private String address;//검색용주소
 	private String address_detail;//상세주소
 	private String kind;//방종류
+	private String pay_kind;
 	private String house_floor;//건물층수
 	private String select_floor;//해당층수
 	private String supply_area;//공급면적
@@ -53,6 +54,12 @@ public class ItemDTO {
 	}
 	public void setKind(String kind) {
 		this.kind = kind;
+	}
+	public String getPay_kind() {
+		return pay_kind;
+	}
+	public void setPay_kind(String pay_kind) {
+		this.pay_kind = pay_kind;
 	}
 	public String getHouse_floor() {
 		return house_floor;

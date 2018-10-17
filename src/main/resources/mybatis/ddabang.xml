@@ -40,6 +40,7 @@
 			#{address},
 			#{address_detail},
 			#{kind},
+			#{pay_kind},
 			#{house_floor},
 			#{select_floor},
 			#{supply_area},
