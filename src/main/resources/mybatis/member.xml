@@ -28,7 +28,7 @@
 	<select id="expertSelectOne" parameterType="java.util.Map" resultType="MemberDTO">
 		SELECT *
 		FROM member m JOIN expert e ON m.id=e.id
-		WHERE id=#{id}
+		WHERE m.id=#{id}
 	</select>
 	
 	<select id="expertSelectList" parameterType="java.util.Map" resultType="MemberDTO">
