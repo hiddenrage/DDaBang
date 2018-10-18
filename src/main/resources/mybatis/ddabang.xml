@@ -9,7 +9,10 @@
 	</select>
 	 -->
 	<select id="itemSelectList" parameterType="java.util.Map" resultType="ItemDTO">
-		SELECT * FROM item		
+		SELECT * FROM item	
+		<if test="id != null">
+			WHERE id = #{id}
+		</if>	
 	</select>
 	<!-- 페이징 용 list -->
 	<select id="itemSelectAll" parameterType="java.util.Map" resultType="ItemDTO">		

@@ -62,8 +62,11 @@
        					<a href="<c:url value='#'/>">관심 목록</a>
        				</c:if>
     			</li>
-    			<li>
-					
+    			<li>   			
+					<!-- 공인중개사 회원 -->
+					<c:if test="${'2' eq sessionScope.kind}" var="isNotExpert">
+       					<a href="<c:url value='/Deal/Write.bbs'/>">방등록</a>
+       				</c:if>	
 				</li>
        			<li>
        				<a href="<c:url value='#'/>">고객지원</a>
