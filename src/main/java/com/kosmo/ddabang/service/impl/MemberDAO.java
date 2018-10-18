@@ -60,8 +60,8 @@ public class MemberDAO implements MemberService {
 
 	@Override
 	public int pwdUpdate(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return template.update("pwdUpdate", map);
 	}
 
 	@Override
@@ -84,7 +84,7 @@ public class MemberDAO implements MemberService {
 
 	@Override
 	public int memberDelete(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return template.delete("memberDelete", map);
 	}
 }// class

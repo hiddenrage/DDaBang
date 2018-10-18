@@ -35,4 +35,11 @@ public class MarketController {
 		System.out.println("/Market/WriteComplete.bbs");
 		return "common/item/market/Main.tiles";
 	}/// marketMain
+	
+	//본방 찜방 넘어가는 페이지
+	@RequestMapping("/Member/SelectRoom.bbs")
+	public String selectRoom() throws Exception {
+		
+		return "common/member/normal/SelectRoom.tiles";
+	}/// marketMain
 }/// class

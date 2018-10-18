@@ -241,8 +241,8 @@
 			<a href="<c:url value='/Member/LreasignupTerms.bbs'/>"><button type="button" class="btn btn-default">공인 중개사 회원가입</button></a>
 			<a href="<c:url value='/Member/TotalTerms.bbs'/>"><button type="button" class="btn btn-default">이용 약관</button></a>
 			<a href="<c:url value='/Member/PersonalInfo.bbs'/>"><button type="button" class="btn btn-default">개인정보 처리방침</button></a>
-			<button type="button" class="btn btn-default">매물 관리 규정</button>
-			<button type="button" class="btn btn-default">자동저장 서비스</button>
+			<a href="<c:url value='/Member/Sales.bbs'/>"><button type="button" class="btn btn-default">매물 관리 규정</button></a>
+			<a href="<c:url value='/Member/AutoSave.bbs'/>"><button type="button" class="btn btn-default">자동저장 서비스</button></a>
 		</div>
 </div>
 

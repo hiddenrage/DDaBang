@@ -107,6 +107,7 @@ public class MemberController {
 		session.setAttribute("kind", dto.getKind());      
        return "redirect://";
     }
+   
 
 }
 
