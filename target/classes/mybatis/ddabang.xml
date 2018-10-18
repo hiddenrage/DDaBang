@@ -43,7 +43,7 @@
 			#{address},
 			#{address_detail},
 			#{kind},
-			#{pay_kind},
+			#{dabang_id},
 			#{house_floor},
 			#{select_floor},
 			#{supply_area},

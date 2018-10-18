@@ -49,7 +49,7 @@ public class MemberController {
     
     @RequestMapping("/Member/Logout.bbs")
     public String logout(HttpSession session) throws Exception {
-    	session.invalidate();;
+    	session.invalidate();
     	return "redirect:/";
     }/// logout
 	

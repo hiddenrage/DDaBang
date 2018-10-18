@@ -88,7 +88,7 @@ public class SearchController {
 			record.put("select_floor", list.getSelect_floor());
 			record.put("manage_money", list.getManage_money());
 			record.put("parking", list.getParking());
-			record.put("content", list.getContent());				
+			record.put("content", list.getContent().substring(0,10)+"...");				
 			record.put("x", list.getX());
 			record.put("y", list.getY());
 			collections.add(record);

@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.kosmo.ddabang.service.MemberService;
+import com.kosmo.ddabang.service.AdminDTO;
 import com.kosmo.ddabang.service.MemberDTO;
 
 @Service
@@ -83,5 +84,30 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int memberDelete(Map map) {
 		return dao.memberDelete(map);
+	}
+
+	@Override
+	public List<AdminDTO> adminSelectList(Map map) {
+		return dao.adminSelectList(map);
+	}
+
+	@Override
+	public boolean adminLogin(Map map) {
+		return dao.adminLogin(map);
+	}
+
+	@Override
+	public int adminInsert(Map map) {
+		return dao.adminInsert(map);
+	}
+
+	@Override
+	public int adminUpdate(Map map) {
+		return dao.adminUpdate(map);
+	}
+
+	@Override
+	public int adminDelete(Map map) {
+		return dao.adminDelete(map);
 	}
 }/// class

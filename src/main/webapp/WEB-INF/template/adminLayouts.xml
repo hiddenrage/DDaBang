@@ -6,22 +6,22 @@
 
 <tiles-definitions>
 	<!-- template에 최상위 페이지명 -->
-	<definition name="admin_layouts" template="/WEB-INF/template/admin_layouts.jsp">
-		<put-attribute name="Top" value="/WEB-INF/template/admin_top.jsp" />
+	<definition name="adminLayouts" template="/WEB-INF/template/adminLayouts.jsp">
+		<put-attribute name="Top" value="/WEB-INF/template/adminTop.jsp" />
 		<!-- 내용은 동적으로 변하기때문에 value에 ""지정 -->
 		<put-attribute name="Body" value="" />
 <!-- 		<put-attribute name="Footer" value="/WEB-INF/template/Footer.jsp" /> -->
 	</definition>
-	<definition name="*.admin" extends="admin_layouts">
+	<definition name="*.admin" extends="adminLayouts">
 		<put-attribute name="Body" value="/WEB-INF/views/admin/{1}.jsp" />
 	</definition>
-	<definition name="*/*.admin" extends="admin_layouts">
+	<definition name="*/*.admin" extends="adminLayouts">
 		<put-attribute name="Body" value="/WEB-INF/views/admin/{1}/{2}.jsp" />
 	</definition>
-	<definition name="*/*/*.admin" extends="admin_layouts">
+	<definition name="*/*/*.admin" extends="adminLayouts">
 		<put-attribute name="Body" value="/WEB-INF/views/admin/{1}/{2}/{3}.jsp" />
 	</definition>
-	<definition name="*/*/*/*.admin" extends="admin_layouts">
+	<definition name="*/*/*/*.admin" extends="adminLayouts">
 		<put-attribute name="Body" value="/WEB-INF/views/admin/{1}/{2}/{3}/{4}.jsp" />
 	</definition>
 </tiles-definitions>

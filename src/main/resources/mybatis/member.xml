@@ -107,4 +107,33 @@
 		DELETE member 
 		WHERE id=#{id}
 	</delete>
+	
+	
+	<!-- admin Query -->
+	<select id="adminSelectList" parameterType="java.util.Map" resultType="AdminDTO">
+		SELECT *
+		FROM admin
+	</select>
+	
+	<select id="adminLogin" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*)
+		FROM admin
+		WHERE id=#{id} AND pwd=#{pwd}
+	</select>
+	
+	<insert id="adminInsert" parameterType="java.util.Map">
+		INSERT INTO admin
+		VALUES(#{id},#{pwd},#{name})
+	</insert>
+	
+	<update id="adminUpdate" parameterType="java.util.Map">
+		UPDATE amdin 
+		SET pwd=#{pwd},name=#{name}
+		WHERE id=#{id}	
+	</update>
+	
+	<delete id="adminDelete" parameterType="java.util.Map">
+		DELETE admin
+		WHERE id=#{id}
+	</delete>
 </mapper>
