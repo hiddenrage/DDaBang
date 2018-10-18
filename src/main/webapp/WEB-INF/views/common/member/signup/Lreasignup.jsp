@@ -66,17 +66,17 @@ $(function(){
                         }
                      addr = data.sido+" "+data.sigungu+" "+jusoSangsae;
                         postcode = data.postcode;
-                        $("#addr1").val(postcode);
-                         $("#addr2").val(addr);
-                         $('#addr1Error').html("");   
-                         $('#addr2Error').html("");   
+                        $("#address").val(postcode);
+                         $("#address").val(addr);
+                         $('#addressError').html("");   
+                         $('#addressError').html("");   
                   },
                 shorthand : false
                 }).open();
         });
         
-        $(':button:last').click(function(){
-    		alert('가입 신청이 완료되었습니다.');		
+        $(':input:last').click(function(){
+    		alert('가입 신청이 완료되었습니다.\r\n로그인 후 이용해주세요!');		
     	});
         
      });
@@ -88,7 +88,8 @@ $(function(){
    				<small> 필요한 서류를 미리 준비해 두시면 빠르게 가입 하실 수 있습니다.</small>
    				<h5 style="color:orange">고객센터 010-5349-1601 / 팩스번호 <a href="#">010-5349-1601</a></h5>
    			</div>
-   			</br>
+   			
+   			<form action="<c:url value='/Member/expertsignup.bbs'/>" method="post">
    			<table class="table table-bordered" style="margin-bottom: 100px">
    				<tr>
    					<td colspan="2">공인중개사 정보 입력</td>
@@ -97,7 +98,7 @@ $(function(){
    					<td style="background-color: rgba(80,80,80,0.1); vertical-align: middle;">중개사무소명</td>
    					<td>
    						<div class="col-sm-6">
-   							<input type="text" class="form-control" id="officename" placeholder="사무소명을 입력해 주세요">
+   							<input type="text" class="form-control" id="office_name" placeholder="사무소명을 입력해 주세요" name="office_name">
    						</div>
    					</td>
    				</tr>
@@ -105,10 +106,10 @@ $(function(){
    					<td style="background-color: rgba(80,80,80,0.1); vertical-align: middle;">중개등록번호</td>
    					<td>
    						<div class="col-sm-6">
-   							<input type="text" class="form-control col-sm-6" id="officenum" placeholder="'-'가 있는경우 포함하여 입력해 주세요" >
+   							<input type="text" class="form-control col-sm-6" id="broker_number" placeholder="'-'가 있는경우 포함하여 입력해 주세요" name="broker_number" >
    						</div>
    						<div>
-   							<input type='file' id='file' name='file' class="hidden"/>
+   							<input type='file' id='file' name='broker_photo' class="hidden"/>
 							<button id='btn-upload' class="button1 white selected btn btn-primary" onfocus="this.blur();" style="margin-right: 10px">중개등록증 첨부</button>
 						</div>
    					</td>
@@ -116,51 +117,50 @@ $(function(){
    				<tr>
    					<td style="background-color: rgba(80,80,80,0.1); vertical-align: middle;">사업자 등록번호</td>
    					<td>
-   						<form class="form-inline">
+   						<div class="form-inline">
  							<div class="form-group" style="margin-left: 15px">    							
-  								<input type="text" class="form-control" id="licenseenum" style="width: 120px; ">
+  								<input type="text" class="form-control" id="licenseenum" style="width: 120px; " name="business_number">
    								<label for="email" style="margin-left:10px ;margin-right: 10px">-</label>
    							</div>
    							<div class="form-group">
-   								<input type="text" class="form-control" id="licenseenum2" style="width: 120px">
+   								<input type="text" class="form-control" id="licenseenum2" style="width: 120px" name="business_number2">
    								<label for="email" style="margin-left:10px ;margin-right: 10px">-</label>
    							</div>
    							<div class="form-group">
-   								<input type="text" class="form-control" id="licenseenum3" style="width: 120px">
+   								<input type="text" class="form-control" id="licenseenum3" style="width: 120px" name="business_number3">
    								<button class="button1 white selected btn btn-primary" onfocus="this.blur();" style="margin-left: 10px">인증</button>
-   								<input type='file' id='file2' name='file2' class="hidden"/>
+   								<input type='file' id='file2' name='business_photo' class="hidden"/>
    								<button id='btn-upload2' class="button1 white selected btn btn-primary" onfocus="this.blur();" style="margin-left: 10px">사업자 등록증 첨부</button>
    							</div>
-   						</form>
+   						</div>
    					</td>
    				</tr>
    				<tr>
    					<td style="background-color: rgba(80,80,80,0.1); vertical-align: middle;">중개사무소 주소</td>
    					<td>
    						<p style=" margin-left:10px; color:gray;">도로명,건물명,지번에 대해 통합검색이 가능합니다.</p> 
-						<form class="form-inline">
+						<div class="form-inline">
  							<div class="form-group" style="margin-left: 15px">
- 								<input type="text" class="form-control" style="width: 250px" placeholder="예)금천구 가산동" name="addr2" id="addr2">    							
+ 								<input type="text" class="form-control" style="width: 250px" placeholder="예)금천구 가산동" name="address" id="address">    							
   								<button type="button" value="button타입" class="orgBtn btn btn-primary" id="lookup" style="margin-left: 15px">조회하기</button>
   								</br>
   							</div>	
    							<div class="form-grou">
-   								<input type="text" class="form-control" style="width: 250px; margin-top: 10px; margin-left: 15px; margin-bottom: 10px" placeholder="상세주소를 입력해주세요" id="addr3">
+   								<input type="text" class="form-control" style="width: 250px; margin-top: 10px; margin-left: 15px; margin-bottom: 10px" placeholder="상세주소를 입력해주세요" id="address2" name="address2">
    							</div>
    							<p style="color: red; cursor: pointer; text-decoration: underline;  margin-left:10px;">주소가 검색되지 않으세요?</p>
-   						</form>
+   						</div>
    					</td>
    				</tr>
    				<tr>
    					<td style="background-color: rgba(80,80,80,0.1); vertical-align: middle;">중개사 대표자명</td>
    					<td>
    						<div class="col-sm-5">
-   							<input type="text" class="form-control" id="representname" placeholder="대표자명을 입력해 주세요">
+   							<input type="text" class="form-control" id="manager_name" placeholder="대표자명을 입력해 주세요" name="manager_name">
    						</div>
    					</td>
    				</tr>
 			</table>
-			
 			<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 			
 			<table class="table table-bordered">
@@ -170,30 +170,30 @@ $(function(){
    				<tr>
    					<td style="background-color: rgba(80,80,80,0.1); vertical-align: middle;">본인 성명</td>
    					<td>
-   						<form class="form-inline">
+   						<div class="form-inline">
    							<div class="form-group col-sm-3">
-   								<input type="text" class="form-control" id="username" placeholder="이름을 입력해 주세요">
+   								<input type="text" class="form-control" id="username" placeholder="이름을 입력해 주세요" name="name">
    							</div>
    							<div>
    								<label style="margin-left:15px ;margin-right: 10px">직급/직책</label>
-   								<input type="text" class="form-control" id="userlavel" placeholder="직급/직책을 입력해 주세요">
-   								<select class="form-control" style="margin-left: 40px"> 
+   								<input type="text" class="form-control" id="position" placeholder="직급/직책을 입력해 주세요" name="position">
+   								<select class="form-control" style="margin-left: 40px" name="authority" id="authority"> 
    									<option>권한/자격</option> 
-   									<option value="011">대표공인중개사</option> 
-   									<option value="016">소속공인중개사</option> 
-   									<option value="017">중개보조원</option> 
-   									<option value="018">중개인</option> 
+   									<option value="대표공인중개사">대표공인중개사</option> 
+   									<option value="소속공인중개사">소속공인중개사</option> 
+   									<option value="중개보조원">중개보조원</option> 
+   									<option value="중개인">중개인</option> 
    								</select>
    							</div>
-   						</form>
+   						</div>
    					</td>
    				</tr>
    				<tr>
    					<td style="background-color: rgba(80,80,80,0.1); vertical-align: middle;">휴대폰 번호</td>
    					<td>
-   						<form class="form-inline">
+   						<div class="form-inline">
  							<div class="form-group">    							
-  								<select class="form-control" style="margin-left: 15px" id="tel"> 
+  								<select class="form-control" style="margin-left: 15px" id="tel" name="tel"> 
    									<option value="010">010</option> 
    									<option value="011">011</option> 
    									<option value="016">016</option> 
@@ -204,21 +204,21 @@ $(function(){
    								<label for="email" style="margin-left:10px ;margin-right: 10px">-</label>
    							</div>
    							<div class="form-group">
-   								<input type="text" class="form-control" id="tel2" style="width: 120px">
+   								<input type="text" class="form-control" id="tel2" style="width: 120px" name="tel2">
    								<label style="margin-left:10px ;margin-right: 10px">-</label>
    							</div>
    							<div class="form-group">
-   								<input type="text" class="form-control" id="tel3" style="width: 120px">
+   								<input type="text" class="form-control" id="tel3" style="width: 120px" name="tel3">
    							</div>
-   						</form>
+   						</div>
    					</td>
    				</tr>
    				<tr>
    					<td style="background-color: rgba(80,80,80,0.1); vertical-align: middle;">대표 전화번호</td>
    					<td>
-   						<form class="form-inline">
+   						<div class="form-inline">
    							<div class="form-group"> 
-   								<select class="form-control" style="margin-left: 15px" id="representtel"> 
+   								<select class="form-control" style="margin-left: 15px" id="representtel" name="manager_tel"> 
    									<option value="02">02</option> 
    									<option value="031">031</option> 
    									<option value="032">032</option> 
@@ -242,55 +242,54 @@ $(function(){
    								<label for="email" style="margin-left:10px ;margin-right: 10px">-</label>
    							</div>
    							<div class="form-group">
-   								<input type="text" class="form-control" id="representtel2" style="width: 120px">
+   								<input type="text" class="form-control" id="representtel2" style="width: 120px" name="manager_tel2">
    								<label style="margin-left:10px ;margin-right: 10px">-</label>
    							</div>
    							<div class="form-group">
-   								<input type="text" class="form-control" id="representtel3" style="width: 120px">
+   								<input type="text" class="form-control" id="representtel3" style="width: 120px" name="manager_tel3">
    							</div>
-   						</form>
+   						</div>
    					</td>
    				</tr>
    				<tr>
    					<td style="background-color: rgba(80,80,80,0.1); vertical-align: middle;">이메일 주소</td>
    					<td>
-   						<form class="form-inline">
+   						<div class="form-inline">
  							<div class="form-group">
-    							<input type="email" class="form-control" id="email" placeholder="이메일을 입력하세요" style="margin-left: 15px">
+    							<input type="text" class="form-control" id="email" placeholder="이메일을 입력하세요" style="margin-left: 15px" name="id">
     							<label for="email">@</label>
   							</div>
    							<div class="form-group">
-   							<select class="form-control" style="margin-left: 10px" id="email2"> 
-   								<option value="userinsert">직접입력</option> 
-   								<option value="daum">daum.net</option> 
-   								<option value=naver>naver.com</option> 
-   								<option value="hanmail">hanmail.net</option> 
-   								<option value="gmail">gmail.com</option> 
-   								<option value="nate">nate.com</option> 
-   								<option value="icloud">icloud.com</option> 
-   								<option value="hotmail">hotmail.com</option> 
-   								<option value="korea">korea.com</option> 
-   								<option value="empal">empal.com</option> 
-   								<option value="dreamwiz">dreamwiz.com</option> 
-   								<option value="yahoo">yahoo.com</option> 
-   								<option value="ymail">ymail.com</option> 
-   								<option value="live">live.com</option> 
-   								<option value="aol">aol.com</option> 
-   								<option value="msn">msn.com</option> 
-   								<option value="me">me.com</option> 
-   								<option value="rocketmail">rocketmail.com</option> 
-   								<option value="qq">qq.com</option> 
-   								<option value="link">link.com</option> 
+   							<select class="form-control" style="margin-left: 10px" id="email2" name="id2"> 
+   								<option value="@daum.net">daum.net</option>
+								<option value="@naver.com">naver.com</option>
+								<option value="@hanmail.net">hanmail.net</option>
+								<option value="@gmail.com">gmail.com</option>
+								<option value="@nate.com">nate.com</option>
+								<option value="@icloud.com">icloud.com</option>
+								<option value="@hotmail.com">hotmail.com</option>
+								<option value="@korea.com">korea.com</option>
+								<option value="@empal.com">empal.com</option>
+								<option value="@dreamwiz.com">dreamwiz.com</option>
+								<option value="@yahoo.com">yahoo.com</option>
+								<option value="@ymail.com">ymail.com</option>
+								<option value="@live.com">live.com</option>
+								<option value="@aol.com">aol.com</option>
+								<option value="@msn.com">msn.com</option>
+								<option value="@me.com">me.com</option>
+								<option value="@rocketmail.com">rocketmail.com</option>
+								<option value="@qq.com">qq.com</option>
+								<option value="@link.com">link.com</option>
    							</select> 
    							</div>
-   						</form>
+   						</div>
    					</td>
    				</tr>
    				<tr>
    					<td style="background-color: rgba(80,80,80,0.1); vertical-align: middle;">비밀번호</td>
    					<td>
    						<div class="col-sm-6">
-   							<input type="password" class="form-control" id="pwd" placeholder="비밀번호를 입력해 주세요">
+   							<input type="password" class="form-control" id="pwd" placeholder="비밀번호를 입력해 주세요" name="pwd">
    						</div>
    					</td>
    				</tr>
@@ -310,7 +309,8 @@ $(function(){
  			</small>
  			</br></br></br>
  			<div class="form-group text-center">
-                <a href="<c:url value='/'/>"><button type="submit" class="btn btn-primary btn-lg" style="margin-left: 10px">가입신청 하기<i class="fa fa-check spaceLeft"></i></button></a>       
-            </div>		
+                <input type="submit" class="btn btn-primary btn-lg" style="margin-left: 10px" value="가입신청 하기"/>      
+            </div>	
+            </form>	
    			</br></br>		
 	    </div>

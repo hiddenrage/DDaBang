@@ -54,15 +54,15 @@
        			</li> --%>
 				<li>
        				<%-- 비회원이거나 일반회원의 경우 --%>
-					<c:if test="${'general' eq sessionScope.kind}">
-       					<a href="<c:url value='#'/>">관심 목록</a>
+					<c:if test="${0 eq sessionScope.kind}">
+       					<a href="<c:url value='/Member/SelectRoom.bbs'/>">관심 목록</a>
        				</c:if>
     			</li>
     			<li>
 					<%-- 공인중개사일 경우 --%> 
 					<%--	<c:if test="${'expert' ne sessionScope.kind}"> --%>
 					<%-- 우선은 둘다 뜨게 하려고 --%>
-					<c:if test="${'general' eq sessionScope.kind}">
+					<c:if test="${2 eq sessionScope.kind}">
        					<a href="<c:url value='/Deal/List.bbs'/>">매물 관리</a>
        				</c:if>
 				</li>
@@ -78,8 +78,7 @@
        					<a href="#" data-toggle="modal" data-target="#exampleModal">회원가입</a>
        				</c:if>
        				<c:if test="${not isNotLogin}">
-
-       					<a href="<c:url value='/Member/MyPage.bbs'/>">내 정보</a>
+       					<a href="<c:url value='/Member/MyPagelist.bbs'/>">내 정보</a>       					
        				</c:if>
        			</li>
        			<li>

@@ -38,6 +38,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberDTO expertSelectOne(Map map) {
+		
 		return dao.expertSelectOne(map);
 	}
 
@@ -55,14 +56,14 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int expertInsert(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return dao.expertInsert(map);
 	}
 
 	@Override
 	public int pwdUpdate(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return dao.pwdUpdate(map);
 	}
 
 	@Override
@@ -85,7 +86,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int memberDelete(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return dao.memberDelete(map);
 	}
 }/// class
