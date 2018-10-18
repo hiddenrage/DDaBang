@@ -161,7 +161,7 @@ public class MemberSignController {
 		
 		service.memberDelete(map);
 			
-		return "forward:/";
+		return "redirect:/Member/Logout.bbs";
 	}///
 	
 	//일반 회원가입 -> 이용약관 
