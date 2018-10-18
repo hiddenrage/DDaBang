@@ -53,7 +53,7 @@ public class MemberController {
     	return "redirect:/";
     }/// logout
 	
-    //네이버 로그인
+    //네이버 로그인 url 반환
 	@RequestMapping("/Member/Login.bbs")
 	public String login(Model model, HttpSession session) throws Exception{
 		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */

@@ -45,6 +45,7 @@ public class SearchController {
 		Map record = new HashMap();				
 			record.put("x", list.getX());
 			record.put("y", list.getY());
+			record.put("address", list.getAddress());
 			collections.add(record);
 		}			
 		return JSONArray.toJSONString(collections);
@@ -114,9 +115,8 @@ public class SearchController {
 		collection.put("content", dto.getContent());				
 		collection.put("x", dto.getX());
 		collection.put("y", dto.getY());
-		System.out.println(JSONObject.toJSONString(collection));	
 		model.addAttribute("dto", JSONObject.toJSONString(collection));	
-		
+		model.addAttribute("item", dto);
 		return "common/item/search/View.tiles";
 	}
 	

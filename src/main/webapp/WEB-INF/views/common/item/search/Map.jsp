@@ -283,7 +283,7 @@ $(function() {
   	var clusterer = new daum.maps.MarkerClusterer({
         map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
         averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
-        minLevel: 6, // 클러스터 할 최소 지도 레벨 
+        minLevel: 2, // 클러스터 할 최소 지도 레벨 
         disableClickZoom: true // 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
     });
 	
@@ -312,7 +312,7 @@ $(function() {
 	// 클러스터러에 마커들을 추가합니다
     clusterer.addMarkers(markers);
 	
-	//온로드 되였을때 list 뿌려주는 전체데이타 불러오기
+	//처음으로 온로드 되였을때 list 뿌려주는 전체데이타 불러오기
 	var url = '<c:url value="/Search/MapList.bbs"/>';
 	
 	function onLoadList(url){
@@ -349,6 +349,11 @@ $(function() {
 		}
 		$("#list_content .row").html(list);
 	}
+	//option 값 세팅해주
+	function setOption(){
+		
+	}
+		
 	//페이징 클릭이벤트
 	$(document).on("click",".pagingClick",function(){
 		var url = $(this).prop('title');		
@@ -447,7 +452,6 @@ $(function() {
     });
  	// 좌표로 주소 정보를 요청합니다
     function searchDetailAddrFromCoords(coords, callback) {
- 		console.log(coords.getLng(), coords.getLat());
         geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);         
     }
  	
@@ -481,20 +485,26 @@ $(function() {
 		        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
 		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 		        if(address.length <=3){
-		        	map.setLevel(10);
-		        }else if(address.length >3 && address.length <=8){
-		        	map.setLevel(8);
-		        }else{
+		        	map.setLevel(9);
+		        }else if(address.length >3 && address.length <=10){
 		        	map.setLevel(6);
+		        }else{
+		        	map.setLevel(2);
 		        }
-		        map.setCenter(coords);
-	
+		        map.setCenter(coords);	
 		    } else{
 		    	alert("없는 주소 입니다");
 		    }
 		}); 
 		$("#searchAddress").val('');
 	}
+ 	
+ 	/* $(".dropdown").on('click',function(){
+ 		 $(this).children("ul").children("li").click(function() {
+			console.log($(this).end().html());
+			
+		});
+ 	}); */
 	
 	
 });

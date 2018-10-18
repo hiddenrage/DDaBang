@@ -58,6 +58,7 @@
        					<a href="<c:url value='/Member/SelectRoom.bbs'/>">관심 목록</a>
        				</c:if>
     			</li>
+<<<<<<< HEAD
     			<li>
 					<%-- 공인중개사일 경우 --%> 
 					<%--	<c:if test="${'expert' ne sessionScope.kind}"> --%>
@@ -65,6 +66,13 @@
 					<c:if test="${2 eq sessionScope.kind}">
        					<a href="<c:url value='/Deal/List.bbs'/>">매물 관리</a>
        				</c:if>
+=======
+    			<li>   			
+					<!-- 공인중개사 회원 -->
+					<c:if test="${'2' eq sessionScope.kind}" var="isNotExpert">
+       					<a href="<c:url value='/Deal/Write.bbs'/>">방등록</a>
+       				</c:if>	
+>>>>>>> refs/heads/guozhe
 				</li>
        			<li>
        				<a href="<c:url value='#'/>">고객지원</a>

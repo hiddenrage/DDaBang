@@ -1,16 +1,22 @@
 package com.kosmo.ddabang.web;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Vector;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kosmo.ddabang.service.ItemDTO;
 import com.kosmo.ddabang.service.impl.ItemServiceImpl;
 
 
@@ -20,8 +26,29 @@ public class ItemController {
     private ItemServiceImpl service;
 	
 	@RequestMapping("/Deal/List.bbs")
-	public String list() throws Exception {
-		
+	public String list(HttpSession session,Model model) throws Exception {	
+		Map map = new HashMap();
+		map.put("id", session.getAttribute("id"));
+		List<ItemDTO> lists = service.itemSelectList(map);	
+		List<Map> collections = new Vector<Map>();
+		Map record = null;		
+		for(ItemDTO  list:lists) {
+			record = new HashMap();
+			record.put("no", list.getNo());
+			record.put("id", list.getId());
+			record.put("address", list.getAddress());
+			record.put("kind", list.getKind());
+			record.put("select_floor", list.getSelect_floor());
+			record.put("manage_money", list.getManage_money());
+			record.put("parking", list.getParking());
+			record.put("content", list.getContent());				
+			record.put("x", list.getX());
+			record.put("y", list.getY());
+			collections.add(record);
+		}
+		System.out.println(JSONArray.toJSONString(collections));
+		model.addAttribute("data", JSONArray.toJSONString(collections));
+						
 		return "common/item/deal/List.tiles";
 	}/// list
 
