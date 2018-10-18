@@ -27,6 +27,7 @@
 			#{address},
 			#{address_detail},
 			#{kind},
+			#{dabang_id},
 			#{house_floor},
 			#{select_floor},
 			#{supply_area},

@@ -87,7 +87,7 @@ CREATE TABLE expert
 	-- 아이디
 	id varchar2(30) NOT NULL,
 	-- 공인사무소명
-	office_name nvarchar2(15) NOT NULL,
+	office_name nvarchar2(20) NOT NULL,
 	-- 주소
 	address nvarchar2(100) NOT NULL,
 	-- 대표자명
@@ -95,11 +95,11 @@ CREATE TABLE expert
 	-- 대표 전화번호
 	manager_tel varchar2(15) NOT NULL,
 	-- 직책
-	position nvarchar2(15) NOT NULL,
+	position nvarchar2(15),
 	-- 권한
 	authority nvarchar2(15) NOT NULL,
 	-- 중개등록번호
-	broker_number nvarchar2(20) NOT NULL UNIQUE,
+	broker_number nvarchar2(20) NOT NULL,
 	-- 중개등록증 사진
 	broker_photo nvarchar2(100),
 	-- 사업자 등록번호
@@ -152,35 +152,37 @@ CREATE TABLE item
 	-- 주소
 	address nvarchar2(100) NOT NULL,
 	-- 상세주소
-	address_detail nvarchar2(50) NOT NULL,
+	address_detail nvarchar2(100),
 	-- 방종류
 	kind nvarchar2(20) NOT NULL,
+	-- 다방 아이디
+	dabang_id nvarchar2(40),
 	-- 건물 층수
-	house_floor number NOT NULL,
+	house_floor nvarchar2(10) NOT NULL,
 	-- 해당 층수
-	select_floor number NOT NULL,
+	select_floor nvarchar2(10) NOT NULL,
 	-- 공급 면적
 	supply_area number NOT NULL,
 	-- 전용 면적
-	use_area number NOT NULL,
+	use_area number,
 	-- 관리비
-	manage_money varchar2(10) NOT NULL,
+	manage_money varchar2(10),
 	-- 관리비 항목
-	manage_detail nvarchar2(30),
+	manage_detail nvarchar2(80),
 	-- 주차 여부
 	parking number,
 	-- 난방 종류
-	heating nvarchar2(10) NOT NULL,
+	heating nvarchar2(10),
 	-- 애완동물
-	animal char(1) NOT NULL,
+	animal char(1),
 	-- 엘레베이터
 	elevator char(1),
 	-- 입주가능일
 	movein nvarchar2(10) DEFAULT '즉시 입주',
 	-- 옵션 항목
-	select_option nvarchar2(50),
+	selected_option nvarchar2(100),
 	-- 제목
-	title nvarchar2(50) NOT NULL,
+	title nvarchar2(150) NOT NULL,
 	-- 내용
 	content nvarchar2(2000) NOT NULL,
 	-- 작성 날짜
@@ -250,7 +252,7 @@ CREATE TABLE member
 	-- 아이디
 	id varchar2(30) NOT NULL,
 	-- 이름
-	name nvarchar2(15) NOT NULL,
+	name nvarchar2(30) NOT NULL,
 	-- tel
 	tel varchar2(15),
 	-- 가입일
@@ -437,6 +439,7 @@ COMMENT ON COLUMN item.id IS '아이디';
 COMMENT ON COLUMN item.address IS '주소';
 COMMENT ON COLUMN item.address_detail IS '상세주소';
 COMMENT ON COLUMN item.kind IS '방종류';
+COMMENT ON COLUMN item.dabang_id IS '다방 아이디';
 COMMENT ON COLUMN item.house_floor IS '건물 층수';
 COMMENT ON COLUMN item.select_floor IS '해당 층수';
 COMMENT ON COLUMN item.supply_area IS '공급 면적';
@@ -448,7 +451,7 @@ COMMENT ON COLUMN item.heating IS '난방 종류';
 COMMENT ON COLUMN item.animal IS '애완동물';
 COMMENT ON COLUMN item.elevator IS '엘레베이터';
 COMMENT ON COLUMN item.movein IS '입주가능일';
-COMMENT ON COLUMN item.select_option IS '옵션 항목';
+COMMENT ON COLUMN item.selected_option IS '옵션 항목';
 COMMENT ON COLUMN item.title IS '제목';
 COMMENT ON COLUMN item.content IS '내용';
 COMMENT ON COLUMN item.regidate IS '작성 날짜';
@@ -494,3 +497,6 @@ COMMENT ON TABLE signupmember IS '홈페이지 회원가입 회원';
 COMMENT ON COLUMN signupmember.id IS '아이디';
 COMMENT ON COLUMN signupmember.pwd IS '비밀번호';
 COMMENT ON TABLE statistics IS '통계';
+
+
+
